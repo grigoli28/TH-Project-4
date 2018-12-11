@@ -1,5 +1,8 @@
 body{
     font-family: 'Maven Pro', sans-serif;
+    background-color: whitesmoke;
+    margin:0;
+    padding: 0;
 
 }
 .main-nav {
@@ -9,26 +12,72 @@ body{
     grid-template-columns: 100px 100px 100px 100px 600px 100px 100px 100px;
     text-align: center;
     margin: 0;
-    width: 100%;
     margin-top:30px;
+    cursor: pointer;
 }
 a{
     text-decoration: none;
     color: black;
     font-weight: bold;
-    opacity: 0.6;
-    transition: 0.4s;
+    opacity: 1;
+    transition: 0.3s;
 }
 a:hover{
-    color: rgb(19, 12, 80);
-    opacity: 1.2;
+    color: rgb(77, 70, 143);
+    opacity: 0.6;
 }
 hr{
-    width: 91%;
+    width: 92%;
     margin-left: 5.3%;
     margin-top: 30px;
     display: block;
     height: 1px;
     border: 0;
     border-top: 1px solid rgb(187, 187, 187);
+}
+.mid-nav{
+    list-style: none;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 160px 730px 100px 100px 100px 100px;
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.mid-nav li:nth-child(3){
+    color: rgb(158, 157, 157);
+}
+.sidebar-form{
+    display: grid;
+    grid-template-columns: 30px 100px;
+    margin-left: 5.3%;
+    margin-top: 30px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    color: rgb(97, 93, 93);
+}
+.sidebar-form ,input, span{
+    margin-top: 10px;
+}
+.category{
+    margin-left: 5.3%;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    margin-top: 50px;
+    
+}
+.prize{
+    margin-left: 5.3%;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.slider{
+    width: 140px;
+    margin-left: 5.3%;
+    margin-top: 30px;
 }
