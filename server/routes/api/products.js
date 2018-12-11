@@ -1,6 +1,11 @@
 const { Router } = require("express");
 const PRODUCTS = require("../../db/products.json");
 
+const {
+  findOneById,
+  findOneByIdAndRemove,
+} = require("../../util/arrayLookup");
+
 // Unique id generator based on timestamp
 const uuidv1 = require("uuid/v1");
 
@@ -9,7 +14,6 @@ const router = new Router();
 // @route   GET api/products[?filter | ?search]
 // @desc    Get all/filtered/searched products
 // @access  Public
-// TODO middlewares
 router.get("/", filterMiddleware, searchMiddleware, (req, res) => {
   res.json(PRODUCTS);
 });
@@ -55,27 +59,33 @@ router.delete("/:id", (req, res) => {
 // @desc    Update product
 // @access  Public
 router.put("/:id", (req, res) => {
+  // TODO
   res.send("Test");
 });
 
-function findOneById(id, array) {
-  return array.find(item => item.id == id);
-}
-
-function findOneByIdAndRemove(id, array) {
-  const index = array.findIndex(item => item.id == id);
-  // If no such item
-  if (index < 0) return null;
-
-  return array.splice(index, 1)[0];
-}
-
 function filterMiddleware(req, res, next) {
-  next();
+  if (!req.query.filter) return next();
+
+  // Filter products and send it
+  const { filter, value } = req.query;
+  const filteredProducts = PRODUCTS.filter(
+    prod => Number(prod[filter]) <= Number(value)
+  );
+
+  res.json(filteredProducts);
 }
 
 function searchMiddleware(req, res, next) {
-  next();
+  if (!req.query.search) return next();
+
+  // Search products
+  const { search } = req.query;
+  const value = "name";
+  const searchedProducts = PRODUCTS.filter(prod =>
+    prod[value].includes(search)
+  );
+
+  res.json(searchedProducts);
 }
 
 module.exports = router;

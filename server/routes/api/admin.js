@@ -3,11 +3,11 @@ const { Router } = express;
 
 const router = new Router();
 
-// @route   GET api/admin/test
-// @desc    Tests admin route
-// @access  Public
-router.get("/test", (req, res ) => {
-    res.send("Admin Test")
+// @route   GET api/admin/login
+// @desc    Login for admin
+// @access  Private
+router.get("/login", (req, res) => {
+  res.send("Admin Test");
 });
 
 module.exports = router;
