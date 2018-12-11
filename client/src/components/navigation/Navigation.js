@@ -1,21 +1,25 @@
 import React from "react";
-import "./Navigation";
-import {Link} from "react-router-dom";
+import "./Nav.css";
+import {BrowserRouter,Link} from "react-router-dom";
 
 
 export default function Navigation() {
   return (
-    <div className="main-nav">
-      <ul>
-        <li><Link>Man</Link></li>
-        <li><Link>Woman</Link></li>
-        <li><Link>Contact</Link></li>
-        <li><Link>About Us</Link></li>
-        <li><Link>search</Link></li>
-        <li><Link>Login</Link></li>
-        <li><Link>Cart</Link></li>
+    <BrowserRouter>
+    <div >
+      <ul className="main-nav">
+        <li><Link to="">Man</Link></li>
+        <li><Link to="">Woman</Link></li>
+        <li><Link to="">Contact</Link></li>
+        <li><Link to="">About Us</Link></li>
+        <li></li>
+        <li><Link to="">search</Link></li>
+        <li><Link to="">Login</Link></li>
+        <li><Link to="">Cart</Link></li>
       </ul>
+      <hr/>
      
     </div>
+    </BrowserRouter>
   );
 }
