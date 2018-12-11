@@ -18,11 +18,14 @@ const router = new Router();
 // @desc    Get all customers
 // @access  Private (only admin)
 router.get("/", (req, res) => {
-  res.json(CUSTOMERS);
+  const populated = CUSTOMERS.map(customer =>
+    populateObject(customer, "id name email username")
+  );
+  res.json(populated);
 });
 
 // @route   GET api/customers/:id (????? private or public or what)
-// @desc    Get product
+// @desc    Get single customer
 // @access  Private (only admin)
 router.get("/:id", (req, res) => {
   const { id } = req.params;
@@ -55,7 +58,7 @@ router.post("/", (req, res) => {
   CUSTOMERS.push(newCustomer);
 
   // Get only certain details of customer
-  const populated = populateObject(newCustomer, "name email username");
+  const populated = populateObject(newCustomer, "password name email username");
   res.json(populated);
 });
 
