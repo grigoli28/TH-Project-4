@@ -1,0 +1,42 @@
+[
+  {
+    "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b",
+    "name": "Product 1",
+    "price": 1000,
+    "size": "XL",
+    "category": "t-shirts",
+    "brand": "Nike"
+  },
+  {
+    "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
+    "name": "Product 2",
+    "price": 2000,
+    "size": "M",
+    "category": "jackets",
+    "brand": "Nike"
+  },
+  {
+    "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+    "name": "Product 3",
+    "price": 3000,
+    "size": "XL",
+    "category": "shorts",
+    "brand": "Nike"
+  },
+  {
+    "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
+    "name": "Product 4",
+    "price": 4000,
+    "size": "S",
+    "category": "pants",
+    "brand": "Nike"
+  },
+  {
+    "id": "f75d8740-fd46-11e8-b943-c3b0829d8e95",
+    "name": "Product 5",
+    "price": 5000,
+    "size": "L",
+    "category": "sweaters",
+    "brand": "Nike"
+  }
+]
