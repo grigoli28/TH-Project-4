@@ -1,8 +1,7 @@
 import React from "react";
-import "./Nav.css";
 
 
-export default function Brand() {
+export default function BrandFilter() {
   return (
       <div>
           <p className="category">Brand</p>
