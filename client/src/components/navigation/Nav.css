@@ -1,83 +1,179 @@
-body{
-    font-family: 'Maven Pro', sans-serif;
-    background-color: whitesmoke;
-    margin:0;
-    padding: 0;
-
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+.container {
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-nav {
+  padding: 40px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header-nav::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: lightgrey;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+
 .main-nav {
-    list-style: none;
-    display: grid;
-    grid-gap: 0px;
-    grid-template-columns: 100px 100px 100px 100px 600px 100px 100px 100px;
-    text-align: center;
-    margin: 0;
-    margin-top:30px;
-    cursor: pointer;
+  list-style: none;
 }
-a{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    opacity: 1;
-    transition: 0.3s;
-}
-a:hover{
-    color: rgb(77, 70, 143);
-    opacity: 0.6;
-}
-hr{
-    width: 92%;
-    margin-left: 5.3%;
-    margin-top: 30px;
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid rgb(187, 187, 187);
-}
-.mid-nav{
-    list-style: none;
-    display: grid;
-    grid-gap: 0px;
-    grid-template-columns: 160px 730px 100px 100px 100px 100px;
-    text-align: center;
-    margin: 0;
-    font-weight: bold;
-    margin-top: 30px;
-    cursor: pointer;
-}
-.mid-nav li:nth-child(3){
-    color: rgb(158, 157, 157);
-}
-.sidebar-form{
-    display: grid;
-    grid-template-columns: 30px 100px;
-    margin-left: 5.3%;
-    margin-top: 30px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    color: rgb(97, 93, 93);
-}
-.sidebar-form ,input, span{
-    margin-top: 10px;
-}
-.category{
-    margin-left: 5.3%;
-    cursor: pointer;
-    color: black;
-    font-weight: bold;
-    margin-top: 50px;
-    
-}
-.prize{
-    margin-left: 5.3%;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
 
+.main-nav__item {
+  display: inline-block;
+  padding-right: 30px;
+  font-weight: bold;
 }
-.slider{
-    width: 140px;
-    margin-left: 5.3%;
-    margin-top: 30px;
+
+.main-nav__link {
+  transition: color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+.main-nav__link:hover {
+  color: var(--hover-red);
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.aditional-nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.aditional-nav > * {
+  margin-right: 20px;
+}
+
+.aditional-nav .lnr {
+  font-weight: bold;
+}
+
+.search-btn,
+.user-login,
+.cart-btn {
+  font-size: 1.5em;
+  transition: color 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search-btn:hover,
+.user-login:hover,
+.cart-btn:hover {
+  color: var(--hover-red);
+  cursor: pointer;
+}
+
+.cart-btn {
+  background: none;
+  border: none;
+  font-size: 2em;
+  position: relative;
+}
+
+.cart-notification {
+  position: absolute;
+  right: -20px;
+  top: -15px;
+  font-size: 12px;
+  background-color: var(--hover-red);
+  color: #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  opacity: 1;
+  transition: 0.3s;
+}
+a:hover {
+  color: rgb(77, 70, 143);
+  opacity: 0.6;
+}
+
+.mid-nav {
+  list-style: none;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 160px 730px 100px 100px 100px 100px;
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+ .sidebar-form {
+  display: grid;
+  grid-template-columns: 30px 100px;
+  margin-left: 5.3%;
+  margin-top: 30px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  color: rgb(97, 93, 93);
+}
+
+.category {
+  margin-left: 5.3%;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  margin-top: 50px;
+}
+.prize {
+  margin-left: 5.3%;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+.slider {
+  width: 140px;
+  margin-left: 5.3%;
+  margin-top: 30px;
+} */
