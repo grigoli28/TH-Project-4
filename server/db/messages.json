@@ -1,0 +1,16 @@
+[
+  {
+    "id": "b479ed10-fd5f-11e8-884d-a3db58ef4c2f",
+    "user": "afee0180-fd4d-11e8-9e3a-aff3f90a1601",
+    "title": "message 1",
+    "body": "Lorem ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit ametipsum dolor sit ametipsum dolor sit amet",
+    "date": "2018-10-10"
+  },
+  {
+    "id": "ba51e5d0-fd5f-11e8-884d-a3db58ef4c2f",
+    "user": "b6e266c0-fd4d-11e8-9e3a-aff3f90a1601",
+    "title": "message 2",
+    "body": "Lorem ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet",
+    "date": "2017-10-10"
+  }
+]

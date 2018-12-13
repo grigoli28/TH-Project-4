@@ -1,6 +1,7 @@
 const express = require("express");
-const customers = require("./routes/api/customers");
 const admin = require("./routes/api/admin");
+const customers = require("./routes/api/customers");
+const products = require("./routes/api/products");
 
 const { json, urlencoded } = express;
 
@@ -16,6 +17,7 @@ app.use(json());
 // Add routes
 app.use("/api/admin", admin);
 app.use("/api/customers", customers);
+app.use("/api/products", products);
 
 // @route   GET api/test
 // @desc    Tests main route
