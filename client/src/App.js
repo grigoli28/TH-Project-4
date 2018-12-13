@@ -4,6 +4,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
 import Filters from "./components/filters/Filters";
 import SortBy from "./components/sortBy/SortBy";
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
+import Footer from "./components/footer/Footer";
 
 class App extends Component {
   render() {
@@ -14,6 +16,8 @@ class App extends Component {
         </Router>
         <SortBy />
         <Filters />
+        <ShoppingCart />
+        {/* <Footer /> */}
       </div>
     );
   }

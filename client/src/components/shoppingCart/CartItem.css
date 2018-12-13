@@ -2,7 +2,6 @@
   padding: 10px 0;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
 }
 
 .cart__item--img {
@@ -36,14 +35,12 @@
 .cart__item--details {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: space-around;
 }
 
 .cart__item--title {
   text-decoration: none;
   color: #555;
-  margin-bottom: 20px;
   transition: color 200ms ease-in-out;
 }
 

@@ -5,15 +5,30 @@ import CartDetails from "./CartDetails";
 import CartHeader from "./CartHeader";
 
 export default class ShoppingCart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+
+  handleCartClose = () => {
+    this.setState(prev => ({ visible: !prev.visible }));
+  };
+
   render() {
     return (
-      <div className="cart--wrapper">
+      <>
+        <div
+          onClick={this.handleCartClose}
+          className={`cart--wrapper ${this.state.visible && "cart--visible"}`}
+        />
         <div className="cart">
-          <CartHeader />
+          <CartHeader hideCart={this.handleCartClose} />
           <CartItemList />
           <CartDetails />
         </div>
-      </div>
+      </>
     );
   }
 }
