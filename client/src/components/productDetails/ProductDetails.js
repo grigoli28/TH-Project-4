@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Product.css";
+import "./ProductDetails.css";
 import {BrowserRouter,Link} from "react-router-dom";
 import Shirt from "./t-shirt.jpg"
 export default function Product() {

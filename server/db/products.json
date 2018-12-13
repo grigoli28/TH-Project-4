@@ -1,0 +1,47 @@
+[
+  {
+    "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b",
+    "name": "Premium t-shirt",
+    "price": 1000,
+    "size": "XL",
+    "category": "t-shirts",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
+    "name": "High quality Jacket",
+    "price": 2000,
+    "size": "M",
+    "category": "jackets",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+    "name": "Shorts",
+    "price": 3000,
+    "size": "XL",
+    "category": "shorts",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
+    "name": "Leather pants",
+    "price": 4000,
+    "size": "S",
+    "category": "pants",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "f75d8740-fd46-11e8-b943-c3b0829d8e95",
+    "name": "High Quality Product",
+    "price": 5000,
+    "size": "L",
+    "category": "sweaters",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  }
+]

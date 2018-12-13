@@ -1,0 +1,53 @@
+[
+  {
+    "id": "afee0180-fd4d-11e8-9e3a-aff3f90a1601",
+    "name": "Grigol Tchkoidze",
+    "email": "grigol@test.com",
+    "balance": "5000",
+    "birthdate": "1998-28-10",
+    "username": "grigoli",
+    "password": "3d2eec7de5790bfc6f2428d068d0f26e1ff19a4f88e1829f959c25aa05735926",
+    "shoppingCart": [
+      {
+        "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b",
+        "name": "Product 1",
+        "price": 1000,
+        "size": "XL",
+        "category": "t-shirts",
+        "brand": "Nike",
+        "description": "High Quality Product"
+      },
+      {
+        "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
+        "name": "Product 2",
+        "price": 2000,
+        "size": "M",
+        "category": "jackets",
+        "brand": "Nike",
+        "description": "High Quality Product"
+      }
+    ],
+    "purchasedProducts": []
+  },
+  {
+    "id": "b6e266c0-fd4d-11e8-9e3a-aff3f90a1601",
+    "name": "John Doe",
+    "email": "john@gmail.com",
+    "balance": "3000",
+    "birthdate": "1990-10-10",
+    "username": "john",
+    "password": "b85863a1d233999d9439ba16a2b08b090cf958759b193f29995d137c9fa97f78",
+    "shoppingCart": [],
+    "purchasedProducts": [
+      {
+        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
+        "name": "Product 4",
+        "price": 4000,
+        "size": "S",
+        "category": "pants",
+        "brand": "Nike",
+        "description": "High Quality Product"
+      }
+    ]
+  }
+]
