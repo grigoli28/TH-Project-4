@@ -5,22 +5,23 @@
   margin-right: 30px;
 }
 .flex-container > div {
-  background-color: #f1f1f1;
   width: 250px;
   margin: 10px;
+
 }
-li,
-p {
-  list-style-type: none;
-  color: gray;
+.footer-li,.footer-paragraph{
+  color:gray;
   cursor: pointer;
+  list-style-type: none;
 }
-li:hover {
-  color: rgb(37, 37, 37);
+.footer-paragraph{
+  margin-top: 20px;
 }
-h3 {
-  margin-left: 40px;
+.footer-li:nth-child(1){
+  margin-top: 20px;
 }
-.brand {
-  margin-left: 0;
+
+.footer-li:hover {
+  color: rgb(197, 27, 27)
 }
+

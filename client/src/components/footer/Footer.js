@@ -6,42 +6,42 @@ export default function Footer() {
     <div className="flex-container">
       
       <div>
-        <h3 className="brand">About Brand</h3>
-        <p>
+        <h3 className="footer-text">About Brand</h3>
+        <p className="footer-paragraph">
           Essence is stylish concept of nowadays fashion , limiited collections
           from different designers and etc
         </p>
       </div>
       <div>
-        <h3>Information</h3>
+        <h3 className="footer-text">Information</h3>
         <ul>
-          <li>Privacy and policy</li>
-          <li>FAQ</li>
-          <li>payment</li>
+          <li className="footer-li">Privacy and policy</li>
+          <li className="footer-li">FAQ</li>
+          <li className="footer-li">payment</li>
         </ul>
       </div>
       <div>
-        <h3>Contacts</h3>
+        <h3 className="footer-text">Contacts</h3>
         <ul>
-          <li>+995 598 887 918</li>
-          <li>Essence@gmail.com</li>
-          <li>open hours M-F 10:00-19:00</li>
+          <li className="footer-li">+995 598 887 918</li>
+          <li className="footer-li">Essence@gmail.com</li>
+          <li className="footer-li">open hours M-F 10:00-19:00</li>
         </ul>
       </div>
       <div>
-        <h3>Address</h3>
+        <h3 className="footer-text">Address</h3>
         <ul>
-          <li>Tbilisi</li>
-          <li>Rustaveli Ave. 10</li>
-          <li>Map</li>
+          <li className="footer-li">Tbilisi</li>
+          <li className="footer-li">Rustaveli Ave. 10</li>
+          <li className="footer-li">Map</li>
         </ul>
       </div>
       <div>
-          <h3>Social Network</h3>
+          <h3 className="footer-text">Social Network</h3>
           <ul>
-              <li>Facebook</li>
-              <li>Instagram</li>
-              <li>Twitter</li>
+              <li className="footer-li">Facebook</li>
+              <li className="footer-li">Instagram</li>
+              <li className="footer-li">Twitter</li>
           </ul>
       </div>
     </div>
