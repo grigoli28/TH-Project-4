@@ -17,7 +17,7 @@ class App extends Component {
         <SortBy />
         <Filters />
         <ShoppingCart />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }

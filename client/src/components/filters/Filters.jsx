@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Filters.css";
 import RadioFilter from "./RadioFilter";
 import ChkboxFilter from "./ChkboxFilter";
+import PriceFilter from "./PriceFilter";
 
 export default class Filters extends Component {
   constructor(props) {
@@ -10,11 +11,11 @@ export default class Filters extends Component {
       category: "T-shirts",
       size: "S",
       brands: [],
-      price: { min: 0, max: 0 },
+      price: { min: "", max: "" },
     };
   }
 
-  onInputChange = e => {
+  onRadioInput = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
@@ -40,20 +41,30 @@ export default class Filters extends Component {
     });
   };
 
+  onPriceInput = e => {
+    const { name, value } = e.target;
+    this.setState(prevState => ({
+      price: {
+        ...prevState.price,
+        [name]: value,
+      },
+    }));
+  };
+
   render() {
     return (
       <div className="filters">
         <RadioFilter
           filterName="Category"
           currentValue={this.state.category}
-          onChange={this.onInputChange}
+          onChange={this.onRadioInput}
           categories={["T-shirts", "Sweaters", "Pants", "Shorts"]}
         />
 
         <RadioFilter
           filterName="Size"
           currentValue={this.state.size}
-          onChange={this.onInputChange}
+          onChange={this.onRadioInput}
           categories={["S", "M", "L", "XL"]}
         />
 
@@ -62,6 +73,12 @@ export default class Filters extends Component {
           currentValues={this.state.brands}
           onChange={this.onCheckboxInput}
           brands={["Nike", "Adidas", "Armani", "Dolce"]}
+        />
+
+        <PriceFilter
+          filterName="Price"
+          currentValue={this.state.price}
+          onChange={this.onPriceInput}
         />
       </div>
     );
