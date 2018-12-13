@@ -1,0 +1,13 @@
+.Top-image {
+  background-image: url("A.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 150px;
+}
+.contact {
+  text-align: center;
+  line-height: 140px;
+  color: aliceblue;
+  font-size: 40px;
+}
