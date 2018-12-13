@@ -15,7 +15,7 @@ export default function Filter({
 
   return (
     <div className="filter">
-      <span>{filterName}</span>
+      <span className="filter__title">{filterName}</span>
       {categories.map((category, index) => (
         <RadioInput
           key={index}

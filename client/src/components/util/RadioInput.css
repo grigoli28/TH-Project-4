@@ -1,5 +1,5 @@
 .radio {
-  margin: 0.5rem;
+  padding-bottom: 10px;
 }
 .radio input[type="radio"] {
   position: absolute;
@@ -14,7 +14,7 @@
   height: 1.4em;
   position: relative;
   top: -0.2em;
-  margin-right: 1em;
+  margin-right: 10px;
   vertical-align: top;
   cursor: pointer;
   text-align: center;

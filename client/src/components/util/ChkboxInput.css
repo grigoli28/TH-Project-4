@@ -1,3 +1,7 @@
+.cntr {
+  padding-bottom: 10px;
+}
+
 .cbx {
   margin: auto;
   -webkit-user-select: none;
@@ -43,7 +47,7 @@
   border-radius: 50%;
 }
 .cbx span:last-child {
-  padding-left: 8px;
+  padding-left: 10px;
 }
 .cbx:hover span:first-child {
   border-color: var(--hover-red);

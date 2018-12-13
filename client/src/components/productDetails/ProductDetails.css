@@ -1,0 +1,118 @@
+body{
+    font-family: 'Maven Pro', sans-serif;
+    background-color: whitesmoke;
+    margin:0;
+    padding: 0;
+
+
+}
+.main-nav {
+    list-style: none;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 100px 100px 100px 100px 600px 100px 100px 100px;
+    text-align: center;
+    margin: 0;
+    margin-top:30px;
+    cursor: pointer;
+}
+.main-nav a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    opacity: 1;
+    transition: 0.3s;
+}
+.main-nav a:hover{
+    color: rgb(77, 70, 143);
+    opacity: 0.6;
+}
+hr{
+    width: 92%;
+    margin-left: 5.3%;
+    margin-top: 30px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(187, 187, 187);
+}
+.weird-nav{
+    list-style-type: none;
+    padding: 70px;
+    margin-top: 0;
+    cursor: pointer;
+    
+}
+.weird-nav a{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+img{
+    position: relative;
+    height: 800px;
+    width: 500px;
+    margin: 70px;
+    bottom: 110px;
+    
+}
+.rewiew{
+    position: relative;
+    float: right;
+    width: 400px;
+    right: 350px
+
+}
+.size{
+    list-style: none;
+    display: flex;
+    
+}
+.size li{
+    border: solid 1px black;
+    background-color: whitesmoke;
+    margin: 1px;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    right: 40px
+
+    
+}
+a{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+}
+.size li:hover{
+    background-color: #000000;
+}
+
+.size li a:hover{
+    color: white;
+}
+
+button{
+    width: 260px;
+    height: 80px;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    top: 60px;
+    cursor: pointer;
+    
+}
+
+
+
+
+
+    
+    
+

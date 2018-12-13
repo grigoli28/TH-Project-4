@@ -42,7 +42,7 @@ export default class Filters extends Component {
 
   render() {
     return (
-      <div>
+      <div className="filters">
         <RadioFilter
           filterName="Category"
           currentValue={this.state.category}

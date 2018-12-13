@@ -1,7 +1,7 @@
 :root {
-  --hover-red: #c23046;
+  --hover-red: #d11740;
   --light-purple: #717fe0;
-  --dark-red: #7c202f;
+  --dark-red: #92293b;
 }
 
 *,
@@ -26,7 +26,7 @@ a {
   color: initial;
 }
 
-.container {
+.App {
   width: 90vw;
   max-width: 1200px;
   margin: 0 auto;

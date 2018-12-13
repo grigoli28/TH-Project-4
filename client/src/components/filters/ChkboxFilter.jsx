@@ -11,7 +11,7 @@ export default function ChkboxFilter({
   const name = filterName.toLowerCase();
   return (
     <div className="filter">
-      <span>{filterName}</span>
+      <span className="filter__title">{filterName}</span>
       {brands.map((brand, index) => (
         <ChkboxInput
           key={index}
