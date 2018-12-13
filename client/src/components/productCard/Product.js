@@ -42,6 +42,7 @@ export default function Product() {
         <button>Add Card</button>
           
       </div>
+      <hr />
 
 
 
