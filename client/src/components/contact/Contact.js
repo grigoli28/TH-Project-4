@@ -4,7 +4,7 @@ import "./Contact.css";
 export default function Contact() {
   return (
     <div>
-        <div className="Top-image">
+        <div className="top-image">
             <h1 className="contact">Contact</h1>
         </div>
     </div>
