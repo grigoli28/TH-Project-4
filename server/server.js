@@ -2,6 +2,7 @@ const express = require("express");
 const admin = require("./routes/api/admin");
 const customers = require("./routes/api/customers");
 const products = require("./routes/api/products");
+const cors = require("cors");
 
 const { json, urlencoded } = express;
 
@@ -11,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Add middlewares
+app.use(cors("*"));
 app.use(urlencoded({ extended: true }));
 app.use(json());
 

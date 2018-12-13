@@ -1,0 +1,18 @@
+.checkout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__cart--head {
+  border: 1px solid lightgrey;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout__cart--head > span:nth-child(2) {
+  padding-left: 120px;
+}
