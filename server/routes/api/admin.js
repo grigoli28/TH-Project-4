@@ -32,12 +32,13 @@ router.get("/messages/:id", (req, res) => {
 // @desc    Post new message for admin
 // @access  Private
 router.post("/messages", (req, res) => {
+  const date = new Date();
+
   const newMessage = {
     id: uuidv1(),
-    user: req.body.user,
-    title: req.body.title,
-    body: req.body.body,
-    date: req.body.date,
+    email: req.body.email,
+    message: req.body.message,
+    date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
   };
   MESSAGES.push(newMessage);
 

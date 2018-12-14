@@ -44,6 +44,9 @@ router.get("/:id", (req, res) => {
 // @desc    Add new customer
 // @access  Public
 router.post("/", (req, res) => {
+  if (req.body.password !== req.body.password2)
+    return res.status(404).json({ error: "Passwords do not match!" });
+
   const newCustomer = {
     id: uuidv1(),
     name: req.body.name,
@@ -58,7 +61,7 @@ router.post("/", (req, res) => {
   CUSTOMERS.push(newCustomer);
 
   // Get only certain details of customer
-  const populated = populateObject(newCustomer, "password name email username");
+  const populated = populateObject(newCustomer, "name email username");
   res.json(populated);
 });
 
