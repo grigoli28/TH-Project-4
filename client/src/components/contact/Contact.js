@@ -1,24 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Contact.css";
+import axios from 'axios'
 
-export default function Contact() {
-  return (
-    <div>
-      <div className="top-image">
-        <h1 className="contact">Contact</h1>
+export default class Contact extends Component {
+  constructor(props) {
+    super(props);
+
+    this.email = React.createRef();
+    this.message = React.createRef();
+  }
+
+  onSubmit = e => {
+    e.preventDefault();
+    const url = "http://localhost:5000/api/admin/messages";
+    const email = this.email.current.value;
+    const message = this.message.current.value;
+
+    axios.post(url, {email, message}).then(res => console.log(res.data)).catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <>
+        <div className="top-image">
+          <h1 className="contact">Contact</h1>
+        </div>
         <div className="contact-flex-container">
           <div className="container-1">
-            <form>
+            <form onSubmit={this.onSubmit}>
               <p className="contact-text">Send Us A Message</p>
-              <input className="contact-input" placeholder="Your Email" />
+              <input
+                ref={this.email}
+                name="email"
+                type="email"
+                className="contact-input"
+                placeholder="Your Email"
+                required
+              />
 
               <textarea
+                ref={this.message}
+                name="message"
                 className="contact-textarea"
-                placeholder="How Can We Help"
+                placeholder="How can we help you?"
+                required
               />
               <br />
               <button className="contact-btn" type="submit">
-                SUBMIT
+                Send
               </button>
             </form>
           </div>
@@ -28,26 +57,26 @@ export default function Contact() {
               <p>Address</p>
             </div>
             <div className="address-nav">
-              <p>Rustaveli Avenu 10</p>
+              <p>Chavchavadze Avenue 10,</p>
               <span>Georgia Tbilisi</span>
             </div>
             <div className="contact-number">
-              <i class="fas fa-phone" />
+              <i className="fas fa-phone" />
               <p>Contact Us</p>
             </div>
             <div className="address-nav">
-              <p>+995 598 887 918</p>
+              <p>+995 0322 33 33 33</p>
             </div>
             <div className="contact-number">
-              <i class="fas fa-envelope" />
+              <i className="fas fa-envelope" />
               <p>Sale Support</p>
             </div>
             <div className="address-nav">
-              <p>contact@example.com</p>
+              <p>contact@limited.com</p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
+      </>
+    );
+  }
 }

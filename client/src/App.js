@@ -1,28 +1,35 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
-// import Filters from "./components/filters/Filters";
-// import SortBy from "./components/sortBy/SortBy";
-// import ShoppingCart from "./components/shoppingCart/ShoppingCart";
-// import Footer from "./components/footer/Footer";
+import Filters from "./components/filters/Filters";
+import SortBy from "./components/sortBy/SortBy";
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
+import Footer from "./components/footer/Footer";
 import Checkout from "./components/checkout/CheckoutCart";
 import ProductList from "./components/productList/ProductList";
+import Login from "./components/login/Login";
+import Contact from "./components/contact/Contact";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        {/* <Router>
+      <Router>
+        <div className="App">
           <Navigation />
-        </Router>
-        {/* <SortBy /> */}
-        {/* <Filters /> */}
-        {/* <ShoppingCart /> */}
-        {/* <Checkout /> */}
-        {/* <Footer /> */}
-        <ProductList />
-      </div>
+          <Route exact path="/men" component={Filters} />
+          <Route exact path="/women" component={Filters} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/contact" component={Contact} />
+
+          {/* <SortBy /> */}
+          {/* <Filters /> */}
+          {/* <ShoppingCart /> */}
+          {/* <Checkout /> */}
+          <Footer />
+          {/* <ProductList /> */}
+        </div>
+      </Router>
     );
   }
 }

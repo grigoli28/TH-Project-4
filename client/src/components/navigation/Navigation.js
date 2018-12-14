@@ -7,22 +7,22 @@ export default function Navigation() {
     <div className="header-nav">
       <ul className="main-nav">
         <li className="main-nav__item">
-          <Link className="main-nav__link" to="">
+          <Link to="/men" className="main-nav__link">
             Men
           </Link>
         </li>
         <li className="main-nav__item">
-          <Link className="main-nav__link" to="">
+          <Link to="/women" className="main-nav__link">
             Women
           </Link>
         </li>
         <li className="main-nav__item">
-          <Link className="main-nav__link" to="">
+          <Link to="/about" className="main-nav__link">
             About Us
           </Link>
         </li>
         <li className="main-nav__item">
-          <Link className="main-nav__link" to="">
+          <Link to="/contact" className="main-nav__link">
             Contact
           </Link>
         </li>
@@ -44,7 +44,7 @@ export default function Navigation() {
             hidden
           />
         </div>
-        <Link to="">
+        <Link to="/login">
           <span className="user-login lnr lnr-user" />
         </Link>
         <span className="cart-btn lnr lnr-cart">
