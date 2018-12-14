@@ -1,0 +1,190 @@
+
+.login-container {
+  display: flex;
+  margin: auto;
+}
+.sidebar-nav {
+  background-image: url("shoppingimg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 667px;
+  width: 500px;
+}
+.login-wrap {
+  width: 100%;
+  margin: auto;
+  margin-left: 150px;
+  max-width: 525px;
+  min-height: 667px;
+  position: relative;
+  /* background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg)
+    no-repeat center; */
+  box-shadow: 0 10px 3px 0 rgba(0, 0, 0, 0.24),
+    0 17px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login-html {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 90px 70px 50px 70px;
+  /* background: rgba(76, 91, 122, 0.9); */
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  transition: all 0.4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check {
+  display: none;
+}
+
+.login-html .tab {
+  font-size: 22px;
+  margin-right: 15px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab {
+  color: rgb(39, 37, 37);
+  border-color: #1161ee;
+}
+.login-form {
+  min-height: 345px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  margin-top: 20px;
+}
+.login-form .group {
+  margin-bottom: 15px;
+}
+.login-form .group .login-label,
+.login-form .group .login-input,
+.login-form .group {
+  width: 100%;
+  color: rgb(22, 17, 17);
+  display: block;
+}
+.button {
+  color: white;
+  display: block;
+  width: 100%;
+}
+.login-form .group .login-input,
+.login-form .group .button {
+  padding: 15px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid black;
+}
+/* .login-form .group login-input[data-type="password"]{
+	text-security:circle;
+	-webkit-text-security:circle;
+} */
+.login-form .group .login-label {
+  color: rgb(24, 19, 19);
+  font-size: 12px;
+}
+.login-form .group .button {
+  background: #15356d;
+}
+.login-form .group login-label .icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+}
+.login-form .group login-label .icon:before,
+.login-form .group login-label .icon:after {
+  content: "";
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  transition: all 0.2s ease-in-out 0s;
+}
+.login-form .group login-label .icon:before {
+  left: 3px;
+  width: 5px;
+  bottom: 6px;
+  transform: scale(0) rotate(0);
+}
+.login-form .group login-label .icon:after {
+  top: 6px;
+  right: 0;
+  transform: scale(0) rotate(0);
+}
+.login-form .group .check:checked + login-label {
+  color: rgb(14, 13, 13);
+}
+.login-form .group .check:checked + login-label .icon {
+  background: #1161ee;
+}
+.login-form .group .check:checked + login-label .icon:before {
+  transform: scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + login-label .icon:after {
+  transform: scale(1) rotate(-45deg);
+}
+.login-html
+  .sign-in:checked
+  + .tab
+  + .sign-up
+  + .tab
+  + .login-form
+  .sign-in-htm {
+  transform: rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+  transform: rotate(0);
+}
+
+.hr {
+  height: 2px;
+  margin: 60px 0 50px 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+.foot-lnk {
+  text-align: center;
+  color: rgb(107, 94, 94);
+}
+.login-btn {
+  width: 350px;
+  border: none;
+  background: #585ab1;
+  color: #ffffff !important;
+  font-weight: 100;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  /* border:1px solid rgb(160, 160, 160); */
+  height: 35px;
+  margin-left: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  background: none;
+  background: #dbdbdb;
+  box-shadow: 10px 10px 40px -10px rgba(5, 5, 5, 0.57);
+  -moz-box-shadow: 10px 10px 40px -10px rgba(5, 5, 5, 0.57);
+  transition: all 0.3s ease 0s;
+}
