@@ -6,14 +6,14 @@ export default function Footer() {
     <div className="flex-container">
       
       <div>
-        <h3 className="footer-text">About Brand</h3>
+        <h4 className="footer-text">About Brand</h4>
         <p className="footer-paragraph">
           Essence is stylish concept of nowadays fashion , limiited collections
           from different designers and etc
         </p>
       </div>
       <div>
-        <h3 className="footer-text">Information</h3>
+        <h4 className="footer-text">Information</h4>
         <ul>
           <li className="footer-li">Privacy and policy</li>
           <li className="footer-li">FAQ</li>
@@ -21,7 +21,7 @@ export default function Footer() {
         </ul>
       </div>
       <div>
-        <h3 className="footer-text">Contacts</h3>
+        <h4 className="footer-text">Contacts</h4>
         <ul>
           <li className="footer-li">+995 598 887 918</li>
           <li className="footer-li">Essence@gmail.com</li>
@@ -29,7 +29,7 @@ export default function Footer() {
         </ul>
       </div>
       <div>
-        <h3 className="footer-text">Address</h3>
+        <h4 className="footer-text">Address</h4>
         <ul>
           <li className="footer-li">Tbilisi</li>
           <li className="footer-li">Rustaveli Ave. 10</li>
@@ -37,7 +37,7 @@ export default function Footer() {
         </ul>
       </div>
       <div>
-          <h3 className="footer-text">Social Network</h3>
+          <h4 className="footer-text">Social Network</h4>
           <ul>
               <li className="footer-li">Facebook</li>
               <li className="footer-li">Instagram</li>
