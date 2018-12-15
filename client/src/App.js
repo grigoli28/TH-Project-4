@@ -21,12 +21,13 @@ class App extends Component {
           <Route exact path="/women" component={Filters} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/contact" component={Contact} />
+     
 
           {/* <SortBy /> */}
           {/* <Filters /> */}
           {/* <ShoppingCart /> */}
           {/* <Checkout /> */}
-          <Footer />
+          {/* <Footer /> */}
           {/* <ProductList /> */}
         </div>
       </Router>
