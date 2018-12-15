@@ -4,6 +4,7 @@
     "name": "Premium t-shirt",
     "price": 1000,
     "size": "XL",
+    "gender": "men",
     "category": "t-shirts",
     "brand": "Nike",
     "description": "High Quality Product"
@@ -13,6 +14,7 @@
     "name": "High quality Jacket",
     "price": 2000,
     "size": "M",
+    "gender": "men",
     "category": "jackets",
     "brand": "Nike",
     "description": "High Quality Product"
@@ -22,6 +24,7 @@
     "name": "Shorts",
     "price": 3000,
     "size": "XL",
+    "gender": "women",
     "category": "shorts",
     "brand": "Nike",
     "description": "High Quality Product"
@@ -31,6 +34,7 @@
     "name": "Leather pants",
     "price": 4000,
     "size": "S",
+    "gender": "men",
     "category": "pants",
     "brand": "Nike",
     "description": "High Quality Product"
@@ -40,6 +44,7 @@
     "name": "High Quality Product",
     "price": 5000,
     "size": "L",
+    "gender": "women",
     "category": "sweaters",
     "brand": "Nike",
     "description": "High Quality Product"

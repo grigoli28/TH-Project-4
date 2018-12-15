@@ -1,10 +1,7 @@
 const { Router } = require("express");
 const PRODUCTS = require("../../db/products.json");
 
-const {
-  findOneById,
-  findOneByIdAndRemove,
-} = require("../../util/arrayLookup");
+const { findOneById, findOneByIdAndRemove } = require("../../util/arrayLookup");
 
 // Unique id generator based on timestamp
 const uuidv1 = require("uuid/v1");
@@ -67,10 +64,13 @@ function filterMiddleware(req, res, next) {
   if (!req.query.filter) return next();
 
   // Filter products and send it
-  const { filter, value } = req.query;
-  const filteredProducts = PRODUCTS.filter(
-    prod => Number(prod[filter]) <= Number(value)
-  );
+  const { filter, value, min, max } = req.query;
+  const filteredProducts = PRODUCTS.filter(prod => {
+    if (filter === "price")
+      return prod["price"] >= Number(min) && prod["price"] <= Number(max);
+
+    return prod[filter] === value;
+  });
 
   res.json(filteredProducts);
 }
@@ -79,10 +79,12 @@ function searchMiddleware(req, res, next) {
   if (!req.query.search) return next();
 
   // Search products
-  const { search } = req.query;
-  const value = "name";
+  const { value } = req.query;
+
+  // We search product using its name
+  const name = "name";
   const searchedProducts = PRODUCTS.filter(prod =>
-    prod[value].includes(search)
+    prod[name].toLowerCase().includes(value.toLowerCase())
   );
 
   res.json(searchedProducts);

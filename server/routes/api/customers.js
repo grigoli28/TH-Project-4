@@ -40,6 +40,19 @@ router.get("/:id", (req, res) => {
   res.json(populated);
 });
 
+// @route   GET api/customers/:id/cart
+router.get("/:id/cart", (req, res) => {
+  const { id } = req.params;
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ error: "No Such Customer!" });
+
+  const cart = customer.shoppingCart;
+  res.json(cart);
+});
+
+// @route   DELETE api/customers/:id/cart/:product_id
+router.get("/:id/cart/:prodId", (req, res) => {});
+
 // @route   POST api/customers
 // @desc    Add new customer
 // @access  Public
