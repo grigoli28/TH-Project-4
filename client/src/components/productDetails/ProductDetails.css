@@ -1,11 +1,4 @@
-body{
-    font-family: 'Maven Pro', sans-serif;
-    background-color: whitesmoke;
-    margin:0;
-    padding: 0;
 
-
-}
 .main-nav {
     list-style: none;
     display: grid;
