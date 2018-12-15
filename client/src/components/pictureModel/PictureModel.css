@@ -1,4 +1,4 @@
-PictureModel {
+.PictureModel {
     border: 3px #f3f3f3 solid;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
     transition: all 0.3s linear;
@@ -8,14 +8,14 @@ PictureModel {
     max-width: 220px;
     text-align: left;
     margin: 0 auto; }
-    PictureModel:hover {
+    .PictureModel:hover {
       background-color: #f3f3f3;
       border-color: #f3f3f3; }
-    PictureModel img {
+    .PictureModel img {
       max-width: calc(100%);
       margin: 0 auto;
       display: block; }
-    PictureModel .index {
+    .PictureModel .index {
       background-color: rgba(0, 0, 0, 0.2);
       color: #fff;
       line-height: 20px;
@@ -25,23 +25,23 @@ PictureModel {
       right: 0;
       display: block;
       padding: 0 10px; }
-    PictureModel .productPrice {
+    .PictureModel .productPrice {
       margin: 0;
       padding: 10px 0;
       font-weight: bold; }
-    PictureModel .details {
+    .PictureModel .details {
       position: relative; }
-    PictureModel .features {
+    .PictureModel .features {
       list-style: none;
       padding: 0;
       margin: 0; }
-      PictureModel .features li {
+      .PictureModel .features li {
         padding-left: 24px;
         margin-right: 10px;
         display: inline-block; }
-        PictureModel .features li span {
+        .PictureModel .features li span {
           display: none; }
-        PictureModel .features li.icon-heart {
+        .PictureModel .features li.icon-heart {
           background: url(https://commons.wikimedia.org/wiki/File:A_perfect_SVG_heart.svg) left center;
           background-size: auto 100%;
           background-repeat: no-repeat; }
