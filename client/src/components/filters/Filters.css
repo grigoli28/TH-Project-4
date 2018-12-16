@@ -1,5 +1,5 @@
 .filters {
-  max-width: 400px;
+  min-width: 180px;
 }
 
 .filter {

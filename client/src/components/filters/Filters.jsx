@@ -1,86 +1,50 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Filters.css";
 import RadioFilter from "./RadioFilter";
 import ChkboxFilter from "./ChkboxFilter";
 import PriceFilter from "./PriceFilter";
 
-export default class Filters extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      category: "T-shirts",
-      size: "S",
-      brands: [],
-      price: { min: "", max: "" },
-    };
-  }
+export default function Filters({
+  filters,
+  onRadioInput,
+  onCheckboxInput,
+  onPriceInput,
+}) {
+  return (
+    <div className="filters">
+      <RadioFilter
+        filterName="Category"
+        currentValue={filters.category}
+        onChange={onRadioInput}
+        categories={[
+          "All categories",
+          "T-shirts",
+          "Sweaters",
+          "Jackets",
+          "Pants",
+          "Shorts",
+        ]}
+      />
 
-  onRadioInput = e => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
-  };
+      <RadioFilter
+        filterName="Size"
+        currentValue={filters.size}
+        onChange={onRadioInput}
+        categories={["Any size", "S", "M", "L", "XL"]}
+      />
 
-  // For filtering with brands
-  onCheckboxInput = e => {
-    const { value, checked } = e.target;
-    this.setState(prevState => {
-      // If user checked brand, push it into array
-      if (checked) {
-        return {
-          brands: [...prevState.brands, value],
-        };
-      }
+      <ChkboxFilter
+        filterName="Brands"
+        currentValues={filters.brands}
+        onChange={onCheckboxInput}
+        brands={["Nike", "Adidas", "Armani", "Dolce"]}
+      />
 
-      // Else means user unchecked brand and remove it from array
-      const filteredBrands = prevState.brands.filter(brand => brand !== value);
-      return {
-        brands: filteredBrands,
-      };
-    });
-  };
-
-  onPriceInput = e => {
-    const { name, value } = e.target;
-    this.setState(prevState => ({
-      price: {
-        ...prevState.price,
-        [name]: value,
-      },
-    }));
-  };
-
-  render() {
-    return (
-      <div className="filters">
-        <RadioFilter
-          filterName="Category"
-          currentValue={this.state.category}
-          onChange={this.onRadioInput}
-          categories={["T-shirts", "Sweaters", "Pants", "Shorts"]}
-        />
-
-        <RadioFilter
-          filterName="Size"
-          currentValue={this.state.size}
-          onChange={this.onRadioInput}
-          categories={["S", "M", "L", "XL"]}
-        />
-
-        <ChkboxFilter
-          filterName="Brands"
-          currentValues={this.state.brands}
-          onChange={this.onCheckboxInput}
-          brands={["Nike", "Adidas", "Armani", "Dolce"]}
-        />
-
-        <PriceFilter
-          filterName="Price"
-          currentValue={this.state.price}
-          onChange={this.onPriceInput}
-        />
-      </div>
-    );
-  }
+      <PriceFilter
+        filterName="Price"
+        currentValue={filters.price}
+        onChange={onPriceInput}
+      />
+    </div>
+  );
 }

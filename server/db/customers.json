@@ -9,22 +9,10 @@
     "password": "3d2eec7de5790bfc6f2428d068d0f26e1ff19a4f88e1829f959c25aa05735926",
     "shoppingCart": [
       {
-        "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b",
-        "name": "Product 1",
-        "price": 1000,
-        "size": "XL",
-        "category": "t-shirts",
-        "brand": "Nike",
-        "description": "High Quality Product"
+        "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b"
       },
       {
-        "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
-        "name": "Product 2",
-        "price": 2000,
-        "size": "M",
-        "category": "jackets",
-        "brand": "Nike",
-        "description": "High Quality Product"
+        "id": "e792b650-fd46-11e8-8fd8-897319b1388b"
       }
     ],
     "purchasedProducts": []
@@ -40,13 +28,7 @@
     "shoppingCart": [],
     "purchasedProducts": [
       {
-        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
-        "name": "Product 4",
-        "price": 4000,
-        "size": "S",
-        "category": "pants",
-        "brand": "Nike",
-        "description": "High Quality Product"
+        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b"
       }
     ]
   }

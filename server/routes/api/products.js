@@ -1,10 +1,7 @@
 const { Router } = require("express");
 const PRODUCTS = require("../../db/products.json");
 
-const {
-  findOneById,
-  findOneByIdAndRemove,
-} = require("../../util/arrayLookup");
+const { findOneById, findOneByIdAndRemove } = require("../../util/arrayLookup");
 
 // Unique id generator based on timestamp
 const uuidv1 = require("uuid/v1");
@@ -64,13 +61,51 @@ router.put("/:id", (req, res) => {
 });
 
 function filterMiddleware(req, res, next) {
-  if (!req.query.filter) return next();
+  if (!req.query.filters) return next();
 
-  // Filter products and send it
-  const { filter, value } = req.query;
-  const filteredProducts = PRODUCTS.filter(
-    prod => Number(prod[filter]) <= Number(value)
-  );
+  const filters = JSON.parse(req.query.filters);
+
+  let filteredProducts = PRODUCTS;
+
+  for (let filter in filters) {
+    filteredProducts = filteredProducts.filter(prod => {
+      if (filter === "price") {
+        if (filters[filter]["min"] === "" && filters[filter]["max"] === "")
+          return true; // if no input
+
+        if (filters[filter]["max"] === "")
+          return prod[filter] >= Number(filters[filter]["min"]); // if only min input
+
+        if (filters[filter]["min"] === "")
+          return prod[filter] <= Number(filters[filter]["max"]); // if only max input
+
+        return (
+          prod[filter] >= Number(filters[filter]["min"]) &&
+          prod[filter] <= Number(filters[filter]["max"])
+        );
+      }
+
+      if (filter == "brands") {
+        // if user has filtered with brands
+        if (filters[filter].length)
+          return filters[filter].includes(prod["brand"]);
+
+        return true;
+      }
+
+      if (filter == "category") {
+        if (filters[filter] == "All categories") return true;
+
+        return prod[filter] === filters[filter];
+      }
+
+      if (filter == "size") {
+        if (filters[filter] == "Any size") return true;
+
+        return prod[filter] === filters[filter];
+      }
+    });
+  }
 
   res.json(filteredProducts);
 }
@@ -79,10 +114,12 @@ function searchMiddleware(req, res, next) {
   if (!req.query.search) return next();
 
   // Search products
-  const { search } = req.query;
-  const value = "name";
+  const { value } = req.query;
+
+  // We search product using its name
+  const name = "name";
   const searchedProducts = PRODUCTS.filter(prod =>
-    prod[value].includes(search)
+    prod[name].toLowerCase().includes(value.toLowerCase())
   );
 
   res.json(searchedProducts);

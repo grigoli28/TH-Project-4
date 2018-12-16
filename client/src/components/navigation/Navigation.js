@@ -28,9 +28,11 @@ export default function Navigation() {
         </li>
       </ul>
       <span className="title">
-        LIMITED
-        <br />
-        EDITION
+        <Link to="/" className="main-nav__link">
+          LIMITED
+          <br />
+          EDITION
+        </Link>
       </span>
 
       <div className="aditional-nav">

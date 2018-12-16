@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
-import Filters from "./components/filters/Filters";
-import SortBy from "./components/sortBy/SortBy";
-import ShoppingCart from "./components/shoppingCart/ShoppingCart";
-import Footer from "./components/footer/Footer";
-import Checkout from "./components/checkout/CheckoutCart";
-import ProductList from "./components/productList/ProductList";
 import Login from "./components/login/Login";
 import Contact from "./components/contact/Contact";
+import ProductCategory from "./components/productCategory/ProductCategory";
+import Footer from "./components/footer/Footer";
+
+const MenCategory = () => <ProductCategory gender="men" />;
+
+const WomenCategory = () => <ProductCategory gender="women" />;
 
 class App extends Component {
   render() {
@@ -17,18 +17,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navigation />
-          <Route exact path="/men" component={Filters} />
-          <Route exact path="/women" component={Filters} />
+          <Route exact path="/men" component={MenCategory} />
+          <Route exact path="/women" component={WomenCategory} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/contact" component={Contact} />
-     
-
-          {/* <SortBy /> */}
-          {/* <Filters /> */}
-          {/* <ShoppingCart /> */}
-          {/* <Checkout /> */}
-          {/* <Footer /> */}
-          {/* <ProductList /> */}
+          <Footer />
         </div>
       </Router>
     );
