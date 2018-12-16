@@ -10,6 +10,7 @@ import Checkout from "./components/checkout/CheckoutCart";
 import ProductList from "./components/productList/ProductList";
 import Login from "./components/login/Login";
 import Contact from "./components/contact/Contact";
+import PictureModel from './components/pictureModel/PictureModel'
 
 class App extends Component {
   render() {
@@ -27,7 +28,8 @@ class App extends Component {
           {/* <ShoppingCart /> */}
           {/* <Checkout /> */}
           <Footer />
-          {/* <ProductList /> */}
+          <ProductList />
+          <PictureModel/>
         </div>
       </Router>
     );
