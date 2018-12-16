@@ -16,7 +16,14 @@ export default function Filters({
         filterName="Category"
         currentValue={filters.category}
         onChange={onRadioInput}
-        categories={["All categories", "T-shirts", "Sweaters", "Jackets", "Pants", "Shorts"]}
+        categories={[
+          "All categories",
+          "T-shirts",
+          "Sweaters",
+          "Jackets",
+          "Pants",
+          "Shorts",
+        ]}
       />
 
       <RadioFilter
