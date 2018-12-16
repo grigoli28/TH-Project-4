@@ -5,7 +5,7 @@ import "./RadioFilter.css";
 const makeFirstUppercase = string =>
   string[0].toUpperCase().concat(string.slice(1));
 
-export default function Filter({
+export default function RadioFilter({
   filterName,
   onChange,
   currentValue,

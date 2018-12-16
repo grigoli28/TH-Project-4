@@ -61,16 +61,51 @@ router.put("/:id", (req, res) => {
 });
 
 function filterMiddleware(req, res, next) {
-  if (!req.query.filter) return next();
+  if (!req.query.filters) return next();
 
-  // Filter products and send it
-  const { filter, value, min, max } = req.query;
-  const filteredProducts = PRODUCTS.filter(prod => {
-    if (filter === "price")
-      return prod["price"] >= Number(min) && prod["price"] <= Number(max);
+  const filters = JSON.parse(req.query.filters);
 
-    return prod[filter] === value;
-  });
+  let filteredProducts = PRODUCTS;
+
+  for (let filter in filters) {
+    filteredProducts = filteredProducts.filter(prod => {
+      if (filter === "price") {
+        if (filters[filter]["min"] === "" && filters[filter]["max"] === "")
+          return true; // if no input
+
+        if (filters[filter]["max"] === "")
+          return prod[filter] >= Number(filters[filter]["min"]); // if only min input
+
+        if (filters[filter]["min"] === "")
+          return prod[filter] <= Number(filters[filter]["max"]); // if only max input
+
+        return (
+          prod[filter] >= Number(filters[filter]["min"]) &&
+          prod[filter] <= Number(filters[filter]["max"])
+        );
+      }
+
+      if (filter == "brands") {
+        // if user has filtered with brands
+        if (filters[filter].length)
+          return filters[filter].includes(prod["brand"]);
+
+        return true;
+      }
+
+      if (filter == "category") {
+        if (filters[filter] == "All categories") return true;
+
+        return prod[filter] === filters[filter];
+      }
+
+      if (filter == "size") {
+        if (filters[filter] == "Any size") return true;
+
+        return prod[filter] === filters[filter];
+      }
+    });
+  }
 
   res.json(filteredProducts);
 }

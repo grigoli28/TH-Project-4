@@ -1,5 +1,5 @@
-.men-products {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
+.product-category {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }

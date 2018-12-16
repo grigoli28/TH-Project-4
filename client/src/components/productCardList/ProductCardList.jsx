@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import "./ProductCardList.css";
-import axios from "axios";
 
 const prodCard = (prod, index) => (
   <div className="prod-card" key={prod.id}>
@@ -10,36 +9,25 @@ const prodCard = (prod, index) => (
     <p>{prod.gender}</p>
     <p>{prod.category}</p>
     <p>{prod.size}</p>
-    <p>{prod.description}</p>
+    <p>{prod.brand}</p>
   </div>
 );
 
-export default class ProductCardList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { products: null };
-  }
+export default function ProductCardList({ gender, products }) {
+  const menProducts =
+    products && products.filter(prod => prod.gender === gender);
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/api/products")
-      .then(({ data }) => this.setState({ products: data }))
-      .catch(err => console.log(err));
-  }
-
-  render() {
-    return (
-      <div className="product-list">
-        {this.state.products ? (
-          this.state.products.length > 0 ? (
-            this.state.products.map((prod, index) => prodCard(prod, index))
-          ) : (
-            <h1>Nothing Found!</h1>
-          )
+  return (
+    <div className="product-list">
+      {menProducts ? (
+        menProducts.length > 0 ? (
+          menProducts.map((prod, index) => prodCard(prod, index))
         ) : (
-          <h1>Loading Products...</h1>
-        )}
-      </div>
-    );
-  }
+          <h1>Nothing Found!</h1>
+        )
+      ) : (
+        <h1>Loading Products...</h1>
+      )}
+    </div>
+  );
 }
