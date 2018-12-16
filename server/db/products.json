@@ -4,7 +4,28 @@
     "name": "Premium t-shirt",
     "price": 1000,
     "size": "XL",
-    "category": "t-shirts",
+    "gender": "men",
+    "category": "T-shirts",
+    "brand": "Adidas",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "e11c59f0-fd46-11e8-8fd8-897319b1388b",
+    "name": "Premium t-shirt",
+    "price": 1000,
+    "size": "XL",
+    "gender": "women",
+    "category": "T-shirts",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "e11a85f0-fd46-09bs-8fd8-897319b1388b",
+    "name": "Premium t-shirt",
+    "price": 1000,
+    "size": "XL",
+    "gender": "men",
+    "category": "T-shirts",
     "brand": "Nike",
     "description": "High Quality Product"
   },
@@ -13,7 +34,28 @@
     "name": "High quality Jacket",
     "price": 2000,
     "size": "M",
-    "category": "jackets",
+    "gender": "women",
+    "category": "Jackets",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "e792b650-fd46-11e8-8fd8-848659b1388b",
+    "name": "High quality Jacket",
+    "price": 2000,
+    "size": "M",
+    "gender": "men",
+    "category": "Jackets",
+    "brand": "Adidas",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "e792b650-fd46-11bd-8fd8-987319b8568b",
+    "name": "High quality Jacket",
+    "price": 2000,
+    "size": "M",
+    "gender": "men",
+    "category": "Jackets",
     "brand": "Nike",
     "description": "High Quality Product"
   },
@@ -22,8 +64,9 @@
     "name": "Shorts",
     "price": 3000,
     "size": "XL",
-    "category": "shorts",
-    "brand": "Nike",
+    "gender": "women",
+    "category": "Shorts",
+    "brand": "Dolce",
     "description": "High Quality Product"
   },
   {
@@ -31,17 +74,59 @@
     "name": "Leather pants",
     "price": 4000,
     "size": "S",
-    "category": "pants",
+    "gender": "women",
+    "category": "Pants",
     "brand": "Nike",
     "description": "High Quality Product"
   },
   {
-    "id": "f75d8740-fd46-11e8-b943-c3b0829d8e95",
+    "id": "f22773d0-fd46-8fd8-11e8-897319b1388b",
+    "name": "Leather pants",
+    "price": 4000,
+    "size": "S",
+    "gender": "men",
+    "category": "Pants",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "f22773d0-11e8-fd46-8fd8-897319b1388b",
+    "name": "Leather pants",
+    "price": 4000,
+    "size": "S",
+    "gender": "men",
+    "category": "Pants",
+    "brand": "Dolce",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "f22773d0-11e8-fd46-8fd8-331988897bb1",
+    "name": "Leather pants",
+    "price": 4000,
+    "size": "S",
+    "gender": "men",
+    "category": "Pants",
+    "brand": "Nike",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "f22773d0-fd46-8fd8-11e8-829679d1388b",
+    "name": "Leather pants",
+    "price": 4000,
+    "size": "S",
+    "gender": "men",
+    "category": "Pants",
+    "brand": "Armani",
+    "description": "High Quality Product"
+  },
+  {
+    "id": "f75d8740-fd46-11e8-b943-c3bfkh9d8e95",
     "name": "High Quality Product",
     "price": 5000,
     "size": "L",
-    "category": "sweaters",
-    "brand": "Nike",
+    "gender": "women",
+    "category": "Sweaters",
+    "brand": "Armani",
     "description": "High Quality Product"
   }
 ]

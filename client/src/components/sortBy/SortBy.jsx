@@ -1,10 +1,10 @@
 import React from "react";
 import "./SortBy.css";
 
-export default function Sort() {
+export default function Sort({gender}) {
   return (
     <div className="category-wrapper">
-      <span className="category">Men</span>
+      <span className="category">{gender}</span>
       <div className="price-sort">
         <span className="sort-text">Sort By</span>
         <span className="sort-type">
