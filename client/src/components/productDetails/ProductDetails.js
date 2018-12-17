@@ -1,54 +1,47 @@
-import React from 'react';
 import "./ProductDetails.css";
-import {BrowserRouter,Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import Shirt from "./t-shirt.jpg"
-export default function Product() {
-  return (
-    <BrowserRouter>
-    <div>
-    <ul className="main-nav">
-        <li><Link to="">Man</Link></li>
-        <li><Link to="">Woman</Link></li>
-        <li><Link to="">Contact</Link></li>
-        <li><Link to="">About Us</Link></li>
-        <li></li>
-        <li><Link to=""><i className="fas fa-search"></i></Link></li>
-        <li><Link to=""><i className="far fa-user"></i></Link></li>
-        <li><Link to=""><i className="fas fa-shopping-cart"></i></Link></li>
-      </ul>
-      <hr/>
-      <li className="weird-nav"> <Link to="">Main / Men / T-Shirts</Link></li>
+import React, { Component } from 'react'
 
-      <img src={Shirt} alt="t-shirt"/>
-      
-      <div className="rewiew">
-           <h2>T-Shirt:Blue</h2>
-           <h3>80$</h3>
-          
-        <ul className="size">
-            <li><Link to="">S</Link></li>
-            <li><Link to="">M</Link></li>
-            <li><Link to="">L</Link></li>
-            <li><Link to="">XL</Link></li>
-        </ul>
-          
-        <p>
-        some bullshit about how great this shirt is
-        some bullshit about how great this shirt is again
-        some bullshit about how great this shirt is again
-        some bullshit about how great this shirt is again 
-        </p>
+export default class ProductDetails extends Component {
+ render() {
+   return (
+     <div>
+     <li className="weird-nav"> <Link to="">Main / Men / T-Shirts</Link></li>
 
-        <button>Add Card</button>
-          
-      </div>
-      <hr />
+<img className="Detailimg" src={Shirt} alt="t-shirt"/>
 
+<div className="Detailrewiew">
+    <h2>T-Shirt:Blue</h2>
 
+    <br/>
 
-    
-      
-    </div>
-    </BrowserRouter>
-  );
+    <h3>80$</h3>
+
+    <br/>
+
+ <div className="Detailsize">
+     <button className="Sizebut">S</button>
+     <button className="Sizebut">M</button>
+     <button className="Sizebut">L</button>
+     <button className="Sizebut">XL</button>
+ </div>
+
+   <br/>
+
+ <p>
+ some bullshit about how great this shirt is
+ some bullshit about how great this shirt is again
+ some bullshit about how great this shirt is again
+ some bullshit about how great this shirt is again
+ </p>
+
+ <button className="Purchasebut">Add To Cart</button>
+
+</div>
+<hr />
+
+     </div>
+   );
+ }
 }
