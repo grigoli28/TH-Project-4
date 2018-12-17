@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const CUSTOMERS = require("../../db/customers.json");
+const PRODUCTS = require("../../db/products.json");
 const { encrypt, passwordsMatch } = require("../../util/password");
 const populateObject = require("../../util/populateObject");
 
@@ -47,7 +48,14 @@ router.get("/:id/cart", (req, res) => {
   if (!customer) return res.status(404).json({ error: "No Such Customer!" });
 
   const cart = customer.shoppingCart;
-  res.json(cart);
+  let cartItems = [];
+
+  for (let { id } of cart) {
+    console.log(findOneById(id, PRODUCTS));
+    cartItems.push(findOneById(id, PRODUCTS));
+  }
+
+  res.json(cartItems);
 });
 
 // @route   DELETE api/customers/:id/cart/:product_id
@@ -97,9 +105,11 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = findOneByUsername(username, CUSTOMERS);
   if (!user || !passwordsMatch(password, user.password))
-    return res.status(404).send("Username or Password Incorrect!");
+    return res.status(404).json({ user: "Username or Password Incorrect" });
 
-  res.json({ auth: true });
+  const populated = populateObject(user, "id name");
+
+  res.json({ ...populated });
 });
 
 // @route   PUT api/customers/:id

@@ -1,11 +1,32 @@
 import React from "react";
 import CartItem from "./CartItem";
 import "./CartItemList.css";
+import isEmpty from "../../validation/is-empty";
 
-export default function CartItemList({ cartItems }) {
+export default function CartItemList({ isLogged, items, removeItem }) {
   return (
     <ul className="cart__list">
-      {cartItems ? <h1>Items</h1> : <h1>Your cart is empty</h1>}
+      {isLogged ? (
+        !isEmpty(items) ? (
+          items.map(({ id, name, price }) => (
+            <CartItem removeItem={removeItem} key={id} title={name} price={price} />
+          ))
+        ) : (
+          <h1 className="cart-empty-msg">Cart is empty!</h1>
+        )
+      ) : (
+        <h1 className="cart-empty-msg">
+          You need to be logged in to see your cart!
+        </h1>
+      )}
+
+      {/* {!isEmpty(items) ? (
+        items.map(({ id, name, price }) => (
+          <CartItem key={id} title={name} price={price} />
+        ))
+      ) : (
+        <h1 className="cart-empty-msg">Cart is empty!</h1>
+      )} */}
     </ul>
   );
 }

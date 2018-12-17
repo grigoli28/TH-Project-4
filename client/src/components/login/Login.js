@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { setCurrentUser, updateCart } from "../../actions/authActions";
 import "./Login.css";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -18,6 +20,8 @@ export default class Login extends Component {
     this.birthdate = React.createRef();
   }
 
+  state = { user: null };
+
   onLoginSubmit = e => {
     e.preventDefault();
     const url = "http://localhost:5000/api/customers/login";
@@ -25,8 +29,18 @@ export default class Login extends Component {
     const password = this.loginPassword.current.value;
 
     axios
-      .post(url, { username, password })
-      .then(res => console.log(res.data))
+      .post(url, { username: "grigoli", password: "grigoli123" })
+      .then(({ data }) => {
+        this.props.setCurrentUser(data);
+        const { id } = data;
+        const url = `/api/customers/${id}/cart`;
+        axios
+          .get(url)
+          .then(({ data }) => {
+            this.props.updateCart(data);
+          })
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
   };
 
@@ -225,3 +239,13 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ auth, errors }) => ({
+  auth,
+  errors,
+});
+
+export default connect(
+  mapStateToProps,
+  { setCurrentUser, updateCart }
+)(Login);
