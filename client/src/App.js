@@ -6,7 +6,7 @@ import Login from "./components/login/Login";
 import Contact from "./components/contact/Contact";
 import ProductCategory from "./components/productCategory/ProductCategory";
 import Footer from "./components/footer/Footer";
-
+import Admin from "./components/adminpage/AdminPage"
 const MenCategory = () => <ProductCategory gender="men" />;
 
 const WomenCategory = () => <ProductCategory gender="women" />;
@@ -16,12 +16,13 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navigation />
+          {/* <Navigation />
           <Route exact path="/men" component={MenCategory} />
           <Route exact path="/women" component={WomenCategory} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/contact" component={Contact} />
-          <Footer />
+          <Route exact path="/contact" component={Contact} /> */}
+          <Admin/>
+          {/* <Footer /> */}
         </div>
       </Router>
     );
