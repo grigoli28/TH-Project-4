@@ -6,6 +6,7 @@ import Login from "./components/login/Login";
 import Contact from "./components/contact/Contact";
 import ProductCategory from "./components/productCategory/ProductCategory";
 import Footer from "./components/footer/Footer";
+import ProductDetails from "./components/productDetails/ProductDetails"
 
 const MenCategory = () => <ProductCategory gender="men" />;
 
@@ -17,6 +18,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navigation />
+          <ProductDetails/>
           <Route exact path="/men" component={MenCategory} />
           <Route exact path="/women" component={WomenCategory} />
           <Route exact path="/login" component={Login} />
