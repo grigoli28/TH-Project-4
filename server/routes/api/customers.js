@@ -25,18 +25,18 @@ router.get("/", (req, res) => {
   res.json(populated);
 });
 
-// @route   GET api/customers/:id (????? private or public or what)
+// @route   GET api/customers/:id
 // @desc    Get single customer
 // @access  Private (only admin)
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   const customer = findOneById(id, CUSTOMERS);
-  if (!customer) return res.status(404).send("No such customer");
+  if (!customer) return res.status(404).json({ user: "No user with given id" });
 
   // Get only certain details of customer
   const populated = populateObject(
     customer,
-    "username email shoppingCart purchasedProducts"
+    "name username email shoppingCart purchasedProducts"
   );
   res.json(populated);
 });
@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
 router.get("/:id/cart", (req, res) => {
   const { id } = req.params;
   const customer = findOneById(id, CUSTOMERS);
-  if (!customer) return res.status(404).json({ error: "No Such Customer!" });
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
 
   const cart = customer.shoppingCart;
   let cartItems = [];
@@ -57,8 +57,77 @@ router.get("/:id/cart", (req, res) => {
   res.json(cartItems);
 });
 
-// @route   DELETE api/customers/:id/cart/:product_id
-router.get("/:id/cart/:prodId", (req, res) => {});
+// @route   POST api/customers/:id/cart
+router.post("/:id/cart", (req, res) => {
+  const customerId = req.params.id;
+
+  const customer = findOneById(customerId, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
+
+  // Product id
+  const { id } = req.body;
+  const { shoppingCart } = customer;
+  shoppingCart.push({ id });
+
+  res.json(shoppingCart);
+});
+
+// @route   DELETE api/customers/:id/cart/:prod_id
+router.delete("/:id/cart/:prodId", (req, res) => {
+  const { id, prodId } = req.params;
+
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
+
+  const removedProd = findOneByIdAndRemove(prodId, customer.shoppingCart);
+  if (!removedProd)
+    return res.status(404).json({ product: "No such product in cart" });
+
+  res.json(removedProd);
+});
+
+// @route   GET api/customers/:id/purchased
+router.get("/:id/purchased", (req, res) => {
+  const { id } = req.params;
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
+
+  const purchased = customer.purchasedProducts;
+  let purchasedItems = [];
+
+  for (let { id } of purchased) {
+    purchasedItems.push(findOneById(id, PRODUCTS));
+  }
+
+  res.json(purchasedItems);
+});
+
+// @route   POST api/customers/:id/purchased
+router.post("/:id/purchased", (req, res) => {
+  const customerId = req.params.id;
+  const customer = findOneById(customerId, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
+
+  const { id } = req.body;
+  const { purchasedProducts } = customer;
+  purchasedProducts.push({ id });
+
+  res.json(purchasedProducts);
+});
+
+// @route   DELETE api/customers/:id/purchased/:prod_id
+router.delete("/:id/purchased/:prodId", (req, res) => {
+  const { id, prodId } = req.params;
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
+
+  const { purchasedProducts } = customer;
+  const removedProd = findOneByIdAndRemove(prodId, purchasedProducts);
+  if (!removedProd)
+    return res.status(404).json({ product: "No such product in cart" });
+
+  res.json(removedProd);
+});
 
 // @route   POST api/customers
 // @desc    Add new customer
@@ -92,7 +161,7 @@ router.delete("/:id", (req, res) => {
   const { id } = req.params;
   const removedCustomer = findOneByIdAndRemove(id, CUSTOMERS);
   if (!removedCustomer)
-    return res.status(404).send("No such customer to remove");
+    return res.status(404).json({ customer: "No customer with given id" });
 
   res.json({ removed: true, name: removedCustomer.name });
 });
@@ -106,7 +175,7 @@ router.post("/login", (req, res) => {
   if (!user || !passwordsMatch(password, user.password))
     return res.status(404).json({ login: "Username or Password Incorrect" });
 
-  const populated = populateObject(user, "id name");
+  const populated = populateObject(user, "id name isAdmin");
 
   res.json({ ...populated });
 });
@@ -115,6 +184,7 @@ router.post("/login", (req, res) => {
 // @desc    Update customer
 // @access  Private (only admin)
 router.put("/:id", (req, res) => {
+  // TODO
   res.send("Test");
 });
 
