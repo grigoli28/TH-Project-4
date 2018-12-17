@@ -42,27 +42,37 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Navigation toggleCart={this.toggleCart} />
-          <ShoppingCart
-            toggleCart={this.toggleCart}
-            visible={this.state.cartIsVisible}
-          />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/men" component={MenCategory} />
-          <Route exact path="/women" component={WomenCategory} />
-          <Route
-            exact
-            path="/login"
-            render={() =>
-              this.props.isLogged ? <Redirect to="/" /> : <Login />
-            }
-          />
-          <Route exact path="/contact" component={Contact} />
-          <Footer />
-        </div>
-      </Router>
+      <div className="App">
+        <Router>
+          <div className="container">
+            <Navigation toggleCart={this.toggleCart} />
+            <ShoppingCart
+              toggleCart={this.toggleCart}
+              visible={this.state.cartIsVisible}
+            />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/men" component={MenCategory} />
+            <Route exact path="/women" component={WomenCategory} />
+            <Route
+              exact
+              path="/login"
+              render={() =>
+                this.props.isLogged ? <Redirect to="/" /> : <Login />
+              }
+            />
+            <Route exact path="/contact" component={Contact} />
+            <Route
+              path="/men/:prodId"
+              render={({ match }) => <h1>{match.params.prodId}</h1>}
+            />
+            <Route
+              path="/women/:prodId"
+              render={({ match }) => <h1>{match.params.prodId}</h1>}
+            />
+            <Footer />
+          </div>
+        </Router>
+      </div>
     );
   }
 }
