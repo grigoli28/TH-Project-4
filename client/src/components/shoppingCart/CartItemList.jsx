@@ -9,24 +9,19 @@ export default function CartItemList({ isLogged, items, removeItem }) {
       {isLogged ? (
         !isEmpty(items) ? (
           items.map(({ id, name, price }) => (
-            <CartItem removeItem={removeItem} key={id} title={name} price={price} />
+            <CartItem
+              removeItem={removeItem}
+              key={id}
+              title={name}
+              price={price}
+            />
           ))
         ) : (
           <h1 className="cart-empty-msg">Cart is empty!</h1>
         )
       ) : (
-        <h1 className="cart-empty-msg">
-          You need to be logged in to see your cart!
-        </h1>
+        <h1 className="cart-empty-msg">Log in to view cart!</h1>
       )}
-
-      {/* {!isEmpty(items) ? (
-        items.map(({ id, name, price }) => (
-          <CartItem key={id} title={name} price={price} />
-        ))
-      ) : (
-        <h1 className="cart-empty-msg">Cart is empty!</h1>
-      )} */}
     </ul>
   );
 }

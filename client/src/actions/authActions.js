@@ -1,5 +1,4 @@
-import axios from "axios";
-import { GET_ERRORS, SET_CURRENT_USER, UPDATE_CART } from "./types";
+import { SET_CURRENT_USER, UPDATE_CART } from "./types";
 
 export const setCurrentUser = user => ({
   type: SET_CURRENT_USER,

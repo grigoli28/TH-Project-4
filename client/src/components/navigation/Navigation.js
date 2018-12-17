@@ -59,7 +59,7 @@ const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
 
       <div className="aditional-nav">
         <div className="welcome-msg">
-          Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest!"}
+          Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
         </div>
         <div className="search">
           <span className="search-btn lnr lnr-magnifier" />
@@ -77,7 +77,13 @@ const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
           ) : null}
         </span>
         {isLogged ? (
-          <span onClick={logoutUser} className="user-logout lnr lnr-exit" />
+          <span
+            onClick={() => {
+              localStorage.removeItem("_auth_user_");
+              logoutUser();
+            }}
+            className="user-logout lnr lnr-exit"
+          />
         ) : (
           <Link to="/login">
             <span className="user-login lnr lnr-user" />

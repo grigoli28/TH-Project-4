@@ -51,7 +51,6 @@ router.get("/:id/cart", (req, res) => {
   let cartItems = [];
 
   for (let { id } of cart) {
-    console.log(findOneById(id, PRODUCTS));
     cartItems.push(findOneById(id, PRODUCTS));
   }
 
@@ -66,7 +65,7 @@ router.get("/:id/cart/:prodId", (req, res) => {});
 // @access  Public
 router.post("/", (req, res) => {
   if (req.body.password !== req.body.password2)
-    return res.status(404).json({ error: "Passwords do not match!" });
+    return res.status(404).json({ password: "Passwords do not match!" });
 
   const newCustomer = {
     id: uuidv1(),
@@ -82,7 +81,7 @@ router.post("/", (req, res) => {
   CUSTOMERS.push(newCustomer);
 
   // Get only certain details of customer
-  const populated = populateObject(newCustomer, "name email username");
+  const populated = populateObject(newCustomer, "id name");
   res.json(populated);
 });
 
@@ -105,7 +104,7 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = findOneByUsername(username, CUSTOMERS);
   if (!user || !passwordsMatch(password, user.password))
-    return res.status(404).json({ user: "Username or Password Incorrect" });
+    return res.status(404).json({ login: "Username or Password Incorrect" });
 
   const populated = populateObject(user, "id name");
 
