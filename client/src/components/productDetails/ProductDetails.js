@@ -3,7 +3,21 @@ import {Link} from "react-router-dom";
 import Shirt from "./t-shirt.jpg"
 import React, { Component } from 'react'
 
+
 export default class ProductDetails extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      name : "Premium t-shirt",
+      id: "e11a85f0-fd46-11e8-8fd8-897319b1388b",
+      name: "Premium t-shirt",
+      price: 1000,
+      size: "XL",
+
+
+    }
+  }
  render() {
    return (
      <div>
@@ -12,11 +26,11 @@ export default class ProductDetails extends Component {
 <img className="Detailimg" src={Shirt} alt="t-shirt"/>
 
 <div className="Detailrewiew">
-    <h2>T-Shirt:Blue</h2>
+    <h2>{this.state.name}</h2>
 
     <br/>
 
-    <h3>80$</h3>
+    <h3>{this.state.price}$</h3>
 
     <br/>
 
@@ -36,7 +50,10 @@ export default class ProductDetails extends Component {
  some bullshit about how great this shirt is again
  </p>
 
- <button className="Purchasebut">Add To Cart</button>
+ <button className="Purchasebut" 
+  onClick = { ()=> alert(`added to cart: ${this.state.name}, ${this.state.price}$, ${this.state.size}`)
+ }
+ >Add To Cart</button>
 
 </div>
 <hr />
