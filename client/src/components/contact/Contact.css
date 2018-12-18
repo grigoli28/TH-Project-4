@@ -55,7 +55,8 @@
 }
 
 .contact-btn {
-  width: 250px;
+  /* width: 250px; */
+  width: 100%;
   border: none;
   background: #000;
   color: #ffffff !important;
@@ -65,7 +66,7 @@
   letter-spacing: 1px;
   display: inline-block;
   height: 35px;
-  margin-left: 60px;
+  /* margin-left: 60px; */
   margin-top: 30px;
   cursor: pointer;
 }
@@ -103,4 +104,40 @@
 .container-2 {
   border: 1px solid rgb(218, 218, 218);
   padding: 90px 150px;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .contact-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:0 ;
+    padding: 0;
+  }
+
+  .container-1 {
+    flex: 0 1 100%;
+    width: 100%;
+    margin-bottom: 10%;
+  }
+
+  .container-2 {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+
+  .contact-btn {
+  width: 100%;
+  }
+
+  .container-2 div {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .contact-btn {
+width: 100%;
+  }
 }
