@@ -20,7 +20,7 @@ const router = new Router();
 // @access  Private (only admin)
 router.get("/", (req, res) => {
   const populated = CUSTOMERS.map(customer =>
-    populateObject(customer, "id name email username")
+    populateObject(customer, "id name email balance username")
   );
   res.json(populated);
 });
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
   // Get only certain details of customer
   const populated = populateObject(
     customer,
-    "name username email shoppingCart purchasedProducts"
+    "name username email balance birthdate shoppingCart purchasedProducts"
   );
   res.json(populated);
 });

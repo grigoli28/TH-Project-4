@@ -64,7 +64,7 @@ const App = ({ isLogged, user }) => {
           <Route
             exact
             path="/admin"
-            render={() => (user.isAdmin ? <AdminPage /> : <Redirect to="/" />)}
+            render={({match}) => (user.isAdmin ? <AdminPage match={match} /> : <Redirect to="/" />)}
           />
         </div>
       </Router>
