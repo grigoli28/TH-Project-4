@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./Contact.css";
-import axios from 'axios'
+import axios from "axios";
 
 export default class Contact extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      sent: false,
+    };
 
     this.email = React.createRef();
     this.message = React.createRef();
@@ -16,7 +19,17 @@ export default class Contact extends Component {
     const email = this.email.current.value;
     const message = this.message.current.value;
 
-    axios.post(url, {email, message}).then(res => console.log(res.data)).catch(err => console.log(err));
+    axios
+      .post(url, { email, message })
+      .then(res => {
+        this.email.current.value = "";
+        this.message.current.value = "";
+        this.setState({ sent: true });
+        setTimeout(() => {
+          this.setState({ sent: false });
+        }, 5000);
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -29,6 +42,11 @@ export default class Contact extends Component {
           <div className="container-1">
             <form onSubmit={this.onSubmit}>
               <p className="contact-text">Send Us A Message</p>
+              {this.state.sent && (
+                <span className="sent-status">
+                  Message Sent <span className="lnr lnr-checkmark-circle" />
+                </span>
+              )}
               <input
                 ref={this.email}
                 name="email"

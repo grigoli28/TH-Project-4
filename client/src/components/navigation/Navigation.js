@@ -3,6 +3,7 @@ import "./Navigation.css";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { toggleCart } from "../../actions/cartActions";
 
 const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
   return (
@@ -28,7 +29,7 @@ const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
             Women
           </NavLink>
         </li>
-        <li className="main-nav__item">
+        {/* <li className="main-nav__item">
           <NavLink
             exact
             activeClassName="active-nav-link"
@@ -37,7 +38,7 @@ const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
           >
             About Us
           </NavLink>
-        </li>
+        </li> */}
         <li className="main-nav__item">
           <NavLink
             exact
@@ -48,6 +49,18 @@ const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
             Contact
           </NavLink>
         </li>
+        {isLogged && user.isAdmin && (
+          <li className="main-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-nav-link"
+              to="/admin"
+              className="main-nav__link"
+            >
+              Admin Panel
+            </NavLink>
+          </li>
+        )}
       </ul>
       <span className="title">
         <NavLink to="/" className="main-nav__link">
@@ -101,5 +114,5 @@ const mapStateToProps = ({ auth }) => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, toggleCart }
 )(Navigation);

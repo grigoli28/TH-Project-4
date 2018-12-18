@@ -16,9 +16,9 @@ class AdminPage extends Component {
           </span>
         </label>
         <nav id="menu" className="admin-nav">
-          <Link to ="/">Users</Link>
-          <Link to ="/Files">Upload Files</Link>
-          <Link to ="/Contact">Contact</Link>
+          <Link to ="/">Store</Link>
+          <Link to ="/admin/customers">Customers</Link>
+          <Link to ="/admin/messages">Messages</Link>
          
         </nav>
         <main>

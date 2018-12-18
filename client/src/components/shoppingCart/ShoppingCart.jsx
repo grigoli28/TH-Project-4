@@ -5,6 +5,7 @@ import CartDetails from "./CartDetails";
 import CartHeader from "./CartHeader";
 import { connect } from "react-redux";
 import isEmpty from "../../validation/is-empty";
+import { toggleCart } from "../../actions/cartActions";
 
 function ShoppingCart({ toggleCart, visible, user, isLogged }) {
   const totalPrice = !isEmpty(user.cart)
@@ -30,9 +31,13 @@ function ShoppingCart({ toggleCart, visible, user, isLogged }) {
   );
 }
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth, cart }) => ({
   isLogged: auth.isAuthenticated,
   user: auth.user,
+  visible: cart.visible,
 });
 
-export default connect(mapStateToProps)(ShoppingCart);
+export default connect(
+  mapStateToProps,
+  { toggleCart }
+)(ShoppingCart);

@@ -106,13 +106,19 @@
   padding: 90px 150px;
 }
 
+.sent-status {
+  color: #4bb543;
+  padding-top: 20px;
+  text-align: center;
+  display: block;
+}
 
 @media only screen and (max-width: 767px) {
   .contact-flex-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin:0 ;
+    margin: 0;
     padding: 0;
   }
 
@@ -128,7 +134,7 @@
   }
 
   .contact-btn {
-  width: 100%;
+    width: 100%;
   }
 
   .container-2 div {
@@ -138,6 +144,6 @@
 
 @media only screen and (max-width: 650px) {
   .contact-btn {
-width: 100%;
+    width: 100%;
   }
 }
