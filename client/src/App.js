@@ -8,6 +8,7 @@ import ProductCategory from "./components/productCategory/ProductCategory";
 import Footer from "./components/footer/Footer";
 import Admin from "./components/adminpage/AdminPage"
 import ProductDetails from "./components/productDetails/ProductDetails"
+import Admin from "./components/adminpage/AdminPage";
 const MenCategory = () => <ProductCategory gender="men" />;
 
 const WomenCategory = () => <ProductCategory gender="women" />;
@@ -24,6 +25,8 @@ class App extends Component {
           <Route exact path="/contact" component={Contact} />
           <ProductDetails/>
           {/* <Admin/> */}
+          <Route exact path="/contact" component={Contact} /> */}
+          <Admin />
           {/* <Footer /> */}
         </div>
       </Router>
