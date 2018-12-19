@@ -1,76 +1,63 @@
-import React, { Component } from "react";
+import React from "react";
 import "./AdminPage.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from "axios";
-import Table from "../table/Table";
+import { Route, NavLink } from "react-router-dom";
+import Customers from "./customers/Customers";
+import Messages from "./messages/Messages";
+import Products from "./products/Products";
 
-class AdminPage extends Component {
-  state = {
-    customers: null,
-  };
+const AdminPage = ({ match }) => {
+  return (
+    <div className="container">
+      <nav>
+        <ul className="admin-nav">
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/"
+              className="admin-nav__link"
+            >
+              Store
+            </NavLink>
+          </li>
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/admin/customers"
+              className="admin-nav__link"
+            >
+              Customers
+            </NavLink>
+          </li>
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/admin/products"
+              className="admin-nav__link"
+            >
+              Products
+            </NavLink>
+          </li>
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/admin/messages"
+              className="admin-nav__link"
+            >
+              Messages
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
-  updateCustomers = () => {
-    const url = "/api/customers";
-    axios
-      .get(url)
-      .then(({ data }) => this.setState({ customers: data }))
-      .catch(err => console.log(err));
-  };
-
-  removeCustomer = id => {
-    const url = `/api/customers/${id}`;
-    axios
-      .delete(url)
-      .then(res => {
-        alert("Customer Removed");
-        this.updateCustomers();
-      })
-      .catch(err => console.log(err));
-  };
-
-  componentDidMount() {
-    this.updateCustomers();
-  }
-
-  render() {
-    return (
-      <div className="ae">
-        <input
-          type="checkbox"
-          id="navcheck"
-          role="button"
-          title="menu"
-          className="admin-input"
-        />
-
-        <label
-          htmlFor="navcheck"
-          aria-hidden="true"
-          title="menu"
-          className="admin-label"
-        >
-          <span className="burger">
-            <span className="bar">
-              <span className="visuallyhidden">Menu</span>
-            </span>
-          </span>
-        </label>
-        <nav id="menu" className="admin-nav">
-          <Link to="/">Store</Link>
-          <Link to="/admin/customers">Customers</Link>
-          <Link to="/admin/messages">Messages</Link>
-        </nav>
-        <main>
-          <Table
-            items={this.state.customers}
-            tHeads={["name", "email", "balance"]}
-            remove={this.removeCustomer}
-            match={this.props.match}
-          />
-        </main>
-      </div>
-    );
-  }
-}
+      <Route exact path={`${match.url}/customers`} component={Customers} />
+      <Route exact path={`${match.url}/messages`} component={Messages} />
+      <Route exact path={`${match.url}/products`} component={Products} />
+    </div>
+  );
+};
 
 export default AdminPage;

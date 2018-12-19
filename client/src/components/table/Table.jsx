@@ -2,61 +2,70 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Table.css";
 
-const TableRow = ({ id, tDatas, remove, match }) => (
-  <tr>
-    {tDatas.map((tdataText, ind) => (
-      <td key={ind}>{tdataText}</td>
-    ))}
-    <td>
-      <button className="admin-btn">
-        <Link to={`${match.url}`} onClick={() => alert(`Details ${id}`)}>
-          Details
+const TableRow = ({ id, titles, tDatas, remove, match }) => {
+  return (
+    <div className="row">
+      {tDatas.map((tdataText, ind) => (
+        <div key={ind} className="cell" data-title={titles[ind]}>
+          {tdataText}
+        </div>
+      ))}
+      <div className="cell">
+        <Link to={`${match.url}`}>
+          <button
+            className="table-btn"
+            onClick={() => alert(`Details at: ${match.url}/${id}`)}
+          >
+            <span className="lnr lnr-text-align-left" />
+            Details
+          </button>
         </Link>
-      </button>
-      <button onClick={() => remove(id)} className="admin-btn">
-        Remove
-      </button>
-    </td>
-  </tr>
-);
+      </div>
+      <div className="cell">
+        <button className="table-btn" onClick={() => remove(id)}>
+          <span className="lnr lnr-trash" />
+          Remove
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const Table = ({ items, tHeads, remove, match }) => {
   return (
-    <article className="content">
-      <section>
-        <div className="tbl-header">
-          <table cellPadding="0" cellSpacing="0" border="0">
-            <thead>
-              <tr>
-                {tHeads.map((theadText, ind) => (
-                  <th key={ind}>{theadText}</th>
-                ))}
-                <th />
-              </tr>
-            </thead>
-          </table>
+    <div className="limiter">
+      <div className="container-table100">
+        <div className="wrap-table100">
+          <div className="table">
+            <div className="row header">
+              {tHeads.map((theadText, ind) => (
+                <div className="cell" key={ind}>
+                  {theadText}
+                </div>
+              ))}
+              <div className="cell" />
+              <div className="cell" />
+            </div>
+
+            {items &&
+              items.map(item => {
+                const tDatas = [];
+                tHeads.forEach(th => tDatas.push(item[th]));
+                return (
+                  <TableRow
+                    key={item.id}
+                    id={item.id}
+                    titles={tHeads}
+                    tDatas={tDatas}
+                    remove={remove}
+                    match={match}
+                  />
+                );
+              })}
+          </div>
         </div>
-        <div className="tbl-content">
-          <table cellPadding="0" cellSpacing="0" border="0">
-            <tbody>
-              {items &&
-                items.map(item => {
-                  const tDatas = [];
-                  tHeads.forEach(th => tDatas.push(item[th]));
-                  return (
-                    <TableRow
-                      key={item.id}
-                      id={item.id}
-                      tDatas={tDatas}
-                      remove={remove}
-                      match={match}
-                    />
-                  );
-                })}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </article>
+      </div>
+    </div>
   );
 };
 
