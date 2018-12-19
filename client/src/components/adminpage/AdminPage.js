@@ -4,6 +4,7 @@ import { Route, NavLink } from "react-router-dom";
 import Customers from "./customers/Customers";
 import Messages from "./messages/Messages";
 import Products from "./products/Products";
+import CustomerDetails from "./customerDetails/CustomerDetails";
 
 const AdminPage = ({ match }) => {
   return (
@@ -22,7 +23,6 @@ const AdminPage = ({ match }) => {
           </li>
           <li className="admin-nav__item">
             <NavLink
-              exact
               activeClassName="active-admin-link"
               to="/admin/customers"
               className="admin-nav__link"
@@ -32,7 +32,6 @@ const AdminPage = ({ match }) => {
           </li>
           <li className="admin-nav__item">
             <NavLink
-              exact
               activeClassName="active-admin-link"
               to="/admin/products"
               className="admin-nav__link"
@@ -42,7 +41,6 @@ const AdminPage = ({ match }) => {
           </li>
           <li className="admin-nav__item">
             <NavLink
-              exact
               activeClassName="active-admin-link"
               to="/admin/messages"
               className="admin-nav__link"
@@ -54,6 +52,11 @@ const AdminPage = ({ match }) => {
       </nav>
 
       <Route exact path={`${match.url}/customers`} component={Customers} />
+      <Route
+        exact
+        path={`${match.url}/customers/:prodId`}
+        component={CustomerDetails}
+      />
       <Route exact path={`${match.url}/messages`} component={Messages} />
       <Route exact path={`${match.url}/products`} component={Products} />
     </div>

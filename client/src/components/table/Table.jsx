@@ -11,11 +11,8 @@ const TableRow = ({ id, titles, tDatas, remove, match }) => {
         </div>
       ))}
       <div className="cell">
-        <Link to={`${match.url}`}>
-          <button
-            className="table-btn"
-            onClick={() => alert(`Details at: ${match.url}/${id}`)}
-          >
+        <Link to={`${match.url}/${id}`}>
+          <button className="table-btn">
             <span className="lnr lnr-text-align-left" />
             Details
           </button>
