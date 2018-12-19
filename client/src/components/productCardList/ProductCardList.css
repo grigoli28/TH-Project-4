@@ -18,3 +18,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+
+.no-product {
+  flex-basis: 100%;
+  text-align: center;
+}

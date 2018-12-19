@@ -20,7 +20,7 @@ export default function CartItemList({ isLogged, items, removeItem }) {
           <h1 className="cart-empty-msg">Cart is empty!</h1>
         )
       ) : (
-        <h1 className="cart-empty-msg">Log in to view cart!</h1>
+        <h1 className="cart-empty-msg">Please, Log In!</h1>
       )}
     </ul>
   );

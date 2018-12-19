@@ -12,6 +12,7 @@ import MenPage from "./components/pages/MenPage";
 import WomenPage from "./components/pages/WomenPage";
 import ContactPage from "./components/pages/ContactPage";
 import LoginPage from "./components/pages/LoginPage";
+import ProductDetailPage from "./components/pages/ProductDetailPage";
 
 if (localStorage._auth_user_) {
   const user = JSON.parse(localStorage._auth_user_);
@@ -37,14 +38,8 @@ const App = ({ isLogged, user }) => {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/men" component={MenPage} />
           <Route exact path="/women" component={WomenPage} />
-          <Route
-            path="/men/:prodId"
-            render={({ match }) => <h1>{match.params.prodId}</h1>}
-          />
-          <Route
-            path="/women/:prodId"
-            render={({ match }) => <h1>{match.params.prodId}</h1>}
-          />
+          <Route exact path="/men/:prodId" component={ProductDetailPage} />
+          <Route exact path="/women/:prodId" component={ProductDetailPage} />
           <Route
             exact
             path="/login"
@@ -64,7 +59,9 @@ const App = ({ isLogged, user }) => {
           <Route
             exact
             path="/admin"
-            render={({match}) => (user.isAdmin ? <AdminPage match={match} /> : <Redirect to="/" />)}
+            render={({ match }) =>
+              user.isAdmin ? <AdminPage match={match} /> : <Redirect to="/" />
+            }
           />
         </div>
       </Router>

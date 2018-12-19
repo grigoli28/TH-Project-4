@@ -26,7 +26,7 @@ export default function ProductCardList({ gender, products, match }) {
             prodCard(prod, index, match.url)
           )
         ) : (
-          <h1>Nothing Found!</h1>
+          <h1 className="no-product">No Product!</h1>
         )
       ) : (
         <h1>Loading Products...</h1>
