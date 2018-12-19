@@ -5,7 +5,7 @@ import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Footer from "../footer/Footer";
 import Login from "../login/Login";
 
-export default function WomenPage() {
+export default function LoginPage() {
   return (
     <div className="container">
       <Navigation />

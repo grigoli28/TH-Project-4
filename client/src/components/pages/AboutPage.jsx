@@ -3,14 +3,14 @@ import React from "react";
 import Navigation from "../navigation/Navigation";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Footer from "../footer/Footer";
-import Contact from "../contact/Contact";
+import Aboutus from "../about-us/Aboutus";
 
-export default function ContactPage() {
+export default function AboutPage() {
   return (
     <div className="container">
       <Navigation />
       <ShoppingCart />
-      <Contact />
+      <Aboutus />
       <Footer />
     </div>
   );

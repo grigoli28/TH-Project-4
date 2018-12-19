@@ -13,6 +13,8 @@ import WomenPage from "./components/pages/WomenPage";
 import ContactPage from "./components/pages/ContactPage";
 import LoginPage from "./components/pages/LoginPage";
 import ProductDetailPage from "./components/pages/ProductDetailPage";
+import AboutPage from "./components/pages/AboutPage";
+
 if (localStorage._auth_user_) {
   const user = JSON.parse(localStorage._auth_user_);
 
@@ -45,6 +47,7 @@ const App = ({ isLogged, user }) => {
             render={() => (isLogged ? <Redirect to="/" /> : <LoginPage />)}
           />
           <Route exact path="/contact" component={ContactPage} />
+          <Route exact path="/about" component={AboutPage} />
           <Route
             path="/admin"
             render={({ match }) =>

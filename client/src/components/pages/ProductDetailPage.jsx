@@ -5,7 +5,7 @@ import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Footer from "../footer/Footer";
 import ProductDetails from "../productDetails/ProductDetails";
 
-export default function WomenPage() {
+export default function ProductDetailsPage() {
   return (
     <div className="container">
       <Navigation />

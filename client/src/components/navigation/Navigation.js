@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navigation.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { toggleCart } from "../../actions/cartActions";
@@ -200,7 +200,6 @@ const Navigation = ({
           <li className="mobile-nav__item">
             <label className="search-wrapper">
               <input
-                id="search"
                 className="search__input"
                 name="search"
                 placeholder="Search"

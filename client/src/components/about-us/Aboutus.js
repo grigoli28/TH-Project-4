@@ -14,7 +14,6 @@ class Aboutus extends Component {
         <div className="about-main">
           <div className="main-content1" />
           <div className="main-content2">
-            {" "}
             Our brand offers you an amazing collection of newest collection
             specially made by fashion designers ."You gotta have style. It helps
             you get down the stairs. It helps you get up in the morning. It’s a
@@ -25,7 +24,6 @@ class Aboutus extends Component {
         <div className="about-main2">
           <div className="main-content3" />
           <p className="fashion-p">
-            {" "}
             “Fashion is part of the daily air and it changes all the time, with
             all the events. You can even see the approaching of a revolution in
             clothes. You can see and feel everything in clothes.” —Diana
@@ -36,9 +34,9 @@ class Aboutus extends Component {
         </div>
         <h2 className="about-foot-text">"Fashions fade, style is eternal."</h2>
         <div className="about-foot-nav">
-          <p />LIMITED EDITION
+          <p />
+          LIMITED EDITION
         </div>
-        <br/>
       </div>
     );
   }
