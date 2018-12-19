@@ -1,9 +1,7 @@
 const express = require("express");
 const { Router } = express;
 const MESSAGES = require("../../db/messages.json");
-// const ADMIN = require("../../db/admin.json");
-const { findOneById } = require("../../util/arrayLookup");
-const { passwordsMatch } = require("../../util/password");
+const { findOneById, findOneByIdAndRemove } = require("../../util/arrayLookup");
 
 // Unique id generator based on timestamp
 const uuidv1 = require("uuid/v1");
@@ -23,6 +21,15 @@ router.get("/messages", (req, res) => {
 router.get("/messages/:id", (req, res) => {
   const { id } = req.params;
   const message = findOneById(id, MESSAGES);
+  if (!message) return res.status(404).json({ message: "No such message" });
+
+  res.json(message);
+});
+
+// @route   DELETE api/admin/messages/:id
+router.delete("/messages/:id", (req, res) => {
+  const { id } = req.params;
+  const message = findOneByIdAndRemove(id, MESSAGES);
   if (!message) return res.status(404).json({ message: "No such message" });
 
   res.json(message);

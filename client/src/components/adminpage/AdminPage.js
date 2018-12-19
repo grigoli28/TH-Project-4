@@ -1,76 +1,46 @@
-import React, { Component } from "react";
+import React from "react";
 import "./AdminPage.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from "axios";
-import Table from "../table/Table";
+import { Route, Link } from "react-router-dom";
+import Customers from "./customers/Customers";
+import Messages from "./messages/Messages";
+import Products from "./products/Products";
 
-class AdminPage extends Component {
-  state = {
-    customers: null,
-  };
+const AdminPage = ({ match }) => {
+  return (
+    <div className="ae">
+      <input
+        type="checkbox"
+        id="navcheck"
+        role="button"
+        title="menu"
+        className="admin-input"
+      />
 
-  updateCustomers = () => {
-    const url = "/api/customers";
-    axios
-      .get(url)
-      .then(({ data }) => this.setState({ customers: data }))
-      .catch(err => console.log(err));
-  };
-
-  removeCustomer = id => {
-    const url = `/api/customers/${id}`;
-    axios
-      .delete(url)
-      .then(res => {
-        alert("Customer Removed");
-        this.updateCustomers();
-      })
-      .catch(err => console.log(err));
-  };
-
-  componentDidMount() {
-    this.updateCustomers();
-  }
-
-  render() {
-    return (
-      <div className="ae">
-        <input
-          type="checkbox"
-          id="navcheck"
-          role="button"
-          title="menu"
-          className="admin-input"
-        />
-
-        <label
-          htmlFor="navcheck"
-          aria-hidden="true"
-          title="menu"
-          className="admin-label"
-        >
-          <span className="burger">
-            <span className="bar">
-              <span className="visuallyhidden">Menu</span>
-            </span>
+      <label
+        htmlFor="navcheck"
+        aria-hidden="true"
+        title="menu"
+        className="admin-label"
+      >
+        <span className="burger">
+          <span className="bar">
+            <span className="visuallyhidden">Menu</span>
           </span>
-        </label>
-        <nav id="menu" className="admin-nav">
-          <Link to="/">Store</Link>
-          <Link to="/admin/customers">Customers</Link>
-          <Link to="/admin/messages">Messages</Link>
-        </nav>
-        <main>
-          <Table
-            items={this.state.customers}
-            tHeads={["name", "email", "balance"]}
-            remove={this.removeCustomer}
-            match={this.props.match}
-          />
-        </main>
-      </div>
-    );
-  }
-}
+        </span>
+      </label>
+      <nav id="menu" className="admin-nav">
+        <Link to="/">Store</Link>
+        <Link to="/admin/customers">Customers</Link>
+        <Link to="/admin/products">Products</Link>
+        <Link to="/admin/messages">Messages</Link>
+      </nav>
+      <main>
+        <Route exact path={`${match.url}/customers`} component={Customers} />
+        <Route exact path={`${match.url}/messages`} component={Messages} />
+        <Route exact path={`${match.url}/products`} component={Products} />
+      </main>
+    </div>
+  );
+};
 
 export default AdminPage;
