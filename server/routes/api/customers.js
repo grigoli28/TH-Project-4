@@ -19,8 +19,8 @@ const router = new Router();
 // @desc    Get all customers
 // @access  Private (only admin)
 router.get("/", (req, res) => {
-  const populated = CUSTOMERS.map(customer =>
-    populateObject(customer, "id name email balance username")
+  const populated = CUSTOMERS.filter(customer => !customer.isAdmin).map(
+    customer => populateObject(customer, "id name email balance username")
   );
   res.json(populated);
 });
