@@ -1,7 +1,7 @@
 const express = require("express");
 const { Router } = express;
 const MESSAGES = require("../../db/messages.json");
-const ADMIN = require("../../db/admin.json");
+// const ADMIN = require("../../db/admin.json");
 const { findOneById } = require("../../util/arrayLookup");
 const { passwordsMatch } = require("../../util/password");
 
@@ -23,7 +23,7 @@ router.get("/messages", (req, res) => {
 router.get("/messages/:id", (req, res) => {
   const { id } = req.params;
   const message = findOneById(id, MESSAGES);
-  if (!message) return res.status(404).send("No such message");
+  if (!message) return res.status(404).json({ message: "No such message" });
 
   res.json(message);
 });
@@ -43,21 +43,6 @@ router.post("/messages", (req, res) => {
   MESSAGES.push(newMessage);
 
   res.json(newMessage);
-});
-
-// @route   POST api/admin/login
-// @desc    Admin login
-// @access  Admin
-router.post("/login", (req, res) => {
-  const { username, password } = req.body;
-
-  if (
-    !(username === ADMIN.username) ||
-    !passwordsMatch(password, ADMIN.password)
-  )
-    return res.status(404).send("Username or Password Incorrect!");
-
-  res.json({ auth: true, isAdmin: true });
 });
 
 module.exports = router;

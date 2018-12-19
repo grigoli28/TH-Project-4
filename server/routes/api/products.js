@@ -47,7 +47,8 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   const removedProduct = findOneByIdAndRemove(id, PRODUCTS);
-  if (!removedProduct) return res.status(404).send("No such product to remove");
+  if (!removedProduct)
+    return res.status(404).json({ product: "No product with given id" });
 
   res.json({ removed: true, ...removedProduct });
 });
@@ -114,12 +115,12 @@ function searchMiddleware(req, res, next) {
   if (!req.query.search) return next();
 
   // Search products
-  const { value } = req.query;
+  const { search } = req.query;
 
   // We search product using its name
   const name = "name";
   const searchedProducts = PRODUCTS.filter(prod =>
-    prod[name].toLowerCase().includes(value.toLowerCase())
+    prod[name].toLowerCase().includes(search.toLowerCase())
   );
 
   res.json(searchedProducts);

@@ -1,34 +1,43 @@
-import React, { Component } from "react";
+import React from "react";
 import "./ShoppingCart.css";
 import CartItemList from "./CartItemList";
 import CartDetails from "./CartDetails";
 import CartHeader from "./CartHeader";
+import { connect } from "react-redux";
+import isEmpty from "../../validation/is-empty";
+import { toggleCart } from "../../actions/cartActions";
 
-export default class ShoppingCart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-    };
-  }
+function ShoppingCart({ toggleCart, visible, user, isLogged }) {
+  const totalPrice = !isEmpty(user.cart)
+    ? user.cart.reduce((total, curr) => curr.price + total, 0)
+    : 0;
 
-  handleCartClose = () => {
-    this.setState(prev => ({ visible: !prev.visible }));
-  };
-
-  render() {
-    return (
-      <>
-        <div
-          onClick={this.handleCartClose}
-          className={`cart--wrapper ${this.state.visible && "cart--visible"}`}
+  return (
+    <>
+      <div
+        onClick={toggleCart}
+        className={`cart--wrapper ${visible && "cart--visible"}`}
+      />
+      <div className="cart">
+        <CartHeader toggleCart={toggleCart} />
+        <CartItemList
+          removeItem={() => alert("Remove Item was clicked")}
+          isLogged={isLogged}
+          items={user.cart}
         />
-        <div className="cart">
-          <CartHeader hideCart={this.handleCartClose} />
-          <CartItemList />
-          <CartDetails />
-        </div>
-      </>
-    );
-  }
+        <CartDetails notEmpty={!isEmpty(user.cart)} total={totalPrice} />
+      </div>
+    </>
+  );
 }
+
+const mapStateToProps = ({ auth, cart }) => ({
+  isLogged: auth.isAuthenticated,
+  user: auth.user,
+  visible: cart.visible,
+});
+
+export default connect(
+  mapStateToProps,
+  { toggleCart }
+)(ShoppingCart);

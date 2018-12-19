@@ -1,35 +1,78 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import store from "./store";
+import { setCurrentUser, updateCart } from "./actions/authActions";
+import axios from "axios";
+
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navigation from "./components/navigation/Navigation";
-import Login from "./components/login/Login";
-import Contact from "./components/contact/Contact";
-import ProductCategory from "./components/productCategory/ProductCategory";
-import Footer from "./components/footer/Footer";
-import Admin from "./components/adminpage/AdminPage"
-import ProductDetails from "./components/productDetails/ProductDetails"
-const MenCategory = () => <ProductCategory gender="men" />;
+import AdminPage from "./components/adminpage/AdminPage";
+import HomePage from "./components/pages/HomePage";
+import MenPage from "./components/pages/MenPage";
+import WomenPage from "./components/pages/WomenPage";
+import ContactPage from "./components/pages/ContactPage";
+import LoginPage from "./components/pages/LoginPage";
+import ProductDetailPage from "./components/pages/ProductDetailPage";
+import CustomerDetails from "./components/adminpage/customerDetails/CustomerDetails"
+if (localStorage._auth_user_) {
+  const user = JSON.parse(localStorage._auth_user_);
 
-const WomenCategory = () => <ProductCategory gender="women" />;
+  store.dispatch(setCurrentUser(user));
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Navigation />
-          <Route exact path="/men" component={MenCategory} />
-          <Route exact path="/women" component={WomenCategory} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/contact" component={Contact} />
-          <ProductDetails/>
-          {/* <Admin/> */}
-          <Admin />
-          {/* <Footer /> */}
-        </div>
-      </Router>
-    );
-  }
+  const { id } = user;
+  const url = `http://localhost:5000/api/customers/${id}/cart`;
+
+  axios
+    .get(url)
+    .then(({ data }) => {
+      store.dispatch(updateCart(data));
+    })
+    .catch(err => console.log(err));
 }
 
-export default App;
+const App = ({ isLogged, user }) => {
+  return (
+    <div className="App">
+      <Router>
+        <div>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/men" component={MenPage} />
+          <Route exact path="/women" component={WomenPage} />
+          <Route exact path="/men/:prodId" component={ProductDetailPage} />
+          <Route exact path="/women/:prodId" component={ProductDetailPage} />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              isLogged ? (
+                user.isAdmin ? (
+                  <Redirect to="/admin" />
+                ) : (
+                  <Redirect to="/" />
+                )
+              ) : (
+                <LoginPage />
+              )
+            }
+          />
+          <Route exact path="/contact" component={ContactPage} />
+          <Route
+            exact
+            path="/admin"
+            render={({ match }) =>
+              user.isAdmin ? <AdminPage match={match} /> : <Redirect to="/" />
+            }
+          />
+        </div>
+      </Router>
+      <CustomerDetails/>
+    </div>
+  );
+};
+
+const mapStateToProps = ({ auth }) => ({
+  isLogged: auth.isAuthenticated,
+  user: auth.user,
+});
+
+export default connect(mapStateToProps)(App);

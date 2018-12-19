@@ -5,7 +5,7 @@ export default function Sort({gender}) {
   return (
     <div className="category-wrapper">
       <span className="category">{gender}</span>
-      <div className="price-sort">
+      {/* <div className="price-sort">
         <span className="sort-text">Sort By</span>
         <span className="sort-type">
           Price
@@ -19,7 +19,7 @@ export default function Sort({gender}) {
           Popularity
           <span className="lnr lnr-arrow-up" />
         </span>
-      </div>
+      </div> */}
     </div>
   );
 }

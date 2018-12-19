@@ -5,3 +5,8 @@
   overflow: auto;
   max-height: 60%;
 }
+
+.cart-empty-msg {
+  text-align: center;
+  color: crimson;
+}

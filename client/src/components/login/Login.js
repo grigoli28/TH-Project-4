@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { setCurrentUser, updateCart } from "../../actions/authActions";
+import { getErrors } from "../../actions/errorActions";
 import "./Login.css";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -18,6 +21,8 @@ export default class Login extends Component {
     this.birthdate = React.createRef();
   }
 
+  state = { user: null };
+
   onLoginSubmit = e => {
     e.preventDefault();
     const url = "http://localhost:5000/api/customers/login";
@@ -26,8 +31,25 @@ export default class Login extends Component {
 
     axios
       .post(url, { username, password })
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then(({ data }) => {
+        // Reset if there were previous login errors
+        this.props.getErrors(null);
+
+        this.props.setCurrentUser(data);
+        const { id } = data;
+        const url = `/api/customers/${id}/cart`;
+
+        // Save logged in user
+        localStorage.setItem("_auth_user_", JSON.stringify(data));
+
+        axios
+          .get(url)
+          .then(({ data }) => {
+            this.props.updateCart(data);
+          })
+          .catch(err => console.log(err.response.data));
+      })
+      .catch(err => this.props.getErrors(err.response.data));
   };
 
   onSignupSubmit = e => {
@@ -52,8 +74,15 @@ export default class Login extends Component {
         balance,
         birthdate,
       })
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .then(({ data }) => {
+        this.props.getErrors(null);
+
+        this.props.setCurrentUser(data);
+
+        // Save registered  user
+        localStorage.setItem("_auth_user_", JSON.stringify(data));        
+      })
+      .catch(err => this.props.getErrors(err.response.data));
   };
 
   render() {
@@ -79,6 +108,11 @@ export default class Login extends Component {
             <div className="login-form">
               <div className="sign-in-htm">
                 <form onSubmit={this.onLoginSubmit}>
+                  {this.props.errors && (
+                    <span className="login-error">
+                      {this.props.errors.login}
+                    </span>
+                  )}
                   <div className="group">
                     <label htmlFor="loginuser" className="login-label">
                       Username
@@ -142,6 +176,11 @@ export default class Login extends Component {
                       required
                     />
                   </div>
+                  {this.props.errors && (
+                    <span className="register-password-error">
+                      {this.props.errors.password}
+                    </span>
+                  )}
                   <div className="group password-group">
                     <label htmlFor="pass" className="login-label">
                       Password
@@ -225,3 +264,14 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ auth, errors }) => ({
+  user: auth.user,
+  // isLogged: auth.isAuthenticated,
+  errors,
+});
+
+export default connect(
+  mapStateToProps,
+  { setCurrentUser, updateCart, getErrors }
+)(Login);

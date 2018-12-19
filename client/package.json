@@ -9,11 +9,14 @@
     "react": "^16.6.3",
     "react-coverflow": "^0.2.17",
     "react-dom": "^16.6.3",
+    "react-mdl": "^1.11.0",
+    "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"npm start --prefix ../server \"",
+    "start": "concurrently \"react-scripts start\" \"npm run dev --prefix ../server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,41 +1,79 @@
 import React from "react";
 import "./Navigation.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+import { toggleCart } from "../../actions/cartActions";
 
-export default function Navigation() {
+const Navigation = ({ toggleCart, isLogged, user, logoutUser }) => {
   return (
     <div className="header-nav">
       <ul className="main-nav">
         <li className="main-nav__item">
-          <Link to="/men" className="main-nav__link">
+          <NavLink
+            exact
+            activeClassName="active-nav-link"
+            to="/men"
+            className="main-nav__link"
+          >
             Men
-          </Link>
+          </NavLink>
         </li>
         <li className="main-nav__item">
-          <Link to="/women" className="main-nav__link">
+          <NavLink
+            exact
+            activeClassName="active-nav-link"
+            to="/women"
+            className="main-nav__link"
+          >
             Women
-          </Link>
+          </NavLink>
         </li>
-        <li className="main-nav__item">
-          <Link to="/about" className="main-nav__link">
+        {/* <li className="main-nav__item">
+          <NavLink
+            exact
+            activeClassName="active-nav-link"
+            to="/about"
+            className="main-nav__link"
+          >
             About Us
-          </Link>
-        </li>
+          </NavLink>
+        </li> */}
         <li className="main-nav__item">
-          <Link to="/contact" className="main-nav__link">
+          <NavLink
+            exact
+            activeClassName="active-nav-link"
+            to="/contact"
+            className="main-nav__link"
+          >
             Contact
-          </Link>
+          </NavLink>
         </li>
+        {isLogged && user.isAdmin && (
+          <li className="main-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-nav-link"
+              to="/admin"
+              className="main-nav__link"
+            >
+              Admin Panel
+            </NavLink>
+          </li>
+        )}
       </ul>
       <span className="title">
-        <Link to="/" className="main-nav__link">
+        <NavLink to="/" className="main-nav__link">
           LIMITED
           <br />
           EDITION
-        </Link>
+        </NavLink>
       </span>
 
       <div className="aditional-nav">
+        <div className="welcome-msg">
+          Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
+        </div>
         <div className="search">
           <span className="search-btn lnr lnr-magnifier" />
           <input
@@ -46,13 +84,35 @@ export default function Navigation() {
             hidden
           />
         </div>
-        <Link to="/login">
-          <span className="user-login lnr lnr-user" />
-        </Link>
-        <span className="cart-btn lnr lnr-cart">
-          <span className="cart-notification">6</span>
+        <span onClick={toggleCart} className="cart-btn lnr lnr-cart">
+          {user.cart && user.cart.length ? (
+            <span className="cart-notification">{user.cart.length}</span>
+          ) : null}
         </span>
+        {isLogged ? (
+          <span
+            onClick={() => {
+              localStorage.removeItem("_auth_user_");
+              logoutUser();
+            }}
+            className="user-logout lnr lnr-exit"
+          />
+        ) : (
+          <Link to="/login">
+            <span className="user-login lnr lnr-user" />
+          </Link>
+        )}
       </div>
     </div>
   );
-}
+};
+
+const mapStateToProps = ({ auth }) => ({
+  isLogged: auth.isAuthenticated,
+  user: auth.user,
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser, toggleCart }
+)(Navigation);

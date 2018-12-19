@@ -14,7 +14,7 @@
 
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
 }
 
 img {
@@ -27,7 +27,7 @@ a {
   color: initial;
 }
 
-.App {
+.container {
   width: 90vw;
   max-width: 1200px;
   margin: 0 auto;

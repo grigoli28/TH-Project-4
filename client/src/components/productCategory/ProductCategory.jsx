@@ -99,6 +99,7 @@ export default class ProductCategory extends Component {
             onPriceInput={this.onPriceInput}
           />
           <ProductCardList
+            match={this.props.match}
             products={this.state.products}
             gender={this.props.gender}
           />
