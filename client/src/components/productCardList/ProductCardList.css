@@ -1,5 +1,5 @@
 :root {
-  --columns: 3;
+  --columns: 4;
 }
 
 .product-list {
@@ -8,17 +8,6 @@
   align-items: baseline;
   flex-grow: 1;
 }
-
-.prod-card {
-  flex-basis: calc(100% / var(--columns));
-  padding: 0 10px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
 
 .no-product {
   flex-basis: 100%;

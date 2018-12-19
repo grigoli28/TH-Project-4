@@ -102,7 +102,7 @@
 }
 
 .aditional-nav__item {
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .aditional-nav .lnr {
@@ -299,8 +299,10 @@
 
 @media only screen and (max-width: 1100px) {
   .header-nav {
+    position: relative;
     padding: 0;
     flex-flow: column nowrap;
+    padding-bottom: 10px;
   }
 
   .header-nav .title {

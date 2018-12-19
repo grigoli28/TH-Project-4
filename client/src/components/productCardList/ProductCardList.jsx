@@ -1,19 +1,6 @@
 import React from "react";
 import "./ProductCardList.css";
-import { Link, Route } from "react-router-dom";
-
-const prodCard = (prod, index, matchedUrl) => (
-  <div className="prod-card" key={prod.id}>
-    <img src={`https://source.unsplash.com/user/joelvalve/300x30${index}`} />
-    <h2>{prod.name}</h2>
-    <p>{prod.price}</p>
-    <p>{prod.gender}</p>
-    <p>{prod.category}</p>
-    <p>{prod.size}</p>
-    <p>{prod.brand}</p>
-    <Link to={`${matchedUrl}/${prod.id}`}>Details</Link>
-  </div>
-);
+import ProductCard from "../productCard/ProductCard";
 
 export default function ProductCardList({ gender, products, match }) {
   const filteredProducts =
@@ -22,14 +9,19 @@ export default function ProductCardList({ gender, products, match }) {
     <div className="product-list">
       {filteredProducts ? (
         filteredProducts.length > 0 ? (
-          filteredProducts.map((prod, index) =>
-            prodCard(prod, index, match.url)
-          )
+          filteredProducts.map((prod, index) => (
+            <ProductCard
+              key={index}
+              prod={prod}
+              index={index}
+              matchedUrl={match.url}
+            />
+          ))
         ) : (
           <h1 className="no-product">No Product!</h1>
         )
       ) : (
-        <h1>Loading Products...</h1>
+        <h1 className="no-product">Loading Products...</h1>
       )}
     </div>
   );
