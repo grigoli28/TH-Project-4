@@ -36,27 +36,3 @@ class CustomerDetails extends Component {
 }
 
 export default CustomerDetails;
-// import React, { Component } from "react";
-// import {
-//   Grid,
-//   Cell,
-//   List,
-//   ListItem,
-//   ListItemContent,
-//   FABButton,
-//   Icon,
-//   Button
-// } from "react-mdl";
-
-// class CustomerDetails extends Component {
-//   render() {
-//     return (
-//       <div className="contact-body">
-
-//         <Button accent>Button</Button>
-//       </div>
-//     );
-//   }
-// }
-
-// export default CustomerDetails;
