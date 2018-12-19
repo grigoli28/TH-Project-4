@@ -43,17 +43,7 @@ const App = ({ isLogged, user }) => {
           <Route
             exact
             path="/login"
-            render={() =>
-              isLogged ? (
-                user.isAdmin ? (
-                  <Redirect to="/admin" />
-                ) : (
-                  <Redirect to="/" />
-                )
-              ) : (
-                <LoginPage />
-              )
-            }
+            render={() => (isLogged ? <Redirect to="/" /> : <LoginPage />)}
           />
           <Route exact path="/contact" component={ContactPage} />
           <Route
@@ -62,13 +52,6 @@ const App = ({ isLogged, user }) => {
               user.isAdmin ? <AdminPage match={match} /> : <Redirect to="/" />
             }
           />
-          {/* <Route
-            exact
-            path="/admin/customers"
-            render={({ match }) =>
-              user.isAdmin ? <AdminPage match={match} /> : <Redirect to="/" />
-            }
-          /> */}
         </div>
       </Router>
     </div>

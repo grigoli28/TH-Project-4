@@ -1,44 +1,61 @@
 import React from "react";
 import "./AdminPage.css";
-import { Route, Link } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import Customers from "./customers/Customers";
 import Messages from "./messages/Messages";
 import Products from "./products/Products";
 
 const AdminPage = ({ match }) => {
   return (
-    <div className="ae">
-      <input
-        type="checkbox"
-        id="navcheck"
-        role="button"
-        title="menu"
-        className="admin-input"
-      />
-
-      <label
-        htmlFor="navcheck"
-        aria-hidden="true"
-        title="menu"
-        className="admin-label"
-      >
-        <span className="burger">
-          <span className="bar">
-            <span className="visuallyhidden">Menu</span>
-          </span>
-        </span>
-      </label>
-      <nav id="menu" className="admin-nav">
-        <Link to="/">Store</Link>
-        <Link to="/admin/customers">Customers</Link>
-        <Link to="/admin/products">Products</Link>
-        <Link to="/admin/messages">Messages</Link>
+    <div className="container">
+      <nav>
+        <ul className="admin-nav">
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/"
+              className="admin-nav__link"
+            >
+              Store
+            </NavLink>
+          </li>
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/admin/customers"
+              className="admin-nav__link"
+            >
+              Customers
+            </NavLink>
+          </li>
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/admin/products"
+              className="admin-nav__link"
+            >
+              Products
+            </NavLink>
+          </li>
+          <li className="admin-nav__item">
+            <NavLink
+              exact
+              activeClassName="active-admin-link"
+              to="/admin/messages"
+              className="admin-nav__link"
+            >
+              Messages
+            </NavLink>
+          </li>
+        </ul>
       </nav>
-      <main>
-        <Route exact path={`${match.url}/customers`} component={Customers} />
-        <Route exact path={`${match.url}/messages`} component={Messages} />
-        <Route exact path={`${match.url}/products`} component={Products} />
-      </main>
+
+      <Route exact path={`${match.url}/customers`} component={Customers} />
+      <Route exact path={`${match.url}/messages`} component={Messages} />
+      <Route exact path={`${match.url}/products`} component={Products} />
     </div>
   );
 };

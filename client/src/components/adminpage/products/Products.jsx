@@ -35,7 +35,7 @@ export default class Products extends Component {
     return (
       <Table
         items={this.state.products}
-        tHeads={["name", "price", "size"]}
+        tHeads={["name", "price", "size", "brand", "category"]}
         remove={this.removeProduct}
         match={this.props.match}
       />
