@@ -1,7 +1,7 @@
 .weird-nav{
     list-style-type: none;
     padding: 70px;
-    margin-top: 0;
+    margin-top: 0px;
     cursor: pointer;
  
  }
@@ -217,7 +217,7 @@
     .weird-nav{
         list-style-type: none;
         padding: 70px;
-        margin-top: 0;
+        margin-top: 0px;
         cursor: pointer;
      
      }
@@ -227,7 +227,7 @@
         height: 650px;
         width: 450px;
         margin: 70px;
-        bottom: 110px;
+        bottom: 20px;
      
      }
      .Detailrewiew{
@@ -235,7 +235,7 @@
         float: right;
         width: 600px;
         right: 0px;
-        bottom: 800px
+        bottom: 730px
     
      
      }
