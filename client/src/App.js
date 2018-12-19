@@ -13,7 +13,8 @@ import WomenPage from "./components/pages/WomenPage";
 import ContactPage from "./components/pages/ContactPage";
 import LoginPage from "./components/pages/LoginPage";
 import ProductDetailPage from "./components/pages/ProductDetailPage";
-import CustomerDetails from "./components/adminpage/customerDetails/CustomerDetails"
+import CustomerDetails from "./components/adminpage/customerDetails/CustomerDetails";
+import Aboutus from "./components/about-us/Aboutus"
 if (localStorage._auth_user_) {
   const user = JSON.parse(localStorage._auth_user_);
 
@@ -65,6 +66,7 @@ const App = ({ isLogged, user }) => {
           />
         </div>
       </Router>
+      <Aboutus/>
       <CustomerDetails/>
     </div>
   );
