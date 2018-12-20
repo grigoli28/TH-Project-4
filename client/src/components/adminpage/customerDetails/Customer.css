@@ -1,6 +1,6 @@
 .user-details {
-  width: 550px;
-  height: 650px;
+  width: 650px;
+  height: 850px;
   border: 1px solid rgb(187, 182, 182);
   margin: 0 auto;
   color: #fff;
@@ -38,7 +38,7 @@
   font-size: 20px;
 }
 .user-personal-info {
-  margin-left: 65px;
+  margin-left: 90px;
   font-size: 15px;
 }
 .user-p {
@@ -96,7 +96,7 @@
   height: 35px;
   margin-top: 20px;
   cursor: pointer;
-  margin-left: 420px;
+  margin-left: 500px;
 }
 
 .user-btn:hover {
@@ -165,8 +165,8 @@ input:focus ~ .userbar:before,
 input:focus ~ .userbar:after {
   width: 34%;
 }
-.userform{
-margin-left: 225px
+.userform {
+  margin-left: 275px;
 }
 .userhighlight {
   position: absolute;
@@ -211,4 +211,62 @@ input:focus ~ .userhighlight {
     width: 0;
     background: transparent;
   }
+}
+
+.user-productlist {
+  font-size: 15px;
+  color: white;
+  list-style: none;
+  margin-top: 50px;
+  margin-left: 10px;
+  text-align: center;
+}
+.purchased-list:nth-child(1) {
+  color: rgb(206, 206, 206);
+  border-bottom: none;
+}
+.purchased-list:nth-child(1):hover {
+  color: rgb(206, 206, 206);
+}
+.purchased-list:hover {
+  color: rgb(206, 206, 206);
+}
+.purchased-list {
+  margin-top: 10px;
+  cursor: pointer;
+}
+.purchased-list:hover {
+  color: #000;
+  transition: all 300ms ease;
+}
+.user-details-cart {
+  display: flex;
+  width: 700px;
+}
+.user-cart {
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  list-style: none;
+  margin-top: 50px;
+  margin-left: 100px;
+  cursor: pointer;
+}
+.user-cart-list {
+  margin-top: 10px;
+}
+
+.user-cart-list:nth-child(1) {
+  color: rgb(206, 206, 206);
+  border-bottom: none;
+}
+.user-cart-list:nth-child(1):hover {
+  color: rgb(206, 206, 206);
+}
+.user-cart-list:hover {
+  color: rgb(206, 206, 206);
+}
+.user-cart-list:hover {
+  color: #000000;
+  transition: all 300ms ease;
 }
