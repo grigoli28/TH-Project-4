@@ -21,8 +21,9 @@ function ShoppingCart({ toggleCart, visible, user, isLogged }) {
       <div className="cart">
         <CartHeader toggleCart={toggleCart} />
         <CartItemList
-          removeItem={() => alert("Remove Item was clicked")}
+          removeItem={id => alert(`Remove Item was clicked for ${id}`)}
           isLogged={isLogged}
+          userId={user.id}
           items={user.cart}
         />
         <CartDetails notEmpty={!isEmpty(user.cart)} total={totalPrice} />

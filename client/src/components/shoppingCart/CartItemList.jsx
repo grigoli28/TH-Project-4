@@ -1,27 +1,58 @@
-import React from "react";
+import React, { Component } from "react";
+import axios from "axios";
+import { updateCart } from "../../actions/authActions";
+import { connect } from "react-redux";
+
 import CartItem from "./CartItem";
 import "./CartItemList.css";
 import isEmpty from "../../validation/is-empty";
 
-export default function CartItemList({ isLogged, items, removeItem }) {
-  return (
-    <ul className="cart__list">
-      {isLogged ? (
-        !isEmpty(items) ? (
-          items.map(({ id, name, price }) => (
-            <CartItem
-              removeItem={removeItem}
-              key={id}
-              title={name}
-              price={price}
-            />
-          ))
+class CartItemList extends Component {
+  removeItemFromCart = prodId => {
+    const id = this.props.userId;
+    const url = `http://localhost:5000/api/customers/${id}/cart/${prodId}`;
+
+    axios
+      .delete(url)
+      .then(({ data }) => {
+        console.log(data);
+        const url = `http://localhost:5000/api/customers/${id}/cart`;
+
+        axios
+          .get(url)
+          .then(({ data }) => this.props.updateCart(data))
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <ul className="cart__list">
+        {this.props.isLogged ? (
+          !isEmpty(this.props.items) ? (
+            this.props.items.map(({ id, name, price, gender }, ind) => (
+              <CartItem
+                removeItem={() => this.removeItemFromCart(id)}
+                key={`${id}:${ind}`}
+                title={name}
+                id={id}
+                gender={gender}
+                price={price}
+              />
+            ))
+          ) : (
+            <h1 className="cart-empty-msg">Cart is empty!</h1>
+          )
         ) : (
-          <h1 className="cart-empty-msg">Cart is empty!</h1>
-        )
-      ) : (
-        <h1 className="cart-empty-msg">Please, Log In!</h1>
-      )}
-    </ul>
-  );
+          <h1 className="cart-empty-msg">Please, Log In!</h1>
+        )}
+      </ul>
+    );
+  }
 }
+
+export default connect(
+  null,
+  { updateCart }
+)(CartItemList);
