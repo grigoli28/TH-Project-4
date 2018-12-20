@@ -1,14 +1,16 @@
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
-  margin-left: 80px;
-  margin-right: 30px;
+
+  border-top: 1px solid rgb(175, 172, 172);
+  margin-top: 20px;
 }
 .flex-container > div {
-  width: 250px;
-  margin: 10px;
+  width: 300px;
+  margin: 30px;
 
 }
+
 .footer-li,.footer-paragraph{
   color:gray;
   cursor: pointer;
@@ -23,5 +25,37 @@
 
 .footer-li:hover {
   color: rgb(197, 27, 27)
+}
+@media only screen and (max-width: 822px) {
+  .flex-container{
+    display:inherit;
+    background-color: rgb(48, 48, 48)
+  }
+  .footer-li,.footer-paragraph,.footer-text{
+    
+    text-align: center;
+    width: 350px;
+    margin-left: 120px;
+  }
+  .footer-text{
+    color: white
+  }
+}
+
+@media only screen and (max-width: 661px) {
+  .footer-li,.footer-paragraph,.footer-text{
+    
+    text-align: center;
+    width: 350px;
+    margin-left: 50px;
+  }
+}
+@media only screen and (max-width: 528px) {
+  .footer-li,.footer-paragraph,.footer-text{
+    
+    text-align: center;
+    width: 250px;
+    margin-left: 10px;
+  }
 }
 
