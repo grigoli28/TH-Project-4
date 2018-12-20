@@ -1,26 +1,25 @@
 import React from "react";
 import "./Customer.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 export default class CustomerDetails extends React.Component {
-  state = {
-    email: "ex@gmail.com",
-    date: "02.4.1999",
-    FullName: "so laop"
-  };
-
-  updateCustomers = () => {
-    const url = "/api/customers";
-    axios
-      .get(url)
-      .then(({ data }) => this.setState({ customers: data }))
-      .catch(err => console.log(err));
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      User: [],
+    };
+  }
   componentDidMount() {
-    this.updateCustomers();
+    fetch("/api/Customers")
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          User: json
+        });
+      });
   }
   render() {
+    let { User } = this.state;
     return (
       <div className="user-details">
         <Link to="../customers" className="arrow left" />
@@ -35,7 +34,6 @@ export default class CustomerDetails extends React.Component {
               type="text"
               required
               className="userinput"
-              defaultValue={this.state.customers}
             />
             <span className="userhighlight" />
             <span className="userbar" />
@@ -45,14 +43,19 @@ export default class CustomerDetails extends React.Component {
         <div className="user-info">
           <div className="user-personal-info">
             <p className="user-p">Email</p>
+
             <form>
               <div className="usergroup">
-                <input
-                  type="text"
-                  required
-                  className="userinput"
-                  defaultValue={this.state.email}
-                />
+                {User.map(User => (
+                  <input
+                    key={User.id}
+                    type="text"
+                    required
+                    className="userinput"
+                    defaultValue={User.email}
+                  />
+                ))}
+
                 <span className="userhighlight" />
                 <span className="userbar" />
                 {/* <label className="userlabel">Email</label> */}
@@ -64,12 +67,15 @@ export default class CustomerDetails extends React.Component {
             <p className="user-p">Birth Date</p>
             <form>
               <div className="usergroup">
-                <input
-                  type="text"
-                  required
-                  className="userinput"
-                  defaultValue={this.state.date}
-                />
+              {User.map(User => (
+                  <input
+                    key={User.id}
+                    type="text"
+                    required
+                    className="userinput"
+                    defaultValue={User.birthdate}
+                  />
+                ))}
                 <span className="userhighlight" />
                 <span className="userbar" />
                 {/* <label className="userlabel">Email</label> */}
@@ -80,12 +86,15 @@ export default class CustomerDetails extends React.Component {
             <p className="user-p">FullName</p>
             <form>
               <div className="usergroup">
-                <input
-                  type="text"
-                  required
-                  className="userinput"
-                  defaultValue={this.state.FullName}
-                />
+              {User.map(User => (
+                  <input
+                    key={User.id}
+                    type="text"
+                    required
+                    className="userinput"
+                    defaultValue={User.name}
+                  />
+                ))}
                 <span className="userhighlight" />
                 <span className="userbar" />
                 {/* <label className="userlabel">Email</label> */}
@@ -108,7 +117,9 @@ export default class CustomerDetails extends React.Component {
           </ul>
           <ul className="user-cart">
             <li className="user-cart-list">Users Cart</li>
-            <li className="user-cart-list">High quality Jacket, $2000, M, Nike</li>
+            <li className="user-cart-list">
+              High quality Jacket, $2000, M, Nike
+            </li>
             <li className="user-cart-list">Premium t-shirt, $1000, XL, Nike</li>
           </ul>
         </div>
