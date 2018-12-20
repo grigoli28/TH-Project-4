@@ -1,63 +1,90 @@
 import "./ProductDetails.css";
 import Shirt from "./t-shirt.jpg";
 import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import { updateCart } from "../../actions/authActions";
 
-export default class ProductDetails extends Component {
+class ProductDetails extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: "Premium t-shirt",
-      id: "e11a85f0-fd46-11e8-8fd8-897319b1388b",
-      name: "Premium t-shirt",
-      price: 1000,
-      size: "XL",
+      product: null,
     };
   }
+
+  fetchProduct = () => {
+    const id = this.props.match.url.split("/").slice(-1)[0];
+    const url = `http://localhost:5000/api/products/${id}`;
+    axios
+      .get(url)
+      .then(({ data }) => this.setState({ product: data }))
+      .catch(err => console.log(err));
+  };
+
+  addProductToCart = () => {
+    const { id } = this.props.user;
+    const url = `http://localhost:5000/api/customers/${id}/cart`;
+
+    // Add product in user cart
+    axios
+      .post(url, { id: this.state.product.id })
+      .then(() => {
+        // Get updated cart
+        axios
+          .get(url)
+          .then(({ data }) => this.props.updateCart(data))
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  };
+
+  componentDidMount() {
+    this.fetchProduct();
+  }
+
   render() {
     return (
       <div>
-        <img className="Detailimg" src={Shirt} alt="t-shirt" />
+        {this.state.product ? (
+          <div className="product-details-wrapper">
+            <div className="product-image-wrapper">
+              <img className="product-image" src={Shirt} alt="t-shirt" />
+            </div>
 
-        <div className="Detailrewiew">
-          <h2>{this.state.name}</h2>
-
-          <br />
-
-          <h3>{this.state.price}$</h3>
-
-          <br />
-
-          <div className="Detailsize">
-            <button className="Sizebut">S</button>
-            <button className="Sizebut">M</button>
-            <button className="Sizebut">L</button>
-            <button className="Sizebut">XL</button>
+            <div className="product-details">
+              <div className="product-name">{this.state.product.name}</div>
+              <div className="product-brand">{this.state.product.brand}</div>
+              <div className="product-size-wrapper">
+                <span className="product-size">{this.state.product.size}</span>
+              </div>
+              <div className="product-description-wrapper">
+                <div className="product-description-title">Description</div>
+                <p className="product-description">
+                  {this.state.product.description}
+                </p>
+              </div>
+              <div className="product-price">${this.state.product.price}</div>
+              <button
+                className="add-to-cart-btn"
+                onClick={this.addProductToCart}
+              >
+                Add To Cart
+              </button>
+            </div>
           </div>
-
-          <br />
-
-          <p>
-            some bullshit about how great this shirt is some bullshit about how
-            great this shirt is again some bullshit about how great this shirt
-            is again some bullshit about how great this shirt is again
-          </p>
-
-          <button
-            className="Purchasebut"
-            onClick={() =>
-              alert(
-                `added to cart: ${this.state.name}, ${this.state.price}$, ${
-                  this.state.size
-                }`
-              )
-            }
-          >
-            Add To Cart
-          </button>
-        </div>
-        <hr />
+        ) : (
+          <h1 className="no-product">Product Not Found!</h1>
+        )}
       </div>
     );
   }
 }
+
+const mapStateToProps = ({ auth }) => ({ user: auth.user });
+
+export default connect(
+  mapStateToProps,
+  { updateCart }
+)(ProductDetails);

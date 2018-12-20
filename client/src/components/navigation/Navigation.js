@@ -101,6 +101,7 @@ const Navigation = ({
           </span>
           {isLogged ? (
             <span
+              title="Log Out"
               onClick={() => {
                 localStorage.removeItem("_auth_user_");
                 logoutUser();
@@ -109,6 +110,7 @@ const Navigation = ({
             />
           ) : (
             <NavLink
+              title="Log In"
               to="/login"
               activeClassName="active-main-nav-link"
               className="aditional-nav__item"
@@ -146,7 +148,7 @@ const Navigation = ({
         <ul className="mobile-nav-menu">
           <span onClick={toggleMenu} className="menu-close lnr lnr-cross" />
           <li>
-            <div className="aditional-nav__item welcome-msg">
+            <div>
               Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
             </div>
           </li>
@@ -211,6 +213,7 @@ const Navigation = ({
             {isLogged ? (
               <div>
                 <span
+                  title="Log Out"
                   onClick={() => {
                     localStorage.removeItem("_auth_user_");
                     logoutUser();
@@ -221,9 +224,9 @@ const Navigation = ({
             ) : (
               <div>
                 <NavLink
+                  title="Log In"
                   to="/login"
                   activeClassName="active-main-nav-link"
-                  className="aditional-nav__item"
                 >
                   <span className="user-login lnr lnr-user" />
                 </NavLink>
