@@ -3,14 +3,14 @@ import React from "react";
 import Navigation from "../navigation/Navigation";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Footer from "../footer/Footer";
-import ProductDetails from "../productDetails/ProductDetails";
+import CheckoutCart from "../checkout/CheckoutCart";
 
-export default function ProductDetailsPage({ match }) {
+export default function CheckoutPage() {
   return (
     <div className="container">
       <Navigation />
       <ShoppingCart />
-      <ProductDetails match={match} />
+      <CheckoutCart />
       <Footer />
     </div>
   );
