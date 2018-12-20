@@ -146,7 +146,7 @@ const Navigation = ({
         <ul className="mobile-nav-menu">
           <span onClick={toggleMenu} className="menu-close lnr lnr-cross" />
           <li>
-            <div className="aditional-nav__item welcome-msg">
+            <div>
               Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
             </div>
           </li>
@@ -223,7 +223,7 @@ const Navigation = ({
                 <NavLink
                   to="/login"
                   activeClassName="active-main-nav-link"
-                  className="aditional-nav__item"
+                 
                 >
                   <span className="user-login lnr lnr-user" />
                 </NavLink>

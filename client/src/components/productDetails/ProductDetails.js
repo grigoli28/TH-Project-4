@@ -16,35 +16,27 @@ export default class ProductDetails extends Component {
   }
   render() {
     return (
-      <div>
-        <img className="Detailimg" src={Shirt} alt="t-shirt" />
+      <div className="product-details-wrapper">
+        <div className="product-image-wrapper">
+          <img className="product-image" src={Shirt} alt="t-shirt" />
+        </div>
 
-        <div className="Detailrewiew">
-          <h2>{this.state.name}</h2>
-
-          <br />
-
-          <h3>{this.state.price}$</h3>
-
-          <br />
-
-          <div className="Detailsize">
-            <button className="Sizebut">S</button>
-            <button className="Sizebut">M</button>
-            <button className="Sizebut">L</button>
-            <button className="Sizebut">XL</button>
+        <div className="product-details">
+          <div className="product-name">{this.state.name}</div>
+          <div className="product-price">{this.state.price}$</div>
+          <div className="product-size-wrapper">
+            <span className="product-size">{this.state.size}</span>
           </div>
-
-          <br />
-
-          <p>
-            some bullshit about how great this shirt is some bullshit about how
-            great this shirt is again some bullshit about how great this shirt
-            is again some bullshit about how great this shirt is again
-          </p>
-
+          <div className="product-description-wrapper">
+            <div className="product-description-title">Description</div>
+            <p className="product-description">
+              some bullshit about how great this shirt is some bullshit about
+              how great this shirt is again some bullshit about how great this
+              shirt is again some bullshit about how great this shirt is again
+            </p>
+          </div>
           <button
-            className="Purchasebut"
+            className="add-to-cart-btn"
             onClick={() =>
               alert(
                 `added to cart: ${this.state.name}, ${this.state.price}$, ${
@@ -56,7 +48,6 @@ export default class ProductDetails extends Component {
             Add To Cart
           </button>
         </div>
-        <hr />
       </div>
     );
   }
