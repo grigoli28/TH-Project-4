@@ -19,13 +19,16 @@
     "password": "3d2eec7de5790bfc6f2428d068d0f26e1ff19a4f88e1829f959c25aa05735926",
     "shoppingCart": [
       {
-        "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b"
+        "id": "e11a85f0-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 1
       },
       {
-        "id": "e792b650-fd46-11e8-8fd8-897319b1388b"
+        "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 2
       },
       {
-        "id": "ec181760-fd46-11e8-8fd8-897319b1388b"
+        "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 1
       }
     ],
     "purchasedProducts": []
@@ -41,13 +44,16 @@
     "shoppingCart": [],
     "purchasedProducts": [
       {
-        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b"
+        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 1
       },
       {
-        "id": "e792b650-fd46-11e8-8fd8-897319b1388b"
+        "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 1
       },
       {
-        "id": "ec181760-fd46-11e8-8fd8-897319b1388b"
+        "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 2
       }
     ]
   },
@@ -61,15 +67,18 @@
     "password": "b85863a1d233999d9439ba16a2b08b090cf958759b193f29995d137c9fa97f78",
     "shoppingCart": [
       {
-        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b"
+        "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 3
       }
     ],
     "purchasedProducts": [
       {
-        "id": "e792b650-fd46-11e8-8fd8-897319b1388b"
+        "id": "e792b650-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 2
       },
       {
-        "id": "ec181760-fd46-11e8-8fd8-897319b1388b"
+        "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 3
       }
     ]
   }
