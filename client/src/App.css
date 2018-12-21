@@ -33,8 +33,18 @@ button {
   outline: none;
 }
 
+/* for Chrome */
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 
-
+/* for Firefox */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
 
 .container {
   width: 90vw;

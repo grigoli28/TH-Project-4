@@ -9,7 +9,7 @@ import { toggleCart } from "../../actions/cartActions";
 
 function ShoppingCart({ toggleCart, visible, user, isLogged }) {
   const totalPrice = !isEmpty(user.cart)
-    ? user.cart.reduce((total, curr) => curr.price + total, 0)
+    ? user.cart.reduce((total, item) => total + item.price * item.quantity, 0)
     : 0;
 
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import "./CheckoutCartItem.css";
 import CheckoutCartItem from "./CheckoutCartItem";
 
-export default function CheckoutCartItemList({ items, remove }) {
+export default function CheckoutCartItemList({ user, items, remove }) {
   return (
     <ul>
       {items &&

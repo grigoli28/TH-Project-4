@@ -96,7 +96,9 @@ const Navigation = ({
             className="aditional-nav__item cart-btn lnr lnr-cart"
           >
             {user.cart && user.cart.length ? (
-              <span className="cart-notification">{user.cart.length}</span>
+              <span className="cart-notification">
+                {user.cart.reduce((total, item) => total + item.quantity, 0)}
+              </span>
             ) : null}
           </span>
           {isLogged ? (
@@ -137,7 +139,9 @@ const Navigation = ({
 
         <span onClick={toggleCart} className="cart-btn lnr lnr-cart">
           {user.cart && user.cart.length ? (
-            <span className="cart-notification">{user.cart.length}</span>
+            <span className="cart-notification">
+              {user.cart.reduce((total, item) => total + item.quantity, 0)}
+            </span>
           ) : null}
         </span>
         <div

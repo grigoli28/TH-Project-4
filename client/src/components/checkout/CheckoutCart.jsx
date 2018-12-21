@@ -13,7 +13,6 @@ class CheckoutCart extends Component {
     axios
       .delete(url)
       .then(({ data }) => {
-        console.log(data);
         const url = `http://localhost:5000/api/customers/${id}/cart`;
 
         axios
@@ -27,7 +26,11 @@ class CheckoutCart extends Component {
   render() {
     const { cart } = this.props.user;
     const totalCost =
-      cart && cart.reduce((total, item) => total + item.price, 0);
+      cart &&
+      cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+    const { balance } = this.props.user;
+    const difference = balance - totalCost;
 
     return (
       <div className="checkout">
@@ -55,9 +58,13 @@ class CheckoutCart extends Component {
           </div>
           <div className="checkout--balance--wrapper">
             <span>Your Balance:</span>
-            <span>${this.props.user.balance}</span>
+            <span>${balance}</span>
           </div>
-          <button className="checkout-cart-btn" type="button">
+          <button
+            className={`checkout-cart-btn ${difference < 0 ? "disabled" : ""}`}
+            title={`${difference < 0 ? "Insufficient Funds!" : ""}`}
+            type="button"
+          >
             Checkout
           </button>
         </div>

@@ -47,11 +47,12 @@ router.get("/:id/cart", (req, res) => {
   const customer = findOneById(id, CUSTOMERS);
   if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
 
-  const cart = customer.shoppingCart;
+  const { shoppingCart } = customer;
   let cartItems = [];
 
-  for (let { id } of cart) {
-    cartItems.push(findOneById(id, PRODUCTS));
+  for (let { id, quantity } of shoppingCart) {
+    const cartItem = { ...findOneById(id, PRODUCTS), quantity };
+    cartItems.push(cartItem);
   }
 
   res.json(cartItems);
@@ -67,7 +68,30 @@ router.post("/:id/cart", (req, res) => {
   // Product id
   const { id } = req.body;
   const { shoppingCart } = customer;
-  shoppingCart.push({ id });
+
+  // Find product if there is any with given id
+  const cartProduct = findOneById(id, shoppingCart);
+
+  if (cartProduct) cartProduct.quantity += 1;
+  else shoppingCart.push({ id, quantity: 1 });
+
+  res.json(shoppingCart);
+});
+
+// @route   PATCH api/customers/:id/cart
+router.patch("/:id/cart/:prodId", (req, res) => {
+  const { id, prodId } = req.params;
+
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
+
+  const { shoppingCart } = customer;
+
+  const product = findOneById(prodId, shoppingCart);
+  if (!product) return res.status(404).json({ product: "No such product" });
+
+  if (product.quantity == 1) findOneByIdAndRemove(prodId, shoppingCart);
+  else product.quantity -= 1;
 
   res.json(shoppingCart);
 });

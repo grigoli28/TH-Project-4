@@ -31,14 +31,11 @@ class CartItemList extends Component {
       <ul className="cart__list">
         {this.props.isLogged ? (
           !isEmpty(this.props.items) ? (
-            this.props.items.map(({ id, name, price, gender }, ind) => (
+            this.props.items.map((item, ind) => (
               <CartItem
-                removeItem={() => this.removeItemFromCart(id)}
-                key={`${id}:${ind}`}
-                title={name}
-                id={id}
-                gender={gender}
-                price={price}
+                removeItem={() => this.removeItemFromCart(item.id)}
+                key={`${item.id}:${ind}`}
+                item={item}
               />
             ))
           ) : (

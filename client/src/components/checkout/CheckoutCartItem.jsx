@@ -1,27 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { updateCart } from "../../actions/authActions";
+import { connect } from "react-redux";
+import axios from "axios";
 
 class CheckoutCartItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicks: 0,
-      show: true,
-      prise: 19,
-    };
-  }
+  increaseQuantity = () => {
+    const { id } = this.props.user;
+    const url = `http://localhost:5000/api/customers/${id}/cart`;
 
-  IncrementItem = () => {
-    this.setState({ clicks: this.state.clicks + 1 });
+    // Add product in user cart
+    axios
+      .post(url, { id: this.props.item.id })
+      .then(() => {
+        // Get updated cart
+        axios
+          .get(url)
+          .then(({ data }) => this.props.updateCart(data))
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   };
-  DecreaseItem = () => {
-    this.setState({ clicks: this.state.clicks - 1 });
-  };
-  ResultMinus = () => {
-    this.setState({ prise: this.state.prise - 19 });
-  };
-  ResultAdd = () => {
-    this.setState({ prise: this.state.prise + 19 });
+
+  decreaseQuantity = () => {
+    const { id } = this.props.user;
+    const prodId = this.props.item.id;
+    const url = `http://localhost:5000/api/customers/${id}/cart/${prodId}`;
+
+    axios
+      .patch(url)
+      .then(() => {
+        const url = `http://localhost:5000/api/customers/${id}/cart`;
+
+        axios
+          .get(url)
+          .then(({ data }) => this.props.updateCart(data))
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -42,28 +58,29 @@ class CheckoutCartItem extends React.Component {
 
         <div className="checkout__cart--price">${this.props.item.price}</div>
         <div className="checkout__cart--quantity">
-          <button
-            className="quantity-btn"
-            onClick={this.DecreaseItem && this.ResultMinus}
-          >
-            <i className="fas fa-minus" />
-          </button>
-          {this.state.show ? (
-            <h4 className="checkout__cart--amount">{this.state.clicks}</h4>
-          ) : (
-            ""
-          )}
-
-          <button
-            className="quantity-btn"
-            onClick={this.IncrementItem && this.ResultAdd}
-          >
+          <button className="quantity-btn" onClick={this.increaseQuantity}>
             <i className="fas fa-plus" />
           </button>
+          <span className="checkout__cart--amount">
+            {this.props.item.quantity}
+          </span>
+          <button className="quantity-btn" onClick={this.decreaseQuantity}>
+            <i className="fas fa-minus" />
+          </button>
         </div>
-        <div className="checkout__cart--price-total">${this.state.prise}</div>
+        <div className="checkout__cart--price-total">
+          ${this.props.item.price * this.props.item.quantity}
+        </div>
       </li>
     );
   }
 }
-export default CheckoutCartItem;
+
+const mapStateToProps = ({ auth }) => ({
+  user: auth.user,
+});
+
+export default connect(
+  mapStateToProps,
+  { updateCart }
+)(CheckoutCartItem);
