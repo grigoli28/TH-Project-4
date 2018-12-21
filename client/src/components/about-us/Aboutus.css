@@ -42,13 +42,15 @@
   font-family: "Poiret One", cursive;
   font-weight: bold;
   width: 500px;
+  
 }
+
 .main-content4 {
   background-image: url("boyimg.jpg");
   background-repeat: no-repeat, repeat;
   background-size: cover;
   height: 400px;
-  width: 640px;
+  width: 760px;
   margin-left: 100px;
 }
 
@@ -74,4 +76,87 @@
   color: aliceblue;
   font-size: 40px;
   line-height: 320px;
+}
+@media only screen and (max-width: 1066px) {
+  .about-main {
+    display: initial;
+  }
+  .main-content1 {
+    background-image: url("girlimg.jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  .main-content2 {
+    margin: 0 auto;
+    width: 550px;
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: "Poiret One", cursive;
+    font-weight: bold;
+  }
+  .about-main2 {
+    display: initial;
+    
+  }
+  .fashion-p {
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: "Poiret One", cursive;
+    font-weight: bold;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .main-content4 {
+    background-image: url("boyimg2.jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    height: 400px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top:40px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .main-content1 {
+    background-image: url("girlimg.jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    width: 370px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  .main-content2 {
+    margin: 0 auto;
+    width: 350px;
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: "Poiret One", cursive;
+    font-weight: bold;
+  }
+  .about-main2 {
+    display: initial;
+    
+  }
+  .fashion-p {
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: "Poiret One", cursive;
+    font-weight: bold;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .main-content4 {
+    background-image: url("boyimg2.jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    height: 400px;
+    width: 370px;
+    margin: 0 auto;
+    margin-top:40px;
+  }
 }
