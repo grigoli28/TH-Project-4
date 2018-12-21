@@ -175,7 +175,7 @@ router.post("/login", (req, res) => {
   if (!user || !passwordsMatch(password, user.password))
     return res.status(404).json({ login: "Username or Password Incorrect" });
 
-  const populated = populateObject(user, "id name isAdmin");
+  const populated = populateObject(user, "id name balance isAdmin");
 
   res.json({ ...populated });
 });

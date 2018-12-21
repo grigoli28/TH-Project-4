@@ -2,14 +2,17 @@ import React from "react";
 import "./CheckoutCartItem.css";
 import CheckoutCartItem from "./CheckoutCartItem";
 
-export default function CheckoutCartItemList() {
+export default function CheckoutCartItemList({ items, remove }) {
   return (
     <ul>
-      <CheckoutCartItem />
-      <CheckoutCartItem />
-      <CheckoutCartItem />
-      <CheckoutCartItem />
-      <CheckoutCartItem />
+      {items &&
+        items.map((item, ind) => (
+          <CheckoutCartItem
+            key={`${item.id}:${ind}`}
+            item={item}
+            remove={remove}
+          />
+        ))}
     </ul>
   );
 }

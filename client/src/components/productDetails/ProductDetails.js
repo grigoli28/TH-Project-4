@@ -50,7 +50,11 @@ class ProductDetails extends Component {
         {this.state.product ? (
           <div className="product-details-wrapper">
             <div className="product-image-wrapper">
-              <img className="product-image" src={Shirt} alt="t-shirt" />
+              <img
+                className="product-image"
+                src={Shirt}
+                alt="t-shirt"
+              />
             </div>
 
             <div className="product-details">

@@ -80,7 +80,7 @@ class Login extends Component {
         this.props.setCurrentUser(data);
 
         // Save registered  user
-        localStorage.setItem("_auth_user_", JSON.stringify(data));        
+        localStorage.setItem("_auth_user_", JSON.stringify(data));
       })
       .catch(err => this.props.getErrors(err.response.data));
   };

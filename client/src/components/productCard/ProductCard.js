@@ -8,13 +8,13 @@ const ProductCard = ({ prod, index, matchedUrl }) => {
       <div className="prod-img-wrapper">
         <img
           className="prod-img"
-          src={`https://source.unsplash.com/user/joelvalve/250x25${index}`}
+          src={`https://picsum.photos/250/30${index}`}
         />
-        <button className="prod-detail-btn" type="button">
+        <div className="prod-detail-btn">
           <Link className="prod-detail-link" to={`${matchedUrl}/${prod.id}`}>
             Details
           </Link>
-        </button>
+        </div>
       </div>
       <div className="prod-details">
         <div className="prod-detail prod-title">{prod.name}</div>
