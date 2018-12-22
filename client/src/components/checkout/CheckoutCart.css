@@ -86,3 +86,8 @@
 .checkout__cart--head > span:nth-child(2) {
   padding-left: 115px;
 }
+@media only screen and (max-width: 1042px) {
+  .checkout{
+    display: initial;
+  }
+}
