@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default class CustomerDetails extends React.Component {
   state = {
-    user: null
+    user: null,
   };
   componentDidMount() {
     const currentUser = this.props.match.params.prodId;
@@ -14,7 +14,8 @@ export default class CustomerDetails extends React.Component {
       .get(url)
       .then(({ data }) => {
         this.setState({
-          user: data
+          user: data,
+         
         });
       })
       .catch(err => console.log(err));
@@ -29,7 +30,6 @@ export default class CustomerDetails extends React.Component {
         </button>
         <div className="user-img" />
         <div className="user-name">UserName</div>
-        <form className="usernameform">
           <div className="usergroup userform">
             <input
               type="text"
@@ -38,10 +38,10 @@ export default class CustomerDetails extends React.Component {
               value={this.state.user && this.state.user.username}
             />
             <span className="userhighlight" />
+            
             <span className="userbar" />
             {/* <label className="userlabel">Email</label> */}
           </div>
-        </form>
         <div className="user-info">
           <div className="user-personal-info">
             <p className="user-p">Email</p>
@@ -97,7 +97,7 @@ export default class CustomerDetails extends React.Component {
           </div>
         </div>
         <div className="user-balance">
-          <p className="user-p ballance">Ballance</p>
+          <p className="ballance">Ballance</p>
           <span className="ballance-span">{this.state.user && this.state.user.balance}</span>
         </div>
         <div className="user-details-cart">
@@ -112,9 +112,10 @@ export default class CustomerDetails extends React.Component {
           <ul className="user-cart">
             <li className="user-cart-list">Users Cart</li>
             <li className="user-cart-list">
-              High quality Jacket, $2000, M, Nike
+              {/* High quality Jacket, $2000, M, Nike */}
+              {this.state.user && this.state.user.cart}
             </li>
-            <li className="user-cart-list">Premium t-shirt, $1000, XL, Nike</li>
+            {/* <li className="user-cart-list">Premium t-shirt, $1000, XL, Nike</li> */}
           </ul>
         </div>
         <br />
