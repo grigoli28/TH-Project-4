@@ -78,18 +78,18 @@ const Navigation = ({
         </span>
 
         <div className="aditional-nav">
+          <div className="aditional-nav__item search">
+            <input
+              className="search-input"
+              type="text"
+              placeholder="Search..."
+            />
+            <span
+              className="hidden-btn search-btn lnr lnr-magnifier"
+            />
+          </div>
           <div className="aditional-nav__item welcome-msg">
             Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
-          </div>
-          <div className="aditional-nav__item search">
-            <span className="search-btn lnr lnr-magnifier" />
-            <input
-              id="search"
-              className="search__input"
-              name="search"
-              placeholder="Search"
-              hidden
-            />
           </div>
           <span
             onClick={toggleCart}
@@ -204,9 +204,9 @@ const Navigation = ({
             </li>
           )}
           <li className="mobile-nav__item">
-            <label className="search-wrapper">
+            <label className="mobile-search-wrapper">
               <input
-                className="search__input"
+                className="mobile-search__input"
                 name="search"
                 placeholder="Search"
               />
