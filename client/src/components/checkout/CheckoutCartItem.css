@@ -93,3 +93,25 @@
   width: 40px;
   background-color: #ececec;
 }
+
+@media only screen and (max-width: 540px) {
+  .checkout__cart--item {
+    padding: 30px 15px 50px;
+  }
+  .checkout__cart--title {
+    
+    width: 150px;
+    font-size: 14px; 
+  }
+  .checkout__cart--price,
+  .checkout__cart--price-total {
+  font-size: 14px;
+  padding: 5px
+  }
+.checkout__cart--quantity {
+  
+  margin: 0 10px;
+  
+  
+  }
+}
