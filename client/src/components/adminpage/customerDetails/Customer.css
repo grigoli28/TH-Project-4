@@ -217,7 +217,14 @@ input:focus ~ .userhighlight {
     background: transparent;
   }
 }
-
+.cart-list{
+  color: white
+}
+.cart-list:hover{
+  color: rgb(3, 3, 3);
+  transition: all 300ms ease;
+  
+}
 .user-productlist {
   font-size: 15px;
   color: white;
@@ -248,13 +255,19 @@ input:focus ~ .userhighlight {
   display: flex;
   width: 850px;
 }
+.cart-list{
+  margin-top: 10px
+}
+.user-cart-lists{
+
+}
 .user-cart {
   text-align: center;
   font-size: 15px;
   color: white;
   list-style: none;
   margin-top: 50px;
-  margin-left: 400px;
+  margin-left: 270px;
   cursor: pointer;
 }
 .user-cart-list {
