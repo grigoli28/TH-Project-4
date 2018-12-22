@@ -7,7 +7,8 @@ export default class CustomerDetails extends React.Component {
   state = {
     user: null
   };
-  componentDidMount() {
+
+  getCurrentUser = () => {
     const currentUser = this.props.match.params.prodId;
     const url = `http://localhost:5000/api/customers/${currentUser}`;
     axios
@@ -18,9 +19,27 @@ export default class CustomerDetails extends React.Component {
         });
       })
       .catch(err => console.log(err));
+  };
+
+  getUserCart = () => {
+    const currentUser = this.props.match.params.prodId;
+    const url = `http://localhost:5000/api/customers/${currentUser}/cart`;
+    axios
+      .get(url)
+      .then(({ data }) => {
+        this.setState({
+          cart: data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  componentDidMount() {
+    this.getCurrentUser();
+    this.getUserCart();
   }
+
   render() {
-    // let { User } = this.state.user;
     return (
       <div className="user-details">
         <Link to="../customers" className="arrow left" />
@@ -29,19 +48,18 @@ export default class CustomerDetails extends React.Component {
         </button>
         <div className="user-img" />
         <div className="user-name">UserName</div>
-        <form className="usernameform">
-          <div className="usergroup userform">
-            <input
-              type="text"
-              required
-              className="userinput"
-              value={this.state.user && this.state.user.username}
-            />
-            <span className="userhighlight" />
-            <span className="userbar" />
-            {/* <label className="userlabel">Email</label> */}
-          </div>
-        </form>
+        <div className="usergroup userform">
+          <input
+            type="text"
+            required
+            className="userinput"
+            value={this.state.user && this.state.user.username}
+          />
+          <span className="userhighlight" />
+
+          <span className="userbar" />
+          {/* <label className="userlabel">Email</label> */}
+        </div>
         <div className="user-info">
           <div className="user-personal-info">
             <p className="user-p">Email</p>
@@ -97,8 +115,10 @@ export default class CustomerDetails extends React.Component {
           </div>
         </div>
         <div className="user-balance">
-          <p className="user-p ballance">Ballance</p>
-          <span className="ballance-span">{this.state.user && this.state.user.balance}</span>
+          <p className="ballance">Ballance</p>
+          <span className="ballance-span">
+            {this.state.user && this.state.user.balance}
+          </span>
         </div>
         <div className="user-details-cart">
           <ul className="user-productlist">
@@ -111,10 +131,15 @@ export default class CustomerDetails extends React.Component {
           </ul>
           <ul className="user-cart">
             <li className="user-cart-list">Users Cart</li>
-            <li className="user-cart-list">
-              High quality Jacket, $2000, M, Nike
+            <li className="user-cart-lists">
+              {this.state.cart &&
+                this.state.cart.map(prod => (
+                  <p className="cart-list">
+                    {prod.name}, ${prod.price},{prod.brand},{prod.category},
+                    {prod.size}
+                  </p>
+                ))}
             </li>
-            <li className="user-cart-list">Premium t-shirt, $1000, XL, Nike</li>
           </ul>
         </div>
         <br />

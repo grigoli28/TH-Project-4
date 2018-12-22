@@ -5,6 +5,8 @@ import Customers from "./customers/Customers";
 import Messages from "./messages/Messages";
 import Products from "./products/Products";
 import CustomerDetails from "./customerDetails/CustomerDetails";
+import CustomerMessage from "./customersMessage/CustomersMessage";
+import ProductDetails from "./productDetails/ProductDetails";
 
 const AdminPage = ({ match }) => {
   return (
@@ -58,7 +60,16 @@ const AdminPage = ({ match }) => {
         component={CustomerDetails}
       />
       <Route exact path={`${match.url}/messages`} component={Messages} />
+      <Route 
+        exact 
+        path={`${match.url}/messages/:prodId`} 
+        component={CustomerMessage} 
+      />
       <Route exact path={`${match.url}/products`} component={Products} />
+      <Route 
+        exact 
+        path={`${match.url}/products/:prodId`} 
+        component={ProductDetails} />
     </div>
   );
 };
