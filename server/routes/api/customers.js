@@ -116,11 +116,12 @@ router.get("/:id/purchased", (req, res) => {
   const customer = findOneById(id, CUSTOMERS);
   if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
 
-  const purchased = customer.purchasedProducts;
+  const { purchasedProducts } = customer;
   let purchasedItems = [];
 
-  for (let { id } of purchased) {
-    purchasedItems.push(findOneById(id, PRODUCTS));
+  for (let { id, quantity } of purchasedProducts) {
+    const purchased = { ...findOneById(id, PRODUCTS), quantity };
+    purchasedItems.push(purchased);
   }
 
   res.json(purchasedItems);
@@ -129,12 +130,18 @@ router.get("/:id/purchased", (req, res) => {
 // @route   POST api/customers/:id/purchased
 router.post("/:id/purchased", (req, res) => {
   const customerId = req.params.id;
+
   const customer = findOneById(customerId, CUSTOMERS);
   if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
 
   const { id } = req.body;
   const { purchasedProducts } = customer;
-  purchasedProducts.push({ id });
+
+  // Find product if there is any with given id
+  const purchasedProd = findOneById(id, purchasedProducts);
+
+  if (purchasedProd) purchasedProd.quantity += 1;
+  else purchasedProducts.push({ id, quantity: 1 });
 
   res.json(purchasedProducts);
 });
@@ -142,15 +149,19 @@ router.post("/:id/purchased", (req, res) => {
 // @route   DELETE api/customers/:id/purchased/:prod_id
 router.delete("/:id/purchased/:prodId", (req, res) => {
   const { id, prodId } = req.params;
+
   const customer = findOneById(id, CUSTOMERS);
   if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
 
   const { purchasedProducts } = customer;
-  const removedProd = findOneByIdAndRemove(prodId, purchasedProducts);
-  if (!removedProd)
-    return res.status(404).json({ product: "No such product in cart" });
 
-  res.json(removedProd);
+  const product = findOneById(prodId, purchasedProducts);
+  if (!product) return res.status(404).json({ product: "No such product" });
+
+  if (product.quantity == 1) findOneByIdAndRemove(prodId, purchasedProducts);
+  else product.quantity -= 1;
+
+  res.json(purchasedProducts);
 });
 
 // @route   POST api/customers

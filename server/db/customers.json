@@ -31,7 +31,13 @@
         "quantity": 1
       }
     ],
-    "purchasedProducts": []
+    "purchasedProducts": [
+      { "id": "f22773d0-fd46-8fd8-11e8-897319b1388b", "quantity": 2 },
+      {
+        "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 1
+      }
+    ]
   },
   {
     "id": "b6e266c0-fd4d-11e8-9e3a-aff3f90a1601",
@@ -41,7 +47,16 @@
     "birthdate": "1990-10-10",
     "username": "john",
     "password": "b85863a1d233999d9439ba16a2b08b090cf958759b193f29995d137c9fa97f78",
-    "shoppingCart": [],
+    "shoppingCart": [
+      {
+        "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 3
+      },
+      {
+        "id": "e792b650-fd46-11e8-8fd8-848659b1388b",
+        "quantity": 1
+      }
+    ],
     "purchasedProducts": [
       {
         "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
@@ -60,7 +75,7 @@
   {
     "id": "b6e266c0-11e8-fd4d-9e3a-aff3f90a1601",
     "name": "John Smith",
-    "email": "john@gmail.com",
+    "email": "johnsmith@gmail.com",
     "balance": "9000",
     "birthdate": "1990-05-23",
     "username": "johnsmith",
@@ -69,6 +84,10 @@
       {
         "id": "f22773d0-fd46-11e8-8fd8-897319b1388b",
         "quantity": 3
+      },
+      {
+        "id": "e11c59f0-fd46-11e8-8fd8-897319b1388b",
+        "quantity": 5
       }
     ],
     "purchasedProducts": [
