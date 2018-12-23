@@ -114,13 +114,13 @@
     background-image: url("boyimg2.jpg");
     background-repeat: no-repeat, repeat;
     background-size: cover;
-    height: 400px;
+    height: 300px;
     width: 500px;
     margin: 0 auto;
     margin-top:40px;
   }
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 767px) {
   .main-content1 {
     background-image: url("girlimg.jpg");
     background-repeat: no-repeat, repeat;

@@ -26,3 +26,10 @@
 .price-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .price-input {
+    width: 100px;
+  }
+}

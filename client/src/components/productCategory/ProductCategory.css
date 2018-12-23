@@ -3,3 +3,15 @@
   flex-flow: row nowrap;
   justify-content: space-between;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .product-category {
+    flex-flow: column;
+    flex-direction: column-reverse;
+  }
+
+
+
+  
+}
