@@ -81,3 +81,35 @@
 .add-to-cart-btn:hover {
   background-color: var(--hover-red);
 }
+
+@media only screen and (max-width: 767px) {
+  .product-details-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-image-wrapper {
+    flex: 0 1 100%;
+    width: 100%;
+    margin-top: 10%;
+  }
+
+  .product-image {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+
+  .product-details {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 50px;
+    margin-right: 100px;
+
+  }
+  
+
+}
