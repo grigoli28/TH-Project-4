@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-brand">
           <h4 className="footer-text">About Brand</h4>
           <p className="footer-paragraph">
-            Essence is stylish concept of nowadays fashion , limiited
+            Limited Edition is stylish concept of nowadays fashion , limiited
             collections from different designers and etc
           </p>
         </div>

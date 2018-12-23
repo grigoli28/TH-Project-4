@@ -33,10 +33,23 @@ export default class CustomerDetails extends React.Component {
       })
       .catch(err => console.log(err));
   };
+  getUserPurchasedProduct = () => {
+    const currentUser = this.props.match.params.prodId;
+    const url = `http://localhost:5000/api/customers/${currentUser}/purchased`;
+    axios
+      .get(url)
+      .then(({ data }) => {
+        this.setState({
+          purchased: data
+        });
+      })
+      .catch(err => console.log(err));
+  };
 
   componentDidMount() {
     this.getCurrentUser();
     this.getUserCart();
+    this.getUserPurchasedProduct();
   }
 
   render() {
@@ -123,11 +136,13 @@ export default class CustomerDetails extends React.Component {
         <div className="user-details-cart">
           <ul className="user-productlist">
             <li className="purchased-list">Purchased Products</li>
-            <li className="purchased-list">
-              Premium t-shirt, $1000, XL, Adidas
-            </li>
-            <li className="purchased-list">Leather pants, $4000, S, Nike</li>
-            <li className="purchased-list">Shorts, 3000, XL, Dolce</li>
+            {this.state.purchased &&
+              this.state.purchased.map(prod => (
+                <p className="cart-list">
+                  {prod.name}, ${prod.price},{prod.brand},{prod.category},
+                  {prod.size}
+                </p>
+              ))}
           </ul>
           <ul className="user-cart">
             <li className="user-cart-list">Users Cart</li>
