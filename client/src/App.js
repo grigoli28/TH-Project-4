@@ -15,6 +15,7 @@ import LoginPage from "./components/pages/LoginPage";
 import ProductDetailPage from "./components/pages/ProductDetailPage";
 import AboutPage from "./components/pages/AboutPage";
 import CheckoutPage from "./components/pages/CheckoutPage";
+import PurchasedPage from "./components/pages/PurchasedPage";
 
 if (localStorage._auth_user_) {
   const user = JSON.parse(localStorage._auth_user_);
@@ -50,6 +51,7 @@ const App = ({ isLogged, user }) => {
           <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
+          <Route exact path="/purchased" component={PurchasedPage} />
           <Route
             path="/admin"
             render={({ match }) =>

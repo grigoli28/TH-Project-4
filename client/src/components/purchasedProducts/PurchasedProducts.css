@@ -1,0 +1,12 @@
+.purchased-products {
+  padding: 50px;
+}
+
+.purchased-products--head {
+  border: 1px solid lightgrey;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+}

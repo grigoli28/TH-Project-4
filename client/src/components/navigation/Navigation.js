@@ -54,6 +54,7 @@ const Navigation = ({
               Contact
             </NavLink>
           </li>
+
           {isLogged && user.isAdmin && (
             <li className="main-nav__item">
               <NavLink
@@ -84,9 +85,7 @@ const Navigation = ({
               type="text"
               placeholder="Search..."
             />
-            <span
-              className="hidden-btn search-btn lnr lnr-magnifier"
-            />
+            <span className="hidden-btn search-btn lnr lnr-magnifier" />
           </div>
           <div className="aditional-nav__item welcome-msg">
             Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
@@ -101,6 +100,16 @@ const Navigation = ({
               </span>
             ) : null}
           </span>
+          {isLogged && (
+            <NavLink
+              title="Purchase History"
+              activeClassName="active-main-nav-link"
+              to="/purchased"
+              className="aditional-nav__item"
+            >
+              <span className="purchase-history lnr lnr-history" />
+            </NavLink>
+          )}
           {isLogged ? (
             <span
               title="Log Out"
@@ -192,6 +201,18 @@ const Navigation = ({
               Contact
             </NavLink>
           </li>
+          {isLogged && (
+            <li className="mobile-nav__item">
+              <NavLink
+                title="Purchase History"
+                activeClassName="active-main-nav-link"
+                to="/purchased"
+                className="mobile-nav__link"
+              >
+                Purchase History
+              </NavLink>
+            </li>
+          )}
           {isLogged && user.isAdmin && (
             <li className="mobile-nav__item">
               <NavLink
