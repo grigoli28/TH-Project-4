@@ -219,6 +219,7 @@ input:focus ~ .userhighlight {
 }
 .cart-list {
   color: white;
+  cursor: pointer;
 }
 .cart-list:hover {
   color: rgb(3, 3, 3);
@@ -231,6 +232,9 @@ input:focus ~ .userhighlight {
   margin-top: 50px;
   text-align: center;
   margin-left: 5px;
+}
+.purchased-list{
+  cursor: pointer;
 }
 .purchased-list:nth-child(1) {
   color: rgb(206, 206, 206);

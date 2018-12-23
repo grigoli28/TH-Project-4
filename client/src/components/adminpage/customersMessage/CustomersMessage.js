@@ -29,7 +29,7 @@ export default class CustomerMessages extends React.Component {
           <p className="usermsg">{this.state.user && this.state.user.email}</p>
         </div>
 
-        <p className="user-message" />
+        <p className="user-message" >{this.state.user && this.state.user.message}</p>
       </div>
     );
   }
