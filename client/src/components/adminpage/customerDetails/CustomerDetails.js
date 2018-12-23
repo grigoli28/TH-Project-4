@@ -4,26 +4,27 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class CustomerDetails extends React.Component {
-  state = {
-    user: null,
-  };
+  constructor(props) {
+    super(props);
 
-  onInputChange = ({ target }) => {
-    const { name, value } = target;
+    this.state = {
+      user: null,
+    };
 
-    this.setState(({ user }) => ({
-      user: {
-        ...user,
-        [name]: value,
-      },
-    }));
-  };
+    this.nameInput = React.createRef();
+    this.emailInput = React.createRef();
+    this.usernameInput = React.createRef();
+    this.birthdateInput = React.createRef();
+  }
 
   updateUser = () => {
     const currentUser = this.props.match.params.prodId;
     const url = `http://localhost:5000/api/customers/${currentUser}`;
 
-    const { name, email, username, birthdate } = this.state.user;
+    const name = this.nameInput.current.value;
+    const email = this.emailInput.current.value;
+    const username = this.usernameInput.current.value;
+    const birthdate = this.birthdateInput.current.value;
 
     axios
       .put(url, { name, email, username, birthdate })
@@ -73,106 +74,83 @@ export default class CustomerDetails extends React.Component {
   render() {
     return (
       <div className="user-details">
-        <Link to="../customers" className="arrow left" />
-        <button onClick={this.updateUser} className="user-btn" type="button">
-          Update User
-        </button>
-        <div className="user-img" />
-        <div className="user-name">Name</div>
-        <div className="usergroup userform">
-          <input
-            name="name"
-            type="text"
-            className="userinput"
-            onChange={this.onInputChange}
-            value={this.state.user ? this.state.user.name : ""}
-          />
-          <span className="userhighlight" />
-
-          <span className="userbar" />
+        <div className="button-wrapper">
+          <Link to="../customers" className="arrow left" />
+          <button onClick={this.updateUser} className="user-btn" type="button">
+            Update User
+          </button>
         </div>
-        <div className="user-info">
+        <div className="user-detail-wrapper">
+          <div className="user-img" />
           <div className="user-personal-info">
-            <p className="user-p">Email</p>
-
-            <form>
-              <div className="usergroup">
-                <input
-                  name="email"
-                  type="text"
-                  className="userinput"
-                  onChange={this.onInputChange}
-                  value={this.state.user ? this.state.user.email : ""}
-                />
-
-                <span className="userhighlight" />
-                <span className="userbar" />
-              </div>
-            </form>
+            <div className="user-name">Name</div>
+            <input
+              ref={this.nameInput}
+              name="name"
+              type="text"
+              className="userinput"
+              defaultValue={this.state.user && this.state.user.name}
+            />
           </div>
+          <div className="user-info">
+            <div className="user-personal-info">
+              <p className="user-p">Email</p>
 
-          <div className="user-personal-info">
-            <p className="user-p">Birthdate</p>
-            <form>
-              <div className="usergroup">
-                <input
-                  name="birthdate"
-                  type="date"
-                  className="userinput"
-                  onChange={this.onInputChange}
-                  value={this.state.user ? this.state.user.birthdate : ""}
-                />
-                <span className="userhighlight" />
-                <span className="userbar" />
-              </div>
-            </form>
-          </div>
-          <div className="user-personal-info">
-            <p className="user-p">Username</p>
-            <form>
-              <div className="usergroup">
-                <input
-                  name="username"
-                  type="text"
-                  className="userinput"
-                  onChange={this.onInputChange}
-                  value={this.state.user ? this.state.user.username : ""}
-                />
+              <input
+                ref={this.emailInput}
+                name="email"
+                type="text"
+                className="userinput"
+                defaultValue={this.state.user && this.state.user.email}
+              />
+            </div>
 
-                <span className="userhighlight" />
-                <span className="userbar" />
-              </div>
-            </form>
+            <div className="user-personal-info">
+              <p className="user-p">Birthdate</p>
+              <input
+                ref={this.birthdateInput}
+                name="birthdate"
+                type="date"
+                className="userinput"
+                defaultValue={this.state.user && this.state.user.birthdate}
+              />
+            </div>
+            <div className="user-personal-info">
+              <p className="user-p">Username</p>
+              <input
+                ref={this.usernameInput}
+                name="username"
+                type="text"
+                className="userinput"
+                defaultValue={this.state.user && this.state.user.username}
+              />
+            </div>
           </div>
-        </div>
-        <div className="user-balance">
-          <p className="ballance">Balance</p>
-          <span className="ballance-span">
-            {this.state.user && this.state.user.balance}
-          </span>
+          <div className="user-balance">
+            <p className="ballance">Balance</p>
+            <span className="ballance-span">
+              {this.state.user && this.state.user.balance}
+            </span>
+          </div>
         </div>
         <div className="user-details-cart">
-          <ul className="user-productlist">
-            <li className="purchased-list">Purchased Products</li>
-            {this.state.purchased &&
-              this.state.purchased.map(prod => (
-                <p key={prod.id} className="cart-list">
-                  {prod.name}, ${prod.price},{prod.brand},{prod.category},
-                  {prod.size}
-                </p>
+          <ul className="user-cartlist">
+            <li className="user-cartlist__title">Shopping Cart</li>
+            {this.state.cart &&
+              this.state.cart.map((prod, ind) => (
+                <li key={`${prod.id}:${ind}`} className="user-cartlist__item">
+                  {prod.brand} {prod.name}, ${prod.price}
+                </li>
               ))}
           </ul>
-          <ul className="user-cart">
-            <li className="user-cart-list">Shopping Cart</li>
-            <li className="user-cart-lists">
-              {this.state.cart &&
-                this.state.cart.map(prod => (
-                  <p key={prod.id} className="cart-list">
-                    {prod.name}, ${prod.price},{prod.brand},{prod.category},
-                    {prod.size}
-                  </p>
-                ))}
-            </li>
+          <ul className="user-productlist">
+            <li className="user-cartlist__title">Purchased Products</li>
+            {this.state.purchased &&
+              this.state.purchased.map((prod, ind) => (
+                <li key={`${prod.id}:${ind}`} className="user-cartlist__item">
+                  {prod.brand} {prod.name}, ${prod.price}
+                </li>
+              ))}
           </ul>
         </div>
         <br />

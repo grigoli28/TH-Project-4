@@ -6,6 +6,7 @@ import Table from "../../table/Table";
 export default class Messages extends Component {
   state = {
     messages: null,
+    loading: false,
   };
 
   updateMessages = () => {
@@ -17,12 +18,15 @@ export default class Messages extends Component {
   };
 
   removeMessage = id => {
+    this.setState({ loading: true });
     const url = `/api/admin/messages/${id}`;
     axios
       .delete(url)
       .then(res => {
-        alert("Message Removed");
         this.updateMessages();
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 1000);
       })
       .catch(err => console.log(err));
   };
@@ -38,6 +42,7 @@ export default class Messages extends Component {
         tHeads={["email", "date"]}
         remove={this.removeMessage}
         match={this.props.match}
+        loading={this.state.loading}
       />
     );
   }

@@ -187,3 +187,19 @@
     width: 100% !important;
   }
 }
+
+.loading-msg::before {
+  margin-right: 5px;
+}
+
+.loading-msg {
+  opacity: 0;
+  visibility: hidden;
+  color: #c0ff7d;
+  transition: all 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.loading-msg-visible {
+  opacity: 1;
+  visibility: visible;
+}

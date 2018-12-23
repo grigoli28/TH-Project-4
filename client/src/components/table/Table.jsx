@@ -28,7 +28,7 @@ const TableRow = ({ id, titles, tDatas, remove, match }) => {
   );
 };
 
-const Table = ({ items, tHeads, remove, match }) => {
+const Table = ({ items, tHeads, remove, match, loading }) => {
   return (
     <div className="limiter">
       <div className="container-table100">
@@ -41,7 +41,14 @@ const Table = ({ items, tHeads, remove, match }) => {
                 </div>
               ))}
               <div className="cell" />
-              <div className="cell" />
+              <div className="cell">
+                <span
+                  className={`${loading &&
+                    "loading-msg-visible"} loading-msg lnr lnr-checkmark-circle`}
+                >
+                  Removed
+                </span>
+              </div>
             </div>
 
             {items &&

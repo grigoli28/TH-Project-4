@@ -57,8 +57,19 @@ router.delete("/:id", (req, res) => {
 // @desc    Update product
 // @access  Public
 router.put("/:id", (req, res) => {
-  // TODO
-  res.send("Test");
+  const { id } = req.params;
+  const { name, price, brand, size, category } = req.body;
+
+  const product = findOneById(id, PRODUCTS);
+  if (!product) return res.status(404).json({ product: "No such product" });
+
+  product.name = name;
+  product.brand = brand;
+  product.price = price;
+  product.size = size;
+  product.category = category;
+
+  res.json(product);
 });
 
 function filterMiddleware(req, res, next) {

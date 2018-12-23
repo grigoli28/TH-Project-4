@@ -4,35 +4,124 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class ProductDetails extends React.Component {
-  state = {
-    Product: null
+  constructor(props) {
+    super(props);
+
+    this.nameInput = React.createRef();
+    this.priceInput = React.createRef();
+    this.sizeInput = React.createRef();
+    this.genderInput = React.createRef();
+    this.categoryInput = React.createRef();
+    this.brandInput = React.createRef();
+
+    this.state = {
+      product: null,
+    };
+  }
+
+  updateProduct = () => {
+    const { prodId } = this.props.match.params;
+    const url = `http://localhost:5000/api/products/${prodId}`;
+
+    const name = this.nameInput.current.value;
+    const price = this.priceInput.current.value;
+    const size = this.sizeInput.current.value;
+    const category = this.categoryInput.current.value;
+    const brand = this.brandInput.current.value;
+
+    axios
+      .put(url, { name, price, size, category, brand })
+      .then(({ data }) => this.setState({ product: data }))
+      .catch(err => console.log(err));
   };
+
   componentDidMount() {
-    const currentProduct = this.props.match.params.prodId;
-    const url = `http://localhost:5000/api/products/${currentProduct}`;
+    const { prodId } = this.props.match.params;
+    const url = `http://localhost:5000/api/products/${prodId}`;
     axios
       .get(url)
-      .then(({ data }) => {
+      .then(({ data }) =>
         this.setState({
-          Product: data
-        });
-      })
+          product: data,
+        })
+      )
       .catch(err => console.log(err));
   }
+
   render() {
-    // let { Product } = this.state.Product;
     return (
-      <div className="res-messages">
-        <Link to="../messages" className="arrow left" />
+      <div className="res-product">
+        <div className="product-btn-wrapper">
+          <Link to="../messages" className="arrow left" />
+          <button
+            onClick={this.updateProduct}
+            className="product-btn"
+            type="button"
+          >
+            Update Product
+          </button>
+        </div>
         <div className="product-img" />
         <ul className="product-details-list">
-            <li className="product-details-li">Name: <span>{this.state.Product && this.state.Product.name}</span></li>
-            <li className="product-details-li">Price: <span>{this.state.Product && this.state.Product.price} </span></li>
-            <li className="product-details-li">Size: <span>{this.state.Product && this.state.Product.size}</span></li>
-            <li className="product-details-li">Category: <span>{this.state.Product && this.state.Product.category}</span></li>
-            <li className="product-details-li">Brand: <span>{this.state.Product && this.state.Product.brand}</span></li>
-        </ul>
+          <li className="product-details-li">
+            <div className="product-input-wrapper">
+              <div>Name</div>
+              <input
+                ref={this.nameInput}
+                name="name"
+                className="product-details-input"
+                defaultValue={this.state.product && this.state.product.name}
+              />
+            </div>
+          </li>
+          <li className="product-details-li">
+            <div className="product-input-wrapper">
+              <div>Size</div>
+              <input
+                ref={this.sizeInput}
+                name="size"
+                className="product-details-input"
+                defaultValue={this.state.product && this.state.product.size}
+              />
+            </div>
+          </li>
 
+          <li className="product-details-li">
+            <div className="product-input-wrapper">
+              <div>Brand</div>
+              <input
+                ref={this.brandInput}
+                name="brand"
+                className="product-details-input"
+                defaultValue={this.state.product && this.state.product.brand}
+              />
+            </div>
+          </li>
+
+          <li className="product-details-li">
+            <div className="product-input-wrapper">
+              <div>Price</div>
+              <input
+                ref={this.priceInput}
+                name="price"
+                className="product-details-input"
+                defaultValue={this.state.product && this.state.product.price}
+              />
+            </div>
+          </li>
+
+          <li className="product-details-li">
+            <div className="product-input-wrapper">
+              <div>Category</div>
+              <input
+                ref={this.categoryInput}
+                name="category"
+                className="product-details-input"
+                defaultValue={this.state.product && this.state.product.category}
+              />
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }

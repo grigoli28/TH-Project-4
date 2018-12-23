@@ -17,12 +17,15 @@ export default class Products extends Component {
   };
 
   removeProduct = id => {
+    this.setState({ loading: true });
     const url = `/api/products/${id}`;
     axios
       .delete(url)
       .then(res => {
-        alert("Product Removed");
         this.updateProducts();
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 1000);
       })
       .catch(err => console.log(err));
   };
@@ -38,6 +41,7 @@ export default class Products extends Component {
         tHeads={["name", "price", "size", "brand", "category"]}
         remove={this.removeProduct}
         match={this.props.match}
+        loading={this.state.loading}
       />
     );
   }

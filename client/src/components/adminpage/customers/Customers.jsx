@@ -6,6 +6,7 @@ import Table from "../../table/Table";
 export default class Customers extends Component {
   state = {
     customers: null,
+    loading: false,
   };
 
   updateCustomers = () => {
@@ -17,12 +18,15 @@ export default class Customers extends Component {
   };
 
   removeCustomer = id => {
+    this.setState({ loading: true });
     const url = `/api/customers/${id}`;
     axios
       .delete(url)
       .then(res => {
-        alert("Customer Removed");
         this.updateCustomers();
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 1000);
       })
       .catch(err => console.log(err));
   };
@@ -38,6 +42,7 @@ export default class Customers extends Component {
         tHeads={["name", "email", "balance"]}
         remove={this.removeCustomer}
         match={this.props.match}
+        loading={this.state.loading}
       />
     );
   }

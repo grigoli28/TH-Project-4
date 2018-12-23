@@ -5,31 +5,36 @@ import axios from "axios";
 
 export default class CustomerMessages extends React.Component {
   state = {
-    user: null
+    message: null,
   };
   componentDidMount() {
-    const currentUser = this.props.match.params.prodId;
-    const url = `http://localhost:5000/api/admin/messages/${currentUser}`;
+    const messageid = this.props.match.params.prodId;
+    const url = `http://localhost:5000/api/admin/messages/${messageid}`;
     axios
       .get(url)
       .then(({ data }) => {
         this.setState({
-          user: data
+          message: data,
         });
       })
       .catch(err => console.log(err));
   }
   render() {
-    // let { User } = this.state.user;
     return (
       <div className="res-messages">
         <Link to="../messages" className="arrow left" />
-        <div className="user-img" />
-        <div className="user-name">
-          <p className="usermsg">{this.state.user && this.state.user.email}</p>
+        <div className="msg-sender-wrapper">
+          <span className="msg-from">From:</span>
+          <span className="msg-from-email">
+            {this.state.message && this.state.message.email}
+          </span>
         </div>
 
-        <p className="user-message" >{this.state.user && this.state.user.message}</p>
+        <div className="user-message-wrapper">
+          <p className="user-message">
+            {this.state.message && this.state.message.message}
+          </p>
+        </div>
       </div>
     );
   }
