@@ -149,7 +149,7 @@ input:focus {
 .userbar {
   position: relative;
   display: block;
-  width: 300px;
+  width: 450px;
 }
 
 .userbar:before,
@@ -217,13 +217,12 @@ input:focus ~ .userhighlight {
     background: transparent;
   }
 }
-.cart-list{
-  color: white
+.cart-list {
+  color: white;
 }
-.cart-list:hover{
+.cart-list:hover {
   color: rgb(3, 3, 3);
   transition: all 300ms ease;
-  
 }
 .user-productlist {
   font-size: 15px;
@@ -255,12 +254,10 @@ input:focus ~ .userhighlight {
   display: flex;
   width: 850px;
 }
-.cart-list{
-  margin-top: 10px
+.cart-list {
+  margin-top: 10px;
 }
-.user-cart-lists{
 
-}
 .user-cart {
   text-align: center;
   font-size: 15px;
