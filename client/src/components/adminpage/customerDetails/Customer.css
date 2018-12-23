@@ -157,7 +157,7 @@ input:focus {
   content: "";
   height: 2px;
   width: 0;
-  bottom: 1px;
+  bottom: 0;
   position: absolute;
   background: rgb(255, 255, 255);
   transition: 0.2s ease all;
@@ -181,12 +181,6 @@ input:focus ~ .userbar:after {
   left: 0;
   pointer-events: none;
   opacity: 0.5;
-}
-
-input:focus ~ .userhighlight {
-  -webkit-animation: inputHighlighter 0.3s ease;
-  -moz-animation: inputHighlighter 0.3s ease;
-  animation: inputHighlighter 0.3s ease;
 }
 
 /* ANIMATIONS ================ */
@@ -233,7 +227,7 @@ input:focus ~ .userhighlight {
   text-align: center;
   margin-left: 5px;
 }
-.purchased-list{
+.purchased-list {
   cursor: pointer;
 }
 .purchased-list:nth-child(1) {

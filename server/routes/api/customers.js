@@ -219,8 +219,18 @@ router.post("/login", (req, res) => {
 // @desc    Update customer
 // @access  Private (only admin)
 router.put("/:id", (req, res) => {
-  // TODO
-  res.send("Test");
+  const { id } = req.params;
+  const { name, username, email, birthdate } = req.body;
+
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No such customer" });
+
+  customer.name = name;
+  customer.email = email;
+  customer.username = username;
+  customer.birthdate = birthdate;
+
+  res.json(customer);
 });
 
 module.exports = router;
