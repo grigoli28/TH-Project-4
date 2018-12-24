@@ -9,6 +9,7 @@
     "react": "^16.6.3",
     "react-coverflow": "^0.2.17",
     "react-dom": "^16.6.3",
+    "react-image-carousel": "^2.0.18",
     "react-mdl": "^1.11.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
