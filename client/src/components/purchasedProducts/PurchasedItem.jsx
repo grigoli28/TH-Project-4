@@ -4,7 +4,7 @@ import React from "react";
 const PurchasedItem = ({ item }) => (
   <li className="checkout__cart--item">
     <span className="checkout__cart--img lnr lnr-cross">
-      <img src="" alt="" />
+      <img src={item.image} alt="" />
     </span>
     <Link to={`/${item.gender}/${item.id}`} className="checkout__cart--title">
       {item.name}

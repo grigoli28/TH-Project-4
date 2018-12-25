@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Aboutus.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Aboutus extends Component {
   render() {

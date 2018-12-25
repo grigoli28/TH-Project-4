@@ -7,7 +7,7 @@ export default function CartItem({ item, removeItem }) {
   return (
     <li className="cart__item">
       <span onClick={removeItem} className="cart__item--img lnr lnr-cross">
-        <img src="" alt="" />
+        <img src={item.image} alt="Product" />
       </span>
       <div className="cart__item--details">
         <Link

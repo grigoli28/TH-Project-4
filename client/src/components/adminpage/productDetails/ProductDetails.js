@@ -61,7 +61,13 @@ export default class ProductDetails extends React.Component {
             Update Product
           </button>
         </div>
-        <div className="product-img" />
+        <div className="product-img-wrapper">
+          <img
+            src={this.state.product && this.state.product.image}
+            alt="Product"
+            className="product-img"
+          />
+        </div>
         <ul className="product-details-list">
           <li className="product-details-li">
             <div className="product-input-wrapper">

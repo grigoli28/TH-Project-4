@@ -31,6 +31,7 @@ class CheckoutCart extends Component {
 
     const { balance } = this.props.user;
     const difference = balance - totalCost;
+    console.log(this.props.user)
 
     return (
       <div className="checkout">

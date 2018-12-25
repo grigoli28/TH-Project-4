@@ -10,6 +10,7 @@
 .prod-img-wrapper {
   position: relative;
   overflow: hidden;
+  max-height: 200px;
 }
 
 .prod-img {
