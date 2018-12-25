@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
 
-const ProductCard = ({ prod, index, matchedUrl }) => {
+const ProductCard = ({ prod, matchedUrl }) => {
   return (
     <div className="prod-card">
       <div className="prod-img-wrapper">
         <img
           className="prod-img"
-          src={`https://picsum.photos/250/30${index}`}
+          src={prod.image}
+          alt="Product"
         />
         <div className="prod-detail-btn">
           <Link className="prod-detail-link" to={`${matchedUrl}/${prod.id}`}>

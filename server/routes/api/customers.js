@@ -175,7 +175,7 @@ router.post("/", (req, res) => {
     id: uuidv1(),
     name: req.body.name,
     email: req.body.email,
-    balance: req.body.balance,
+    balance: Number(req.body.balance),
     birthdate: req.body.birthdate,
     username: req.body.username,
     password: encrypt(req.body.password),
@@ -185,7 +185,7 @@ router.post("/", (req, res) => {
   CUSTOMERS.push(newCustomer);
 
   // Get only certain details of customer
-  const populated = populateObject(newCustomer, "id name");
+  const populated = populateObject(newCustomer, "id name balance");
   res.json(populated);
 });
 

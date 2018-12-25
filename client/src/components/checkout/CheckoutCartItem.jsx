@@ -47,7 +47,7 @@ class CheckoutCartItem extends React.Component {
           onClick={() => this.props.remove(this.props.item.id)}
           className="checkout__cart--img lnr lnr-cross"
         >
-          <img src="" alt="" />
+          <img src={this.props.item.image} alt="Product" />
         </span>
         <Link
           to={`/${this.props.item.gender}/${this.props.item.id}`}

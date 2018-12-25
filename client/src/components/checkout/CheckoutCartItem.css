@@ -12,6 +12,7 @@
   height: 80px;
   margin-right: 20px;
   position: relative;
+  display: flex;
 }
 
 .checkout__cart--img::before {

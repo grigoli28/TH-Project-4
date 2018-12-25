@@ -1,5 +1,4 @@
 import "./ProductDetails.css";
-import Shirt from "./t-shirt.jpg";
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -52,8 +51,8 @@ class ProductDetails extends Component {
             <div className="product-image-wrapper">
               <img
                 className="product-image"
-                src={Shirt}
-                alt="t-shirt"
+                src={this.state.product.image}
+                alt="Product"
               />
             </div>
 
