@@ -7,10 +7,12 @@ import Products from "./products/Products";
 import CustomerDetails from "./customerDetails/CustomerDetails";
 import CustomerMessage from "./customersMessage/CustomersMessage";
 import ProductDetails from "./productDetails/ProductDetails";
+import AddProduct from "./addProduct/AddProduct"
 
 const AdminPage = ({ match }) => {
   return (
     <div className="container">
+    <AddProduct/>
       <nav>
         <ul className="admin-nav">
           <li className="admin-nav__item">
