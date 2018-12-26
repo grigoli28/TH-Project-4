@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./PurchasedProducts.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import PurchasedItem from "./PurchasedItem";
+import "./PurchasedProducts.css";
 
 class PurchasedProducts extends Component {
   state = {
@@ -32,7 +32,7 @@ class PurchasedProducts extends Component {
           <span>QUANTITY</span>
           <span>TOTAL</span>
         </div>
-        <ul>
+        <ul className="purchased-products-list">
           {this.state.purchased &&
             this.state.purchased.map((item, ind) => (
               <PurchasedItem key={`${item.id}:${ind}`} item={item} />

@@ -74,3 +74,36 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media only screen and (max-width: 1100px) {
+  .prod-card {
+    flex-basis: calc(100% / 3);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .prod-card {
+    flex-basis: calc(100% / 2);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .prod-card {
+    flex-basis: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 50px;
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+  .prod-card {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .prod-img-wrapper {
+    min-height: 300px;
+  }  
+}

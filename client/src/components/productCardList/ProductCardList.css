@@ -16,11 +16,4 @@
 
 
 @media only screen and (max-width: 768px) {
-  .product-list {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    flex-grow: 1;
-
-  }
 }

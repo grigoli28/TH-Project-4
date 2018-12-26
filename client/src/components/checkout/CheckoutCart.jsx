@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./CheckoutCart.css";
 import CheckoutCartItemList from "./CheckoutCartItemList";
 import { updateCart } from "../../actions/authActions";
+import "./CheckoutCart.css";
 import axios from "axios";
 
 class CheckoutCart extends Component {
