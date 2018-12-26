@@ -1,6 +1,6 @@
 .add-product {
   border: 1px solid rgb(187, 182, 182);
-  margin: 0 auto;
+  margin: 30px auto;
   color: #fff;
   background: none;
   background: var(--hover-red);
@@ -11,5 +11,48 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  width: 800px
+  width: 800px;
+}
+
+.gender-select-input {
+  padding: 5px 10px;
+  margin: 10px;
+  background: none;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.gender-select-input option {
+  color: black;
+}
+
+.description-input {
+  padding: 20px 10px;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  resize: none;
+}
+
+.product-add-loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c0ff7d;
+  padding: 10px 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.product-add-loading-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.product-add-loading-wrapper > * {
+  padding-right: 5px;
 }

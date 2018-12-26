@@ -9,20 +9,21 @@ const Box = posed.div({
   pressable: true,
   init: {
     scale: 1,
-    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)",
   },
   hover: {
     scale: 1.2,
-    boxShadow: "0px 5px 10px rgba(0,0,0,0.2)"
-  }
+    boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
+  },
 });
+
 const charPoses = {
   exit: { opacity: 0, y: 20 },
   enter: {
     opacity: 1,
     y: 0,
-    delay: ({ charIndex }) => charIndex * 90
-  }
+    delay: ({ charIndex }) => charIndex * 90,
+  },
 };
 
 const Sidebar = posed.div({
@@ -30,14 +31,15 @@ const Sidebar = posed.div({
     delay: 100,
 
     delayChildren: 50,
-    staggerChildren: 50
-  }
+    staggerChildren: 50,
+  },
 });
 
 const Item = posed.div({
   open: { y: 0, opacity: 1 },
-  closed: { y: 0, opacity: 0 }
+  closed: { y: 0, opacity: 0 },
 });
+
 class Home extends React.Component {
   state = { isOpen: false };
 
@@ -45,14 +47,14 @@ class Home extends React.Component {
     setTimeout(this.toggle, 1000);
   }
 
-  toggle = () => this.setState({ isOpen: !this.state.isOpen });
+  toggle = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+
   render() {
     const { isOpen } = this.state;
 
     return (
       <div className="home-page">
         <Sidebar className="sidebar" pose={isOpen ? "open" : "closed"}>
-          {" "}
           <div className="home-nav">
             <SplitText
               initialPose="exit"

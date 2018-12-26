@@ -10,12 +10,12 @@ export default class ProductDetails extends React.Component {
     this.nameInput = React.createRef();
     this.priceInput = React.createRef();
     this.sizeInput = React.createRef();
-    this.genderInput = React.createRef();
     this.categoryInput = React.createRef();
     this.brandInput = React.createRef();
 
     this.state = {
       product: null,
+      loading: false,
     };
   }
 
@@ -31,7 +31,12 @@ export default class ProductDetails extends React.Component {
 
     axios
       .put(url, { name, price, size, category, brand })
-      .then(({ data }) => this.setState({ product: data }))
+      .then(({ data }) => {
+        this.setState({ product: data, loading: true });
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 2000);
+      })
       .catch(err => console.log(err));
   };
 
@@ -52,7 +57,7 @@ export default class ProductDetails extends React.Component {
     return (
       <div className="res-product">
         <div className="product-btn-wrapper">
-          <Link to="../messages" className="arrow left" />
+          <Link to="/admin/products" className="arrow left" />
           <button
             onClick={this.updateProduct}
             className="product-btn"
@@ -60,6 +65,13 @@ export default class ProductDetails extends React.Component {
           >
             Update Product
           </button>
+        </div>
+        <div
+          className={`product-add-loading-wrapper ${this.state.loading &&
+            "product-add-loading-show"}`}
+        >
+          <span className="lnr lnr-checkmark-circle" />
+          Product Updated Successfuly!
         </div>
         <div className="product-img-wrapper">
           <img
@@ -110,6 +122,7 @@ export default class ProductDetails extends React.Component {
               <input
                 ref={this.priceInput}
                 name="price"
+                type="number"
                 className="product-details-input"
                 defaultValue={this.state.product && this.state.product.price}
               />

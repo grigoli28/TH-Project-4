@@ -10,7 +10,7 @@ export default class Messages extends Component {
   };
 
   updateMessages = () => {
-    const url = "/api/admin/messages";
+    const url = "http://localhost:5000/api/admin/messages";
     axios
       .get(url)
       .then(({ data }) => this.setState({ messages: data }))
@@ -19,7 +19,7 @@ export default class Messages extends Component {
 
   removeMessage = id => {
     this.setState({ loading: true });
-    const url = `/api/admin/messages/${id}`;
+    const url = `http://localhost:5000/api/admin/messages/${id}`;
     axios
       .delete(url)
       .then(res => {

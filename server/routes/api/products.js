@@ -32,11 +32,16 @@ router.post("/", (req, res) => {
   const newProduct = {
     id: uuidv1(),
     name: req.body.name,
-    price: req.body.price,
+    price: Number(req.body.price),
     size: req.body.size,
+    gender: req.body.gender,
     category: req.body.category,
     brand: req.body.brand,
+    description: req.body.description,
+    image: "https://source.unsplash.com/user/drimenaim/1200x1400"
   };
+
+  console.log(newProduct);
   PRODUCTS.push(newProduct);
   res.json(newProduct);
 });

@@ -21,7 +21,7 @@ export default class ProductCategory extends Component {
   }
 
   updateProducts = () => {
-    const url = `/api/products/?filters=${JSON.stringify(this.state.filters)}`;
+    const url = `http://localhost:5000/api/products/?filters=${JSON.stringify(this.state.filters)}`;
 
     axios
       .get(url)

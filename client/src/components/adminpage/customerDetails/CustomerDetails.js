@@ -9,6 +9,7 @@ export default class CustomerDetails extends React.Component {
 
     this.state = {
       user: null,
+      loading: false,
     };
 
     this.nameInput = React.createRef();
@@ -28,7 +29,12 @@ export default class CustomerDetails extends React.Component {
 
     axios
       .put(url, { name, email, username, birthdate })
-      .then(({ data }) => console.log(data))
+      .then(({ data }) => {
+        this.setState({ loading: true });
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 2000);
+      })
       .catch(err => console.log(err));
   };
 
@@ -79,6 +85,13 @@ export default class CustomerDetails extends React.Component {
           <button onClick={this.updateUser} className="user-btn" type="button">
             Update User
           </button>
+        </div>
+        <div
+          className={`product-add-loading-wrapper ${this.state.loading &&
+            "product-add-loading-show"}`}
+        >
+          <span className="lnr lnr-checkmark-circle" />
+          Customer Updated Successfuly!
         </div>
         <div className="user-detail-wrapper">
           <div className="user-img" />

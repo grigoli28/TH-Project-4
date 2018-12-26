@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
+import "./Products.css";
 import Table from "../../table/Table";
 
 export default class Products extends Component {
@@ -9,7 +11,7 @@ export default class Products extends Component {
   };
 
   updateProducts = () => {
-    const url = "/api/products";
+    const url = "http://localhost:5000/api/products";
     axios
       .get(url)
       .then(({ data }) => this.setState({ products: data }))
@@ -18,7 +20,7 @@ export default class Products extends Component {
 
   removeProduct = id => {
     this.setState({ loading: true });
-    const url = `/api/products/${id}`;
+    const url = `http://localhost:5000/api/products/${id}`;
     axios
       .delete(url)
       .then(res => {
@@ -36,13 +38,20 @@ export default class Products extends Component {
 
   render() {
     return (
-      <Table
-        items={this.state.products}
-        tHeads={["name", "price", "size", "brand", "category"]}
-        remove={this.removeProduct}
-        match={this.props.match}
-        loading={this.state.loading}
-      />
+      <>
+        <div className="add-product-btn-wrapper">
+          <Link className="add-product-btn" to="/admin/products/new">
+            Add New Product
+          </Link>
+        </div>
+        <Table
+          items={this.state.products}
+          tHeads={["name", "price", "size", "brand", "category"]}
+          remove={this.removeProduct}
+          match={this.props.match}
+          loading={this.state.loading}
+        />
+      </>
     );
   }
 }

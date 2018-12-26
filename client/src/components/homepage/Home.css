@@ -142,6 +142,7 @@
 @media only screen and (max-width: 800px) {
   .home-nav {
     background-image: url("home-img3.jpg");
+    padding-left: 20px;
   }
   .home-bot-nav {
     display: initial;

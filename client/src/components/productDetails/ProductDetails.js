@@ -63,7 +63,6 @@ class ProductDetails extends Component {
                 <span className="product-size">{this.state.product.size}</span>
               </div>
               <div className="product-description-wrapper">
-                <div className="product-description-title">Description</div>
                 <p className="product-description">
                   {this.state.product.description}
                 </p>

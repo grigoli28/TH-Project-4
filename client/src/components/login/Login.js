@@ -37,7 +37,7 @@ class Login extends Component {
 
         this.props.setCurrentUser(data);
         const { id } = data;
-        const url = `/api/customers/${id}/cart`;
+        const url = `http://localhost:5000/api/customers/${id}/cart`;
 
         // Save logged in user
         localStorage.setItem("_auth_user_", JSON.stringify(data));

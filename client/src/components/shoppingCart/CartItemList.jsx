@@ -15,7 +15,6 @@ class CartItemList extends Component {
     axios
       .delete(url)
       .then(({ data }) => {
-        console.log(data);
         const url = `http://localhost:5000/api/customers/${id}/cart`;
 
         axios

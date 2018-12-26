@@ -1,18 +1,17 @@
 import React from "react";
 import "./AdminPage.css";
-import { Route, NavLink } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import Customers from "./customers/Customers";
 import Messages from "./messages/Messages";
 import Products from "./products/Products";
 import CustomerDetails from "./customerDetails/CustomerDetails";
 import CustomerMessage from "./customersMessage/CustomersMessage";
 import ProductDetails from "./productDetails/ProductDetails";
-import AddProduct from "./addProduct/AddProduct"
+import AddProduct from "./addProduct/AddProduct";
 
 const AdminPage = ({ match }) => {
   return (
     <div className="container">
-    <AddProduct/>
       <nav>
         <ul className="admin-nav">
           <li className="admin-nav__item">
@@ -54,24 +53,31 @@ const AdminPage = ({ match }) => {
           </li>
         </ul>
       </nav>
-
-      <Route exact path={`${match.url}/customers`} component={Customers} />
-      <Route
-        exact
-        path={`${match.url}/customers/:prodId`}
-        component={CustomerDetails}
-      />
-      <Route exact path={`${match.url}/messages`} component={Messages} />
-      <Route 
-        exact 
-        path={`${match.url}/messages/:prodId`} 
-        component={CustomerMessage} 
-      />
-      <Route exact path={`${match.url}/products`} component={Products} />
-      <Route 
-        exact 
-        path={`${match.url}/products/:prodId`} 
-        component={ProductDetails} />
+      <Switch>
+        <Route exact path={`${match.url}/customers`} component={Customers} />
+        <Route
+          exact
+          path={`${match.url}/customers/:prodId`}
+          component={CustomerDetails}
+        />
+        <Route exact path={`${match.url}/messages`} component={Messages} />
+        <Route
+          exact
+          path={`${match.url}/messages/:prodId`}
+          component={CustomerMessage}
+        />
+        <Route exact path={`${match.url}/products`} component={Products} />
+        <Route
+          exact
+          path={`${match.url}/products/new`}
+          component={AddProduct}
+        />
+        <Route
+          exact
+          path={`${match.url}/products/:prodId`}
+          component={ProductDetails}
+        />
+      </Switch>
     </div>
   );
 };

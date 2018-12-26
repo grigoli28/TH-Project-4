@@ -10,7 +10,7 @@ export default class Customers extends Component {
   };
 
   updateCustomers = () => {
-    const url = "/api/customers";
+    const url = "http://localhost:5000/api/customers";
     axios
       .get(url)
       .then(({ data }) => this.setState({ customers: data }))
@@ -19,7 +19,7 @@ export default class Customers extends Component {
 
   removeCustomer = id => {
     this.setState({ loading: true });
-    const url = `/api/customers/${id}`;
+    const url = `http://localhost:5000/api/customers/${id}`;
     axios
       .delete(url)
       .then(res => {
