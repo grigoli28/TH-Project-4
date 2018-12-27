@@ -1,3 +1,4 @@
+// Choose only certain properties from object
 module.exports = function(object, propsToPopulate) {
   const populatedObj = {};
   const props = propsToPopulate.split(" ");

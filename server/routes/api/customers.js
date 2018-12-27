@@ -79,6 +79,7 @@ router.post("/:id/cart", (req, res) => {
 });
 
 // @route   PATCH api/customers/:id/cart
+// @desc    For decreasing item quantity in cart
 router.patch("/:id/cart/:prodId", (req, res) => {
   const { id, prodId } = req.params;
 
@@ -128,22 +129,34 @@ router.get("/:id/purchased", (req, res) => {
 });
 
 // @route   POST api/customers/:id/purchased
+// @desc    Handle checkout requests when user purchases items
 router.post("/:id/purchased", (req, res) => {
-  const customerId = req.params.id;
+  const { id } = req.params;
 
-  const customer = findOneById(customerId, CUSTOMERS);
+  const customer = findOneById(id, CUSTOMERS);
   if (!customer) return res.status(404).json({ customer: "No Such Customer!" });
 
-  const { id } = req.body;
-  const { purchasedProducts } = customer;
+  const { shoppingCart, purchasedProducts } = customer;
+  const { charge } = req.body;
 
-  // Find product if there is any with given id
-  const purchasedProd = findOneById(id, purchasedProducts);
+  // Move items from cart to purchased
+  for (let { id, quantity } of shoppingCart) {
+    const prod = findOneById(id, purchasedProducts);
+    if (prod) prod.quantity += quantity;
+    else purchasedProducts.push({ id, quantity });
+  }
 
-  if (purchasedProd) purchasedProd.quantity += 1;
-  else purchasedProducts.push({ id, quantity: 1 });
+  // Charge user from balance
+  if (customer.balance - Number(charge) < 0)
+    res.status(400).json({ balance: "User has no enough balance" });
+  else customer.balance -= Number(charge);
 
-  res.json(purchasedProducts);
+  // Clear shopping cart
+  shoppingCart.splice(0);
+
+  const populated = populateObject(customer, "id name balance username");
+  console.log(populated);
+  res.json(populated);
 });
 
 // @route   DELETE api/customers/:id/purchased/:prod_id
@@ -230,7 +243,23 @@ router.put("/:id", (req, res) => {
   customer.username = username;
   customer.birthdate = birthdate;
 
-  res.json(customer);
+  res.json(populateObject(customer, "id name username balance"));
+});
+
+// @route   PUT api/customers/:id
+// @desc    For managing user balance
+router.patch("/:id", (req, res) => {
+  const { id } = req.params;
+  const { charge } = req.body;
+
+  const customer = findOneById(id, CUSTOMERS);
+  if (!customer) return res.status(404).json({ customer: "No such customer" });
+
+  if (customer.balance - Number(charge) < 0)
+    res.status(400).json({ balance: "User has no enough balance" });
+  else customer.balance -= Number(charge);
+
+  res.json(populateObject(customer, "id name username balance"));
 });
 
 module.exports = router;

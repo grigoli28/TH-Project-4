@@ -5,7 +5,7 @@
     "name": "Admin",
     "username": "admin",
     "password": "848949581ec6804200dc5e61efc688fdbf27242fdf3a95cad3db2c482ca0cba9",
-    "balance": "10900",
+    "balance": 10900,
     "shoppingCart": [],
     "purchasedProducts": []
   },
@@ -13,7 +13,7 @@
     "id": "afee0180-fd4d-11e8-9e3a-aff3f90a1601",
     "name": "Grigol Tchkoidze",
     "email": "grigol@test.com",
-    "balance": "5000",
+    "balance": 5000,
     "birthdate": "1998-10-28",
     "username": "grigoli",
     "password": "3d2eec7de5790bfc6f2428d068d0f26e1ff19a4f88e1829f959c25aa05735926",
@@ -31,19 +31,13 @@
         "quantity": 1
       }
     ],
-    "purchasedProducts": [
-      { "id": "f22773d0-fd46-8fd8-11e8-897319b1388b", "quantity": 2 },
-      {
-        "id": "ec181760-fd46-11e8-8fd8-897319b1388b",
-        "quantity": 1
-      }
-    ]
+    "purchasedProducts": []
   },
   {
     "id": "b6e266c0-fd4d-11e8-9e3a-aff3f90a1601",
     "name": "John Doe",
     "email": "john@gmail.com",
-    "balance": "3000",
+    "balance": 3000,
     "birthdate": "1990-10-10",
     "username": "john",
     "password": "b85863a1d233999d9439ba16a2b08b090cf958759b193f29995d137c9fa97f78",
@@ -76,7 +70,7 @@
     "id": "b6e266c0-11e8-fd4d-9e3a-aff3f90a1601",
     "name": "John Smith",
     "email": "johnsmith@gmail.com",
-    "balance": "9000",
+    "balance": 9000,
     "birthdate": "1990-05-23",
     "username": "johnsmith",
     "password": "b85863a1d233999d9439ba16a2b08b090cf958759b193f29995d137c9fa97f78",
