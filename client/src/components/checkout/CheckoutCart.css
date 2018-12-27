@@ -8,6 +8,7 @@
 .checkout__total--wrapper {
   border: 1px solid lightgrey;
   padding: 30px 50px;
+  margin-left: 10px;
 }
 
 .checkout--total {
@@ -111,6 +112,7 @@
 
   .checkout__total--wrapper {
     margin-top: 50px;
+    margin-left: 0;
   }
 }
 

@@ -149,13 +149,13 @@ router.post("/:id/purchased", (req, res) => {
   // Charge user from balance
   if (customer.balance - Number(charge) < 0)
     res.status(400).json({ balance: "User has no enough balance" });
-  else customer.balance -= Number(charge);
+  else customer.balance -= Number(charge) || 0;
 
   // Clear shopping cart
   shoppingCart.splice(0);
 
-  const populated = populateObject(customer, "id name balance username");
-  console.log(populated);
+  const populated = populateObject(customer, "id name balance");
+  
   res.json(populated);
 });
 

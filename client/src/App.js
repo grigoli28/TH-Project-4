@@ -19,7 +19,6 @@ import PurchasedPage from "./components/pages/PurchasedPage";
 
 if (localStorage._auth_user_) {
   const user = JSON.parse(localStorage._auth_user_);
-
   store.dispatch(setCurrentUser(user));
 
   const { id } = user;

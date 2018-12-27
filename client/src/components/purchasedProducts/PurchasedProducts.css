@@ -2,6 +2,10 @@
   padding: 50px;
 }
 
+.purchase-title {
+  text-align: center;
+}
+
 .purchased-products--head {
   border: 1px solid lightgrey;
   padding: 15px 50px;

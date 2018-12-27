@@ -1,11 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CheckoutCartItemList from "./CheckoutCartItemList";
-import { updateCart } from "../../actions/authActions";
+import { updateCart, setCurrentUser } from "../../actions/authActions";
 import "./CheckoutCart.css";
 import axios from "axios";
 
 class CheckoutCart extends Component {
+  processCheckout = (charge, balance) => {
+    if (charge > balance || charge === 0) return;
+
+    const { id } = this.props.user;
+    const url = `http://localhost:5000/api/customers/${id}/purchased`;
+
+    axios
+      .post(url, { charge })
+      .then(({ data }) => {
+        this.props.updateCart([]);
+        this.props.setCurrentUser(data);
+        localStorage.setItem("_auth_user_", JSON.stringify(data));
+      })
+      .catch(err => console.log(err));
+  };
+
   removeItemFromCart = prodId => {
     const id = this.props.user.id;
     const url = `http://localhost:5000/api/customers/${id}/cart/${prodId}`;
@@ -54,14 +70,20 @@ class CheckoutCart extends Component {
           </div>
           <div className="checkout--total">
             <span>Total:</span>
-            <span>${totalCost}</span>
+            <span>${totalCost || 0}</span>
           </div>
           <div className="checkout--balance--wrapper">
             <span>Your Balance:</span>
-            <span>${balance}</span>
+            <span>${balance || 0}</span>
           </div>
           <button
-            className={`checkout-cart-btn ${difference < 0 ? "disabled" : ""}`}
+            onClick={() => this.processCheckout(totalCost, balance)}
+            className={`checkout-cart-btn ${
+              difference < 0 ||
+              (this.props.user.cart && this.props.user.cart.length === 0)
+                ? "disabled"
+                : ""
+            }`}
             title={`${difference < 0 ? "Insufficient Funds!" : ""}`}
             type="button"
           >
@@ -79,5 +101,5 @@ const mapStateToProps = ({ auth }) => ({
 
 export default connect(
   mapStateToProps,
-  { updateCart }
+  { updateCart, setCurrentUser }
 )(CheckoutCart);
