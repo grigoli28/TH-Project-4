@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CheckoutCartItemList from "./CheckoutCartItemList";
 import { updateCart, setCurrentUser } from "../../actions/authActions";
+import { Link } from "react-router-dom";
 import "./CheckoutCart.css";
 import axios from "axios";
 
 class CheckoutCart extends Component {
+  state = { loading: false };
+
   processCheckout = (charge, balance) => {
     if (charge > balance || charge === 0) return;
 
@@ -18,6 +21,10 @@ class CheckoutCart extends Component {
         this.props.updateCart([]);
         this.props.setCurrentUser(data);
         localStorage.setItem("_auth_user_", JSON.stringify(data));
+        this.setState({ loading: true });
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 5000);
       })
       .catch(err => console.log(err));
   };
@@ -75,6 +82,17 @@ class CheckoutCart extends Component {
           <div className="checkout--balance--wrapper">
             <span>Your Balance:</span>
             <span>${balance || 0}</span>
+          </div>
+          <div
+            className={`checkout-loading-wrapper ${this.state.loading &&
+              "checkout-loading-show"}`}
+          >
+            <span className="lnr lnr-checkmark-circle">
+              Checkout Successful
+            </span>
+            <Link className="purchase-hist-link" to="/purchased">
+              View Purchase History
+            </Link>
           </div>
           <button
             onClick={() => this.processCheckout(totalCost, balance)}

@@ -154,7 +154,7 @@ router.post("/:id/purchased", (req, res) => {
   // Clear shopping cart
   shoppingCart.splice(0);
 
-  const populated = populateObject(customer, "id name balance");
+  const populated = populateObject(customer, "id name balance isAdmin");
   
   res.json(populated);
 });

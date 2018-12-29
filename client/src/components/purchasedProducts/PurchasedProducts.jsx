@@ -24,7 +24,12 @@ class PurchasedProducts extends Component {
   }
 
   render() {
-    return (
+    const emptyHistory = (
+      <div style={{ height: "400px" }}>
+        <h1 className="purchase-title">Purchase History is Empty!</h1>
+      </div>
+    );
+    const purchaseHistory = (
       <>
         <h1 className="purchase-title">Purchase History</h1>
         <div className="purchased-products">
@@ -41,6 +46,13 @@ class PurchasedProducts extends Component {
               ))}
           </ul>
         </div>
+      </>
+    );
+    return (
+      <>
+        {this.state.purchased && this.state.purchased.length === 0
+          ? emptyHistory
+          : purchaseHistory}
       </>
     );
   }

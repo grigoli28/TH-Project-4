@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navigation.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { toggleCart } from "../../actions/cartActions";
@@ -67,26 +67,19 @@ const Navigation = ({
             </li>
           )}
         </ul>
-        <span className="title">
-          <NavLink
-            exact
-            to="/"
-            activeClassName="active-main-nav-link"
-            className="main-nav__link"
-          >
-            LIMITED EDITION
-          </NavLink>
-        </span>
+        <Link to="/" className="title logo-link">
+          <img className="logo" src="/logo.svg" />
+        </Link>
 
         <div className="aditional-nav">
-          <div className="aditional-nav__item search">
+          {/* <div className="aditional-nav__item search">
             <input
               className="search-input"
               type="text"
               placeholder="Search..."
             />
             <span className="hidden-btn search-btn lnr lnr-magnifier" />
-          </div>
+          </div> */}
           <div className="aditional-nav__item welcome-msg">
             Welcome, {isLogged && user ? user.name.split(" ")[0] : "Guest"}!
           </div>
@@ -135,16 +128,9 @@ const Navigation = ({
         <div onClick={toggleMenu}>
           <span className="mobile-menu-btn lnr lnr-menu" />
         </div>
-        <span className="title">
-          <NavLink
-            exact
-            to="/"
-            activeClassName="active-main-nav-link"
-            className="main-nav__link"
-          >
-            LIMITED EDITION
-          </NavLink>
-        </span>
+        <Link className="title" to="/">
+          <img className="logo" src="/logo.svg" />
+        </Link>
 
         <span onClick={toggleCart} className="cart-btn lnr lnr-cart">
           {user.cart && user.cart.length ? (
@@ -224,7 +210,7 @@ const Navigation = ({
               </NavLink>
             </li>
           )}
-          <li className="mobile-nav__item">
+          {/* <li className="mobile-nav__item">
             <label className="mobile-search-wrapper">
               <input
                 className="mobile-search__input"
@@ -233,7 +219,7 @@ const Navigation = ({
               />
               <span className="search-btn lnr lnr-magnifier" />
             </label>
-          </li>
+          </li> */}
           <li className="mobile-nav__item">
             {isLogged ? (
               <div>

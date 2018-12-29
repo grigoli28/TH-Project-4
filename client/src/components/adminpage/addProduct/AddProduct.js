@@ -40,9 +40,9 @@ export default class AddProduct extends React.Component {
           this.setState({ loading: false });
         }, 2000);
 
-        name = "";
-        price = "";
-        description = "";
+        this.nameInput.current.value = "";
+        this.priceInput.current.value = "";
+        this.descriptionInput.current.value = "";
       })
       .catch(err => console.log(err));
   };

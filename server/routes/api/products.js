@@ -29,6 +29,8 @@ router.get("/:id", (req, res) => {
 // @desc    Add new product
 // @access  Public
 router.post("/", (req, res) => {
+  const ind = Math.floor(Math.random() * 9 + 1);
+
   const newProduct = {
     id: uuidv1(),
     name: req.body.name,
@@ -38,7 +40,7 @@ router.post("/", (req, res) => {
     category: req.body.category,
     brand: req.body.brand,
     description: req.body.description,
-    image: "https://source.unsplash.com/user/drimenaim/1200x1400"
+    image: `/images/women/product-${ind}.jpg`,
   };
 
   console.log(newProduct);

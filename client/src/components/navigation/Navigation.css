@@ -67,6 +67,14 @@
   width: 50%;
 }
 
+.logo {
+  width: 120px;
+}
+
+.mobile-nav .logo {
+  width: 100px;
+}
+
 .title {
   width: 72px;
   position: absolute;
