@@ -68,7 +68,7 @@ const Navigation = ({
           )}
         </ul>
         <Link to="/" className="title logo-link">
-          <img className="logo" src="/logo.svg" />
+          <img alt="Site Logo" className="logo" src="/logo.svg" />
         </Link>
 
         <div className="aditional-nav">
@@ -129,7 +129,7 @@ const Navigation = ({
           <span className="mobile-menu-btn lnr lnr-menu" />
         </div>
         <Link className="title" to="/">
-          <img className="logo" src="/logo.svg" />
+          <img alt="Site Logo" className="logo" src="/logo.svg" />
         </Link>
 
         <span onClick={toggleCart} className="cart-btn lnr lnr-cart">

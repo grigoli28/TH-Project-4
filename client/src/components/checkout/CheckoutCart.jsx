@@ -24,7 +24,7 @@ class CheckoutCart extends Component {
         this.setState({ loading: true });
         setTimeout(() => {
           this.setState({ loading: false });
-        }, 5000);
+        }, 8000);
       })
       .catch(err => console.log(err));
   };

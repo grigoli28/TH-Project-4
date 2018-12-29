@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "concurrently \"node server.js\" \"npm start --prefix ./client\"",
+    "client-install": "npm install --prefix ./client",
+    "dev": "concurrently \"nodemon server.js\" \"npm start --prefix ./client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "uuid": "^3.3.2"

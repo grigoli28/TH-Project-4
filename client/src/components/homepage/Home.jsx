@@ -9,12 +9,12 @@ const Box = posed.div({
   pressable: true,
   init: {
     scale: 1,
-    boxShadow: "0px 0px 0px rgba(0,0,0,0)",
+    boxShadow: "0px 0px 0px rgba(0,0,0,0)"
   },
   hover: {
     scale: 1.2,
-    boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
-  },
+    boxShadow: "0px 5px 10px rgba(0,0,0,0.2)"
+  }
 });
 
 const charPoses = {
@@ -22,8 +22,8 @@ const charPoses = {
   enter: {
     opacity: 1,
     y: 0,
-    delay: ({ charIndex }) => charIndex * 90,
-  },
+    delay: ({ charIndex }) => charIndex * 90
+  }
 };
 
 const Sidebar = posed.div({
@@ -31,13 +31,13 @@ const Sidebar = posed.div({
     delay: 100,
 
     delayChildren: 50,
-    staggerChildren: 50,
-  },
+    staggerChildren: 50
+  }
 });
 
 const Item = posed.div({
   open: { y: 0, opacity: 1 },
-  closed: { y: 0, opacity: 0 },
+  closed: { y: 0, opacity: 0 }
 });
 
 class Home extends React.Component {
@@ -77,7 +77,9 @@ class Home extends React.Component {
         <div className="home-mid-nav">
           <Box>
             <div className="mid-img-1">
-              <p className="home-img-text">Limmited</p>
+              <Link to="../men">
+                <p className="home-img-text">Men</p>
+              </Link>
             </div>
           </Box>
           <Box>
@@ -85,7 +87,9 @@ class Home extends React.Component {
           </Box>
           <Box>
             <div className="mid-img-3">
-              <p className="home-img-text">Edition</p>
+              <Link to="../women">
+                <p className="home-img-text">Women</p>
+              </Link>
             </div>
           </Box>
         </div>
