@@ -50,7 +50,7 @@
   margin: 50px;
 }
 .mid-img-1 {
-  background-image: url("girl_img_2.jpg");
+  background-image: url("man_img_2.png");
   background-repeat: no-repeat, repeat;
   background-size: cover;
   height: 350px;
@@ -72,7 +72,7 @@
 }
 .home-img-text {
   line-height: 300px;
-  margin-left: 80px;
+  margin-left: 100px;
   font-size: 45px;
   color: rgb(214, 212, 212);
   font-family: "Poiret One", cursive;
@@ -113,6 +113,10 @@
   }
 }
 @media only screen and (max-width: 1016px) {
+  .home-img-text{
+    line-height: 350px;
+    margin-left: 200px
+  }
   .home-mid-nav {
     display: initial;
   }
@@ -152,6 +156,10 @@
   .home-bot-nav > p {
     text-align: center;
     
+  }
+ .home-img-text{
+    line-height: 350px;
+    margin-left:100px
   }
    .home-mid-nav > div {
     width: 300px;
